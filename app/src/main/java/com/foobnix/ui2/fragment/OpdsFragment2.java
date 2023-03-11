@@ -75,7 +75,7 @@ import okio.BufferedSink;
 import okio.Okio;
 
 public class OpdsFragment2 extends UIFragment<Entry> {
-    public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.network, R.drawable.glyphicons_2_global);
+    public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.network, R.drawable.glyphicons_417_globe);
     EntryAdapter searchAdapter;
     TextView titleView;
 
@@ -108,7 +108,7 @@ public class OpdsFragment2 extends UIFragment<Entry> {
             return Arrays.asList(new Entry(test, test));
         }
 
-        String[] list = AppState.get().myOPDSLinks.split(";");
+        String[] list = AppState.get().allOPDSLinks.split(";");
         List<Entry> res = new ArrayList<Entry>();
         boolean hasStars = false;
         for (String line : list) {
@@ -120,9 +120,16 @@ public class OpdsFragment2 extends UIFragment<Entry> {
                 continue;
             }
             String[] it = line.split(",");
-            final Entry e = new Entry(it[0], it[1], it[2], it[3], true);
-            e.appState = line + ";";
-            res.add(e);
+            try {
+                final Entry e = new Entry(it[0], it[1], it[2], it[3], true);
+                e.appState = line + ";";
+                res.add(e);
+            }catch (Exception e){
+
+                LOG.e(e,line);
+            }
+
+
 
         }
         if (hasStars) {
@@ -186,7 +193,7 @@ public class OpdsFragment2 extends UIFragment<Entry> {
 
                     @Override
                     public void run() {
-                        AppState.get().myOPDSLinks = AppState.OPDS_DEFAULT;
+                        AppState.get().allOPDSLinks = AppState.OPDS_DEFAULT;
                         url = "/";
                         populate();
                     }
@@ -228,7 +235,7 @@ public class OpdsFragment2 extends UIFragment<Entry> {
 
                     @Override
                     public void run() {
-                        AppState.get().myOPDSLinks = AppState.get().myOPDSLinks.replace(result.appState, "");
+                        AppState.get().allOPDSLinks = AppState.get().allOPDSLinks.replace(result.appState, "");
                         url = "/";
                         populate();
                     }
@@ -274,19 +281,19 @@ public class OpdsFragment2 extends UIFragment<Entry> {
                 }
                 entry.setAppState(url, title, url2, "assets://opds/star_1.png");
 
-                if (!AppState.get().myOPDSLinks.contains(url)) {
+                if (!AppState.get().allOPDSLinks.contains(url)) {
 
                     AddCatalogDialog.showDialog(getActivity(), new Runnable() {
 
                         @Override
                         public void run() {
-                            starIcon.setImageResource(R.drawable.star_1);
+                            starIcon.setImageResource(R.drawable.glyphicons_49_star);
                             TintUtil.setTintImageWithAlpha(starIcon, Color.WHITE);
                         }
                     }, entry, false);
                 } else {
-                    AppState.get().myOPDSLinks = AppState.get().myOPDSLinks.replace(entry.appState, "");
-                    starIcon.setImageResource(R.drawable.star_2);
+                    AppState.get().allOPDSLinks = AppState.get().allOPDSLinks.replace(entry.appState, "");
+                    starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
                     TintUtil.setTintImageWithAlpha(starIcon, Color.WHITE);
                     // AlertDialogs.showOkDialog(getActivity(),
                     // getActivity().getString(R.string.do_you_want_to_delete_), new Runnable() {
@@ -330,7 +337,7 @@ public class OpdsFragment2 extends UIFragment<Entry> {
 
                     @Override
                     public void run() {
-                        AppState.get().myOPDSLinks = AppState.OPDS_DEFAULT;
+                        AppState.get().allOPDSLinks = AppState.OPDS_DEFAULT;
                         populate();
                     }
                 });
@@ -349,6 +356,7 @@ public class OpdsFragment2 extends UIFragment<Entry> {
 
                 final CheckBox proxyEnable = (CheckBox) view.findViewById(R.id.proxyEnable);
                 final CheckBox opdsLargeCovers = (CheckBox) view.findViewById(R.id.opdsLargeCovers);
+                final CheckBox createBookNameFolder = (CheckBox) view.findViewById(R.id.createBookNameFolder);
                 final EditText proxyServer = (EditText) view.findViewById(R.id.proxyServer);
                 final EditText proxyPort = (EditText) view.findViewById(R.id.proxyPort);
                 final EditText proxyUser = (EditText) view.findViewById(R.id.proxyUser);
@@ -450,6 +458,15 @@ public class OpdsFragment2 extends UIFragment<Entry> {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         AppState.get().opdsLargeCovers = isChecked;
+                    }
+                });
+
+                createBookNameFolder.setChecked(AppState.get().createBookNameFolder);
+                createBookNameFolder.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        AppState.get().createBookNameFolder = isChecked;
                     }
                 });
 
@@ -566,11 +583,16 @@ public class OpdsFragment2 extends UIFragment<Entry> {
                                     outStream = getActivity().getContentResolver().openOutputStream(createDocument);
                                 } else {
                                     File LIRBI_DOWNLOAD_DIR;
-                                    if (TxtUtils.isNotEmpty(link.author)) {
-                                        LIRBI_DOWNLOAD_DIR = new File(BookCSS.get().downlodsPath, TxtUtils.fixFileName(link.author));
-                                    } else {
-                                        LIRBI_DOWNLOAD_DIR = new File(BookCSS.get().downlodsPath);
+                                    if(AppState.get().createBookNameFolder){
+                                        LIRBI_DOWNLOAD_DIR = new File(BookCSS.get().downlodsPath, displayName);
+                                    }else {
+                                        if (TxtUtils.isNotEmpty(link.author)) {
+                                            LIRBI_DOWNLOAD_DIR = new File(BookCSS.get().downlodsPath, TxtUtils.fixFileName(link.author));
+                                        } else {
+                                            LIRBI_DOWNLOAD_DIR = new File(BookCSS.get().downlodsPath);
+                                        }
                                     }
+
                                     if (!LIRBI_DOWNLOAD_DIR.exists()) {
                                         LIRBI_DOWNLOAD_DIR.mkdirs();
                                     }
@@ -825,10 +847,10 @@ public class OpdsFragment2 extends UIFragment<Entry> {
             }
         }
 
-        if (AppState.get().myOPDSLinks.contains(url)) {
-            starIcon.setImageResource(R.drawable.star_1);
+        if (AppState.get().allOPDSLinks.contains(url)) {
+            starIcon.setImageResource(R.drawable.glyphicons_49_star);
         } else {
-            starIcon.setImageResource(R.drawable.star_2);
+            starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
         }
         TintUtil.setTintImageWithAlpha(starIcon, Color.WHITE);
     }

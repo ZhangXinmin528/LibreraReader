@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Tampilkan dialog Apa yang baru untuk pembaruan</string>
    <string name="what_is_new_in">Apa yang baru</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Daftar lengkap perubahan dengan gambar (web, PDF)</string>
-   <string name="search_for_text_in_documents">Pencarian dokumen multi</string>
+   <string name="search_for_text_in_multiple_documents">Mencari teks dalam banyak dokumen</string>
    <string name="search_in_the_subfolders">Cari di subfolder</string>
    <string name="stop">Berhenti</string>
    <string name="document_converter_online_">Konverter dokumen (online)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">CSS khusus</string>
    <string name="styles">Gaya</string>
    <string name="document_styles">Gaya dokumen</string>
-   <string name="user_styles">Gaya pengguna</string>
    <string name="automatic_hyphenation">Tanda hubung otomatis</string>
    <string name="empty_line">Garis kosong</string>
    <string name="margin_width">Lebar margin</string>
@@ -329,7 +328,7 @@
    <string name="copy">Salinan</string>
    <string name="search_in_google">Cari di Google</string>
    <string name="search_in_document">Cari di Dokumen</string>
-   <string name="web_dict">Kamus Web</string>
+   <string name="web_dict_oxfort">Kamus web (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Font</string>
    <string name="font_name">Nama huruf</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Perbatasan tanaman simetris</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Menampilkan penulis dan judul buku PDF dari meta tag</string>
    <string name="meta_tags">Meta tag</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - program untuk membaca buku tanpa iklan, menginstalnya menghapus iklan dalam aplikasi ini</string>
+   <string name="librera_pro">Librera pro: aplikasi ini tetapi tanpa iklan</string>
    <string name="annotation">Anotasi</string>
    <string name="book">Book</string>
    <string name="information">Informasi</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Skala Slider</string>
    <string name="chapter_format">Format bab</string>
    <string name="play_a_music_file">Mainkan file musik</string>
-   <string name="rate_us">Beri kami nilai</string>
+   <string name="rate_app">Menilai aplikasi</string>
    <string name="reset">Setel ulang</string>
    <string name="status_bar_location">Lokasi Bilah Status</string>
    <string name="add_to_bookmark">Tambahkan ke bookmark</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Masuk</string>
    <string name="sign_out">Keluar</string>
    <string name="wifi_sync_only">Sinkronisasi wifi saja</string>
-   <string name="sync_google_drive">Sinkronisasi (google drive)</string>
+   <string name="sync_google_drive">Sinkronisasi (Google drive)</string>
    <string name="single_tap_to_select_text">Ketuk sekali untuk memilih teks</string>
    <string name="sync_book">Sinkronisasi buku</string>
    <string name="sync">Sinkronkan</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Lihat menu</string>
    <string name="cd_download_more_fonts">Unduh lebih banyak font</string>
    <string name="restore_search_query_when_the_application_starts">Pulihkan permintaan pencarian saat startup</string>
+   <string name="hide_read_books">Sembunyikan buku yang sudah dibaca</string>
+   <string name="graphics_scale">Skala grafis</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Buat folder dengan nama buku</string>
+   <string name="memory">Penyimpanan</string>
+   <string name="accessibility">Aksesibilitas</string>
+   <string name="web_search_google">Pencarian web (Google, ...)</string>
+   <string name="synced_books">Buku yang disinkronkan</string>
+   <string name="smart_reflow">Reflow cerdas</string>
+   <string name="user_styles">Gaya pengguna</string>
+   <string name="engine">Mesin</string>
+   <string name="restart_manually">Perubahan ini memerlukan restart manual aplikasi</string>
 </resources>

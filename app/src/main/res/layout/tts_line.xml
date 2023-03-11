@@ -9,9 +9,9 @@
         android:layout_width="@dimen/wh_button_big"
         android:layout_height="@dimen/wh_button_big"
         android:background="@drawable/bg_clickable"
-        android:padding="7dip"
+        android:padding="2dip"
         android:contentDescription="@string/settings"
-        android:src="@drawable/glyphicons_185_volume_up1" />
+        android:src="@drawable/glyphicons_smileys_100_headphones" />
 
     <ImageView
         android:id="@+id/ttsPrev"
@@ -22,7 +22,7 @@
 
         android:layout_marginLeft="10dp"
         android:background="@drawable/bg_clickable"
-        android:padding="6dp"
+        android:padding="2dp"
         android:src="@drawable/glyphicons_173_rewind" />
 
     <ImageView
@@ -31,10 +31,9 @@
         android:layout_height="@dimen/wh_button_big"
         android:layout_gravity="center"
         android:contentDescription="@string/play_pause"
-        android:layout_marginLeft="14dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/bg_clickable"
-        android:padding="4dp"
-        android:src="@drawable/glyphicons_174_play" />
+        android:src="@drawable/glyphicons_175_play" />
 
 
     <ImageView
@@ -46,7 +45,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dip"
         android:background="@drawable/bg_clickable"
-        android:padding="6dp"
+        android:padding="2dp"
         android:src="@drawable/glyphicons_177_forward" />
     
     
@@ -58,8 +57,8 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dip"
         android:background="@drawable/bg_clickable"
-        android:padding="8dp"
-        android:src="@drawable/glyphicons_172_fast_backward" />
+        android:padding="2dp"
+        android:src="@drawable/glyphicons_172_skip_to_start" />
     
     
     <ImageView
@@ -70,8 +69,8 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dip"
         android:background="@drawable/bg_clickable"
-        android:padding="8dp"
-        android:src="@drawable/glyphicons_178_fast_forward" />
+        android:padding="2dp"
+        android:src="@drawable/glyphicons_178_skip_to_end" />
     
 
     <ImageView
@@ -82,7 +81,7 @@
         android:layout_marginLeft="10dip"
         android:contentDescription="@string/close"
         android:background="@drawable/bg_clickable"
-        android:padding="10dp"
-        android:src="@drawable/glyphicons_208_remove_2" />
+        android:padding="8dp"
+        android:src="@drawable/glyphicons_599_menu_close" />
 
 </LinearLayout>

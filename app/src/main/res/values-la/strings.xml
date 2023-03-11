@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Docere quid est novum sub innovationibus</string>
    <string name="what_is_new_in">Quid novum</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Full list of changes with images (web, PDF)</string>
-   <string name="search_for_text_in_documents">Requisitio multi-documentalis</string>
+   <string name="search_for_text_in_multiple_documents">Quaerere textum in pluribus documentis</string>
    <string name="search_in_the_subfolders">Search in the subfolders</string>
    <string name="stop">Mora</string>
    <string name="document_converter_online_">Convertor per rete</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">CSS usufructuarii</string>
    <string name="styles">Styli</string>
    <string name="document_styles">Insinuati</string>
-   <string name="user_styles">Styli usufructuarii</string>
    <string name="automatic_hyphenation">Transponimentum verborum</string>
    <string name="empty_line">Empty Line</string>
    <string name="margin_width">Latitudo marginum</string>
@@ -329,7 +328,7 @@
    <string name="copy">Transcribere</string>
    <string name="search_in_google">Perlustrare con googla</string>
    <string name="search_in_document">Pelustrare documentum</string>
-   <string name="web_dict">Lexiconis</string>
+   <string name="web_dict_oxfort">Dictionarium interretum (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Litterae</string>
    <string name="font_name">Litterae</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Seges oras aequabiliter intortum</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Author imaginatio demonstrans appetibile, et in titulum libri de PDF tags meta</string>
    <string name="meta_tags">Meta tags</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera pro - superonerare ut preconiam removere</string>
+   <string name="librera_pro">Pro librera: sed sine app hoc ads</string>
    <string name="annotation">Description</string>
    <string name="book">Liber</string>
    <string name="information">Information</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Notatio paginae</string>
    <string name="chapter_format">Forma</string>
    <string name="play_a_music_file">A lima musicorum ludere</string>
-   <string name="rate_us">Rate nobis</string>
+   <string name="rate_app">Rate app</string>
    <string name="reset">Reset</string>
    <string name="status_bar_location">Status Bar loco</string>
    <string name="add_to_bookmark">Add to bookmarks</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">View menu</string>
    <string name="cd_download_more_fonts">Download more fonts</string>
    <string name="restore_search_query_when_the_application_starts">Quaero quaestionem restituere ad startup</string>
+   <string name="hide_read_books">Celare legere libros</string>
+   <string name="graphics_scale">Graphics scale</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Folder in nomine creare libri</string>
+   <string name="memory">Memoria</string>
+   <string name="accessibility">Accessibility</string>
+   <string name="web_search_google">Interretialem inquisitionem (Google, ...)</string>
+   <string name="synced_books">Synced libri</string>
+   <string name="smart_reflow">Dolor reflow</string>
+   <string name="user_styles">Styli usufructuarii</string>
+   <string name="engine">Engine</string>
+   <string name="restart_manually">Haec mutatio requirit a manual sileo applicationis</string>
 </resources>

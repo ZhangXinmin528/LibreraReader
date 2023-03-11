@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Vis dialogboksen Hva er nytt for oppdateringer</string>
    <string name="what_is_new_in">Hva er nytt i</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Full liste over endringer med bilder (web, PDF)</string>
-   <string name="search_for_text_in_documents">Multidokumentsøk</string>
+   <string name="search_for_text_in_multiple_documents">Søk etter tekst i flere dokumenter</string>
    <string name="search_in_the_subfolders">Søk i undermappene</string>
    <string name="stop">Stoppe</string>
    <string name="document_converter_online_">Dokumentkonverter (online)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Tilpasset CSS</string>
    <string name="styles">Styles</string>
    <string name="document_styles">Dokumentstiler</string>
-   <string name="user_styles">Brukerstiler</string>
    <string name="automatic_hyphenation">Automatisk bindestrek</string>
    <string name="empty_line">Tom linje</string>
    <string name="margin_width">Marginbredde</string>
@@ -329,7 +328,7 @@
    <string name="copy">Kopiere</string>
    <string name="search_in_google">Søk i Google</string>
    <string name="search_in_document">Søk i dokument</string>
-   <string name="web_dict">Web Dictionary</string>
+   <string name="web_dict_oxfort">Nettordbok (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Font</string>
    <string name="font_name">Skriftnavn</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Beskjær kantene symmetrisk</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Viser forfatteren og tittelen til PDF-boken fra metatagsene</string>
    <string name="meta_tags">Metatagger</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO-programmet for å lese bøker uten reklame, installere den fjerner reklame i denne applikasjonen</string>
+   <string name="librera_pro">Librera pro: denne appen, men uten annonser</string>
    <string name="annotation">Merknad</string>
    <string name="book">Bok</string>
    <string name="information">Informasjon</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Slider skala</string>
    <string name="chapter_format">Kapittelformat</string>
    <string name="play_a_music_file">Spill en musikkfil</string>
-   <string name="rate_us">Rangere oss</string>
+   <string name="rate_app">Vurder app</string>
    <string name="reset">Tilbakestille</string>
    <string name="status_bar_location">Statuslinje plassering</string>
    <string name="add_to_bookmark">Legg til i bokmerker</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Logg inn</string>
    <string name="sign_out">Logg ut</string>
    <string name="wifi_sync_only">Kun wifi-synkronisering</string>
-   <string name="sync_google_drive">Synkronisere (google-stasjon)</string>
+   <string name="sync_google_drive">Synkronisere (Google-stasjon)</string>
    <string name="single_tap_to_select_text">Enkelt trykk for å velge tekst</string>
    <string name="sync_book">Synkroniser en bok</string>
    <string name="sync">Synkron</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Se menyen</string>
    <string name="cd_download_more_fonts">Last ned flere fonter</string>
    <string name="restore_search_query_when_the_application_starts">Gjenopprett søket ved oppstart</string>
+   <string name="hide_read_books">Gjemme lese bøker</string>
+   <string name="graphics_scale">Grafikk skala</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Opprette en mappe med navnet på boken</string>
+   <string name="memory">Hukommelse</string>
+   <string name="accessibility">Tilgjengelighet</string>
+   <string name="web_search_google">Nettsøk (Google, ...)</string>
+   <string name="synced_books">Synkroniserte bøker</string>
+   <string name="smart_reflow">Smart reflow</string>
+   <string name="user_styles">Brukerstiler</string>
+   <string name="engine">Motor</string>
+   <string name="restart_manually">Denne endringen krever en manuell omstart av programmet</string>
 </resources>

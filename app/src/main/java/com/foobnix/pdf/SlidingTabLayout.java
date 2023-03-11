@@ -1,9 +1,11 @@
 package com.foobnix.pdf;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
+import android.graphics.drawable.ScaleDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -20,12 +22,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.foobnix.android.utils.Dips;
+import com.foobnix.android.utils.IntegerResponse;
 import com.foobnix.android.utils.LOG;
-import com.foobnix.android.utils.TxtUtils;
 import com.foobnix.model.AppSP;
 import com.foobnix.model.AppState;
 import com.foobnix.pdf.info.R;
 import com.foobnix.pdf.info.TintUtil;
+import com.foobnix.sys.DoubleClickListener;
 import com.foobnix.ui2.MainTabs2;
 import com.foobnix.ui2.adapter.TabsAdapter2;
 
@@ -50,43 +53,15 @@ import com.foobnix.ui2.adapter.TabsAdapter2;
  */
 public class SlidingTabLayout extends HorizontalScrollView {
 
-    SwipeRefreshLayout swipeRefreshLayout;
-
-    public void addSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
-        this.swipeRefreshLayout = swipeRefreshLayout;
-    }
-
-    /**
-     * Allows complete control over the colors drawn in the tab layout. Set with
-     * {@link #setCustomTabColorizer(TabColorizer)}.
-     */
-    public interface TabColorizer {
-
-        /**
-         * @return return the color of the indicator used when {@code position}
-         * is selected.
-         */
-        int getIndicatorColor(int position);
-
-        /**
-         * @return return the color of the divider drawn to the right of
-         * {@code position}.
-         */
-        int getDividerColor(int position);
-
-    }
-
     private static final int TITLE_OFFSET_DIPS = 24;
-
     private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
-
     private static int POS_HORIZONTAL = 0;
     private static int POS_VERTICAL = 1;
-
     private static int myPOS = POS_VERTICAL;
-
-    private static int TAB_VIEW_PADDING_DIPS = myPOS == POS_HORIZONTAL ? 16 : 10;
-
+    private static int TAB_VIEW_PADDING_DIPS = myPOS == POS_HORIZONTAL ? 10 : 7;
+    private final SlidingTabStrip mTabStrip;
+    SwipeRefreshLayout swipeRefreshLayout;
+    IntegerResponse onDoubleClickAction;
     private int mTitleOffset;
 
     private int mTabViewLayoutId;
@@ -94,8 +69,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     private ViewPager mViewPager;
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
-
-    private final SlidingTabStrip mTabStrip;
 
     public SlidingTabLayout(Context context) {
         this(context, null);
@@ -120,13 +93,20 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     }
 
+    public void addSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
+        this.swipeRefreshLayout = swipeRefreshLayout;
+    }
+
+    public void setOnDoubleClickAction(IntegerResponse onDoubleClickAction) {
+        this.onDoubleClickAction = onDoubleClickAction;
+    }
+
     public void init() {
         myPOS = AppState.get().tapPositionTop ? POS_HORIZONTAL : POS_VERTICAL;
-        TAB_VIEW_PADDING_DIPS = myPOS == POS_HORIZONTAL ? 16 : 10;
+        TAB_VIEW_PADDING_DIPS = myPOS == POS_HORIZONTAL ? 10 : 7;
         addView(getmTabStrip(), LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -230,12 +210,9 @@ public class SlidingTabLayout extends HorizontalScrollView {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, TAB_VIEW_TEXT_SIZE_SP);
         // textView.setTypeface(Typeface.DEFAULT_BOLD);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            TypedValue outValue = new TypedValue();
-            getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
-            textView.setBackgroundResource(outValue.resourceId);
-        }
-
+        TypedValue outValue = new TypedValue();
+        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
+        textView.setBackgroundResource(outValue.resourceId);
 
         if (myPOS == POS_HORIZONTAL) {
             textView.setAllCaps(true);
@@ -267,6 +244,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         final View.OnClickListener tabClickListener = new TabClickListener();
 
         for (int i = 0; i < adapter.getCount(); i++) {
+            final int j = i;
             View tabView = null;
             TextView tabTitleView = null;
 
@@ -297,28 +275,49 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 }
                 tabTitleView.setContentDescription(pageTitle + " " + getContext().getString(R.string.tab));
                 // TintUtil.addTextView(tabTitleView);
+                Drawable drawable = null;
+                try {
+                    drawable = getContext().getResources().getDrawable(adapter.getIconResId(i));
+                    //drawable = new ScaleDrawable(drawable.getCurrent(),0,Dips.DP_10,Dips.DP_10);
+                    int size = Dips.dpToPx(28);
+                    drawable.setBounds(0,0,size,size);
 
-                Drawable drawable = getContext().getResources().getDrawable(adapter.getIconResId(i));
-
-                if (myPOS == POS_VERTICAL) {
-                    tabTitleView.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
-                } else {
-                    tabTitleView.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    if (myPOS == POS_VERTICAL) {
+                        tabTitleView.setCompoundDrawables(null, drawable, null, null);
+                    } else {
+                        tabTitleView.setCompoundDrawables(drawable, null, null, null);
+                    }
+                } catch (Exception e) {
+                    LOG.e(e);
                 }
 
 
                 tabTitleView.setCompoundDrawablePadding(Dips.dpToPx(5));
 
-
                 if (AppState.get().appTheme == AppState.THEME_INK) {
                     // TintUtil.setDrawableTint(drawable, Color.BLACK);
                     tabTitleView.setTextColor(TintUtil.color);
                 } else {
-                    TintUtil.setDrawableTint(drawable, Color.WHITE);
+                    if(drawable!=null) {
+                        TintUtil.setDrawableTint(drawable, Color.WHITE);
+                    }
                     tabTitleView.setTextColor(Color.WHITE);
                 }
 
-                tabView.setOnClickListener(tabClickListener);
+                //tabView.setOnClickListener(tabClickListener);
+                tabView.setOnClickListener(new DoubleClickListener() {
+                    @Override
+                    public void onSingleClick(View v) {
+                        tabClickListener.onClick(v);
+                    }
+
+                    @Override
+                    public void onDoubleClick(View v) {
+                        if (onDoubleClickAction != null) {
+                            onDoubleClickAction.onResultRecive(j);
+                        }
+                    }
+                });
 
 
                 getmTabStrip().addView(tabView, new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1));
@@ -363,6 +362,49 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     public SlidingTabStrip getmTabStrip() {
         return mTabStrip;
+    }
+
+    public void updateIcons(int position) {
+        for (int i = 0; i < getmTabStrip().getChildCount(); i++) {
+            TextView childAt = (TextView) getmTabStrip().getChildAt(i);
+            int myColor = i == position ? Color.WHITE : TintUtil.colorSecondTab;
+
+
+            Drawable drawable;
+            if (myPOS == POS_VERTICAL) {
+                drawable = childAt.getCompoundDrawables()[1];
+            } else {
+                drawable = childAt.getCompoundDrawables()[0];
+            }
+
+            if (AppState.get().appTheme == AppState.THEME_INK) {
+                TintUtil.setDrawableTint(drawable, TintUtil.color);
+                childAt.setTextColor(TintUtil.color);
+            } else {
+                childAt.setTextColor(myColor);
+                TintUtil.setDrawableTint(drawable, myColor);
+            }
+        }
+    }
+
+    /**
+     * Allows complete control over the colors drawn in the tab layout. Set with
+     * {@link #setCustomTabColorizer(TabColorizer)}.
+     */
+    public interface TabColorizer {
+
+        /**
+         * @return return the color of the indicator used when {@code position}
+         * is selected.
+         */
+        int getIndicatorColor(int position);
+
+        /**
+         * @return return the color of the divider drawn to the right of
+         * {@code position}.
+         */
+        int getDividerColor(int position);
+
     }
 
     private class InternalViewPagerListener implements ViewPager.OnPageChangeListener {
@@ -414,29 +456,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
             }
         }
 
-    }
-
-    public void updateIcons(int position) {
-        for (int i = 0; i < getmTabStrip().getChildCount(); i++) {
-            TextView childAt = (TextView) getmTabStrip().getChildAt(i);
-            int myColor = i == position ? Color.WHITE : TintUtil.colorSecondTab;
-
-
-            Drawable drawable;
-            if (myPOS == POS_VERTICAL) {
-                drawable = childAt.getCompoundDrawables()[1];
-            } else {
-                drawable = childAt.getCompoundDrawables()[0];
-            }
-
-            if (AppState.get().appTheme == AppState.THEME_INK) {
-                TintUtil.setDrawableTint(drawable, TintUtil.color);
-                childAt.setTextColor(TintUtil.color);
-            } else {
-                childAt.setTextColor(myColor);
-                TintUtil.setDrawableTint(drawable, myColor);
-            }
-        }
     }
 
     private class TabClickListener implements View.OnClickListener {

@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Visa dialogrutan Vad är nytt för uppdateringar</string>
    <string name="what_is_new_in">Vad är nytt i</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Full lista över ändringar med bilder (web, PDF)</string>
-   <string name="search_for_text_in_documents">Sökning av flera dokument</string>
+   <string name="search_for_text_in_multiple_documents">Söka efter text i flera dokument</string>
    <string name="search_in_the_subfolders">Sök i undermapparna</string>
    <string name="stop">Sluta</string>
    <string name="document_converter_online_">Dokumentkonverterare (online)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Anpassad CSS</string>
    <string name="styles">Styles</string>
    <string name="document_styles">Dokument~~POS=TRUNC stilar</string>
-   <string name="user_styles">Användar stilar</string>
    <string name="automatic_hyphenation">Automatisk avstavning</string>
    <string name="empty_line">Tom rad</string>
    <string name="margin_width">Marginal bredd</string>
@@ -329,7 +328,7 @@
    <string name="copy">Kopiera</string>
    <string name="search_in_google">Sök i Google</string>
    <string name="search_in_document">Sök i dokumentet</string>
-   <string name="web_dict">Web ordbok</string>
+   <string name="web_dict_oxfort">Webbordbok (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Font</string>
    <string name="font_name">Font namn</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Beskär gränserna symmetriskt</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Visar författaren och titeln på PDF-boken från metataggarna</string>
    <string name="meta_tags">Metataggar</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO-programmet för att läsa böcker utan reklam, installera den tar bort reklam i den här applikationen</string>
+   <string name="librera_pro">Librera pro: denna app men utan annonser</string>
    <string name="annotation">Anteckning</string>
    <string name="book">Bok</string>
    <string name="information">Information</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Skjutreglaget</string>
    <string name="chapter_format">Kapitelformat</string>
    <string name="play_a_music_file">Spela en musikfil</string>
-   <string name="rate_us">Gradera oss</string>
+   <string name="rate_app">Betygsätt app</string>
    <string name="reset">Återställa</string>
    <string name="status_bar_location">Statusbar plats</string>
    <string name="add_to_bookmark">Lägg till i bokmärken</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Logga in</string>
    <string name="sign_out">Logga ut</string>
    <string name="wifi_sync_only">Bara wifi-synkronisering</string>
-   <string name="sync_google_drive">Synkronisera (google-enhet)</string>
+   <string name="sync_google_drive">Synkronisera (Google-enhet)</string>
    <string name="single_tap_to_select_text">Tryck en gång för att välja text</string>
    <string name="sync_book">Synkronisera en bok</string>
    <string name="sync">Synkronisera</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Visa menyn</string>
    <string name="cd_download_more_fonts">Ladda ner fler typsnitt</string>
    <string name="restore_search_query_when_the_application_starts">Återställ sökfrågan vid start</string>
+   <string name="hide_read_books">Göm läsa böcker</string>
+   <string name="graphics_scale">Grafisk skala</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Skapa en mapp med namnet på boken</string>
+   <string name="memory">Minne</string>
+   <string name="accessibility">Tillgänglighet</string>
+   <string name="web_search_google">Webbsökning (Google, ...)</string>
+   <string name="synced_books">Synkroniserade böcker</string>
+   <string name="smart_reflow">Smart återflöde</string>
+   <string name="user_styles">Användar stilar</string>
+   <string name="engine">Motor</string>
+   <string name="restart_manually">Denna ändring kräver en manuell omstart av programmet</string>
 </resources>

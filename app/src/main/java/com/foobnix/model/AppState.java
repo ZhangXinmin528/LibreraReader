@@ -3,7 +3,6 @@ package com.foobnix.model;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.view.KeyEvent;
 
@@ -22,11 +21,11 @@ import com.foobnix.pdf.info.Urls;
 import com.foobnix.pdf.info.model.BookCSS;
 import com.foobnix.pdf.info.widget.DialogTranslateFromTo;
 import com.foobnix.pdf.info.wrapper.MagicHelper;
+import com.foobnix.pdf.info.wrapper.UITab;
 import com.foobnix.ui2.AppDB;
 
 import org.librera.LinkedJSONObject;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,8 +34,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import javax.xml.stream.events.Characters;
 
 public class AppState {
 
@@ -65,6 +62,7 @@ public class AppState {
     public static final int THEME_DARK = 1;
     public static final int THEME_DARK_OLED = 2;
     public static final int THEME_INK = 3;
+    public boolean isSystemThemeColor = false;
     public static final int FULL_SCREEN_NORMAL = 0;
     public static final int FULL_SCREEN_FULLSCREEN = 1;
     public static final int FULL_SCREEN_FULLSCREEN_CUTOUT = 2;
@@ -97,21 +95,14 @@ public class AppState {
 
     );
     public final static String OPDS_DEFAULT = "" + //
-            // "http://flibusta.is/opds,Flibusta,Книжное
-            // братство,http://flibusta.is/favicon.ico;" + //
 
-            // "http://opds.litres.ru,Litres,Библиотека электронных
-            // книг,assets://opds/litres.ico;" + //
-            //"https://books.fbreader.org/opds,FBReader,My personal catalogue,assets://opds/fbreader.png;" + //
-            // "https://www.gitbook.com/api/opds/catalog.atom,GitBook,Public books are
-            // always free.,assets://opds/gitbook.png;" + //
-            "http://www.feedbooks.com/publicdomain/catalog.atom,Feedbooks,Free ebooks,assets://opds/feedbooks.ico;" + //
-            "http://m.gutenberg.org/ebooks.opds/,Project Gutenberg,Free ebooks since 1971,assets://opds/gutenberg.png;" + //
-            // "http://manybooks.net/opds/index.php,Manybooks,Online Catalog for
-            // Manybooks.net,assets://opds/manybooks.png;" + //
-            "https://www.smashwords.com/atom,Smashwords,Online Catalog,assets://opds/smashwords.png;" + //
-            "http://samlib.ru,Журнал Самиздат (samlib.ru),Cовременная литература при библиотеке Мошкова,assets://opds/web.png;" + //
-            SamlibOPDS.ROOT_AWARDS + ",Usefull links: The Awards anspand Top Books - Награды и премии, Complete award winners listing,assets://opds/rating.png;" //
+            //"https://www.feedbooks.com/catalog.atom,Feedbooks,Free ebooks,assets://opds/feedbooks.ico;" + //
+            "https://m.gutenberg.org/ebooks.opds/,Project Gutenberg,Free ebooks since 1971,assets://opds/opds.png;" + //
+            "http://bookserver.archive.org/catalog/,Internet Archive,Internet Archive,assets://opds/opds.png;" + //
+//            "http://opds.oreilly.com/opds/,O'Reilly,O'Reilly,assets://opds/opds.png;" + //
+            //"http://www.epubbud.com/feeds/catalog.atom,ePubBud Children's books,ePubBud Children's books,assets://opds/opds.png;" + //
+
+            SamlibOPDS.ROOT_AWARDS + ",Top Books to Read, Complete award winners listing,assets://opds/rating.png;" //
             // end
             ;
     public final static String READ_COLORS_DEAFAUL =
@@ -267,8 +258,9 @@ public class AppState {
 
     }
 
-    public String myOPDSLinks = OPDS_DEFAULT;
+    public String allOPDSLinks = OPDS_DEFAULT;
     public boolean opdsLargeCovers = true;
+    public boolean createBookNameFolder = false;
     public String readColors = READ_COLORS_DEAFAUL;
     // public static String DEFAULTS_TABS_ORDER =
     // "0#1,1#1,2#1,3#1,4#1,5#1,6#0,7#1";BETA
@@ -327,6 +319,7 @@ public class AppState {
     // n,
     // 25 - 25%
     // persent
+    public int tabPositionInRecentDialog = 0;
     public boolean tapPositionTop = true;
     public boolean tabWithNames = true;
     public long fontExtractTime = 0;
@@ -341,6 +334,9 @@ public class AppState {
     public int sortBy = AppDB.SORT_BY.DATA.ordinal();
     public int sortByBrowse = BR_SORT_BY_PATH;
     public boolean sortByReverse = false;
+
+    public int sortByFavorite = BR_SORT_BY_DATE;
+    public boolean sortByFavoriteReverse = false;
     @IgnoreHashCode
     public boolean isBrighrnessEnable = false;
     @IgnoreHashCode
@@ -457,7 +453,7 @@ public class AppState {
     public String fromLang = "en";
     public String toLang = Urls.getLangCode();
     @IgnoreHashCode
-    public int orientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
+    public int orientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR;
     public int libraryMode = MODE_GRID;
     public int broseMode = MODE_LIST;
     public int recentMode = MODE_LIST;
@@ -489,6 +485,7 @@ public class AppState {
     public boolean isPreText = false;
     public boolean isLineBreaksText = false;
     public boolean isIgnoreAnnotatations = false;
+    @IgnoreHashCode
     public boolean isSaveAnnotatationsAutomatically = false;
     public boolean isShowWhatIsNewDialog = true;
     public boolean isShowCloseAppDialog = true;
@@ -572,6 +569,7 @@ public class AppState {
     public String nameHorizontalMode = "";
     public String nameMusicianMode = "";
     public boolean isDisplayAllFilesInFolder = false;
+    public boolean isHideReadBook = false;
     public String myAutoCompleteDb = "";
     public String bookTags = "";
     public String recentTag = "";
@@ -590,36 +588,12 @@ public class AppState {
     public boolean isDefaultHyphenLanguage = false;
     public String defaultHyphenLanguageCode = "en";
     public boolean isMenuIntegration = false;
+    public boolean isShowFavTags = true;
+    public boolean isShowFavPlaylist = true;
+    public boolean isShowFavFolders = true;
+    public boolean isShowFavBooks = true;
+    public boolean isShowSyncBooks = true;
 
-    public static Map<String, String> getDictionaries(String input) {
-        final Map<String, String> providers = new LinkedHashMap<>();
-        String ln = AppState.get().toLang;
-        String from = AppState.get().fromLang;
-        String text = Uri.encode(input);
-        providers.put("Google Translate", String.format("https://translate.google.com/#%s/%s/%s", from, ln, text));
-        providers.put("Lingvo", String.format("http://www.lingvo-online.ru/en/Translate/%s-%s/%s", from, ln, text));
-
-        providers.put("Dictionary.com", "http://dictionary.reference.com/browse/" + text);
-
-        providers.put("Oxford", "http://www.oxforddictionaries.com/definition/english/" + text);
-        providers.put("Longman", "http://www.ldoceonline.com/search/?q=" + text);
-        providers.put("Cambridge", "http://dictionary.cambridge.org/dictionary/american-english/" + text);
-        providers.put("Macmillan", "http://www.macmillandictionary.com/dictionary/british/" + text);
-        providers.put("Collins", "http://www.collinsdictionary.com/dictionary/english/" + text);
-        providers.put("Merriam-Webster", "http://www.merriam-webster.com/dictionary/" + text);
-        providers.put("1tudien", "http://www.1tudien.com/?w=" + text);
-        providers.put("Vdict", String.format("http://vdict.com/%s,1,0,0.html", text));
-        providers.put("Google Search", String.format("http://www.google.com/search?q=%s", text));
-        providers.put("Wikipedia", String.format("https://%s.m.wikipedia.org/wiki/%s", from, text));
-        providers.put("Wiktionary", String.format("https://%s.m.wiktionary.org/wiki/%s", from, text));
-        providers.put("Academic.ru", String.format("https://dic.academic.ru/searchall.php?SWord=%s", text));
-        providers.put("Treccani.it", String.format("http://www.treccani.it/vocabolario/ricerca/%s", text));
-        providers.put("Deepl.com", String.format("https://www.deepl.com/translator#%s/%s/%s", from, ln, text));
-        providers.put("Vocabulary.com", String.format("https://www.vocabulary.com/dictionary/%s", text));
-        providers.put("Ukrlit.org", String.format("http://ukrlit.org/slovnyk/%s", text));
-        providers.put("Slovnyk.ua", String.format("https://slovnyk.ua/index.php?swrd=%s", text));
-        return providers;
-    }
 
     public static synchronized AppState get() {
         return instance;
@@ -661,6 +635,7 @@ public class AppState {
         nameMusicianMode = a.getString(R.string.mode_musician);
         musicText = a.getString(R.string.musician);
 
+        appTheme = Dips.isDarkThemeOn() ? AppState.THEME_DARK : AppState.THEME_LIGHT;
         if (Dips.isEInk()) {
             appTheme = AppState.THEME_INK;
             isDayNotInvert = true;
@@ -674,7 +649,7 @@ public class AppState {
             brigtnessImage = -50;
             isZoomInOutWithLock = false;
         }
-        if(Apps.isAccessibilityEnable(a)){
+        if (Apps.isAccessibilityEnable(a)) {
             accessibilityDefaults();
 
         }
@@ -684,14 +659,17 @@ public class AppState {
             isShowWhatIsNewDialog = false;
         }
     }
-    public void accessibilityDefaults(){
-        AppState.get().isEnableAccessibility=true;
+
+    public void accessibilityDefaults() {
+        AppState.get().isEnableAccessibility = true;
         AppState.get().tabWithNames = false;
         AppState.get().tapPositionTop = true;
         BookCSS.get().appFontScale = 1.1f;
         AppState.get().isScrollAnimation = false;
         AppSP.get().isFirstTimeVertical = false;
         AppSP.get().isFirstTimeHorizontal = false;
+        AppState.get().tabsOrder7 = AppState.get().tabsOrder7.replace(UITab.PrefFragment.index + "#0", UITab.PrefFragment.index + "#1");
+
     }
 
     public boolean loadInit(final Context a) {

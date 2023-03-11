@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Покажете какво е ново след актуализации</string>
    <string name="what_is_new_in">Какво е новото в</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Изтеглете пълен списък с промени (pdf файл)</string>
-   <string name="search_for_text_in_documents">Търсене на текст</string>
+   <string name="search_for_text_in_multiple_documents">Търсене на текст в множество документи</string>
    <string name="search_in_the_subfolders">Включват подпапки</string>
    <string name="stop">Спри</string>
    <string name="document_converter_online_">Конвертирайте документ онлайн</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Персонализиран css код</string>
    <string name="styles">Стилове</string>
    <string name="document_styles">Документ</string>
-   <string name="user_styles">Дефинирани от потребителя</string>
    <string name="automatic_hyphenation">Дайте възможност за тирене</string>
    <string name="empty_line">Строфа почивка</string>
    <string name="margin_width">Полета на страницата</string>
@@ -329,7 +328,7 @@
    <string name="copy">Копие</string>
    <string name="search_in_google">Търсене в Google</string>
    <string name="search_in_document">Намерете в документ</string>
-   <string name="web_dict">Търсене в уеб речник</string>
+   <string name="web_dict_oxfort">Уеб речник (Оксфорд, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Шрифта</string>
    <string name="font_name">Шрифта</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Симетрично отрязване</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Извличане на имена на автори и заглавия на книги от метаданни (pdf)</string>
    <string name="meta_tags">Мета тагове</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera pro: инсталирайте за премахване на реклами</string>
+   <string name="librera_pro">Librera pro: това приложение, но без реклами</string>
    <string name="annotation">Анотация</string>
    <string name="book">Книга</string>
    <string name="information">Информация за файла</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Плъзгаща скала</string>
    <string name="chapter_format">Легенда</string>
    <string name="play_a_music_file">Възпроизвеждане на аудио файл</string>
-   <string name="rate_us">Оцени ни</string>
+   <string name="rate_app">Оценете приложението</string>
    <string name="reset">Нулиране</string>
    <string name="status_bar_location">Позиция</string>
    <string name="add_to_bookmark">Показалец</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Впиши се</string>
    <string name="sign_out">Отписване</string>
    <string name="wifi_sync_only">Синхронизиране само през wifi</string>
-   <string name="sync_google_drive">Синхронизиране (google drive)</string>
+   <string name="sync_google_drive">Синхронизиране (Google drive)</string>
    <string name="single_tap_to_select_text">Избор с едно докосване</string>
    <string name="sync_book">Синхронизация</string>
    <string name="sync">Синхронизация</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Меню за преглед</string>
    <string name="cd_download_more_fonts">Изтегляне на още шрифтове</string>
    <string name="restore_search_query_when_the_application_starts">Възстановяване на заявката за търсене при стартиране</string>
+   <string name="hide_read_books">Скрий прочетени книги</string>
+   <string name="graphics_scale">Графичен мащаб</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Създайте папка с името на книгата</string>
+   <string name="memory">Памет</string>
+   <string name="accessibility">Достъпност</string>
+   <string name="web_search_google">Търсене в мрежата (Google, ...)</string>
+   <string name="synced_books">Синхронизирани книги</string>
+   <string name="smart_reflow">Интелигентно преформатиране</string>
+   <string name="user_styles">Дефинирани от потребителя</string>
+   <string name="engine">Двигател</string>
+   <string name="restart_manually">Тази промяна изисква ръчно рестартиране на приложението</string>
 </resources>

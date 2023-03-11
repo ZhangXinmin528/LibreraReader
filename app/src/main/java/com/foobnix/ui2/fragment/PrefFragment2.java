@@ -95,7 +95,6 @@ import com.foobnix.ui2.MyContextWrapper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.jmedeisis.draglinearlayout.DragLinearLayout;
 
-import org.ebookdroid.LibreraApp;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -107,7 +106,7 @@ import java.util.Date;
 import java.util.List;
 
 public class PrefFragment2 extends UIFragment {
-    public static final Pair<Integer, Integer> PAIR = new Pair<>(R.string.preferences, R.drawable.glyphicons_281_settings);
+    public static final Pair<Integer, Integer> PAIR = new Pair<>(R.string.preferences, R.drawable.glyphicons_5_settings);
 
     private static final String WWW_SITE = "https://librera.mobi";
     private static final String WWW_BETA_SITE = "http://beta.librera.mobi";
@@ -264,7 +263,7 @@ public class PrefFragment2 extends UIFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
-        inflate = inflater.inflate(R.layout.preferences, container, false);
+        inflate = inflater.inflate(R.layout.fragment_preferences, container, false);
 
 
         singIn = inflate.findViewById(R.id.signIn);
@@ -314,6 +313,7 @@ public class PrefFragment2 extends UIFragment {
         section8 = inflate.findViewById(R.id.section8);
 
         inflate.findViewById(R.id.sectionSync).setVisibility(AppsConfig.IS_FDROID ? View.GONE : View.VISIBLE);
+        //inflate.findViewById(R.id.sectionSync).setVisibility(View.GONE);//TODO GDIVE need to fix
 
         section9 = inflate.findViewById(R.id.section9);
 
@@ -351,7 +351,7 @@ public class PrefFragment2 extends UIFragment {
             public void run() {
                 dragLinearLayout.removeAllViews();
                 for (UITab tab : UITab.getOrdered()) {
-                    if (AppsConfig.IS_FDROID && tab == UITab.CloudsFragment) {
+                    if (tab == UITab.CloudsFragment) {//SKIP for all
                         continue;
                     }
 
@@ -566,12 +566,12 @@ public class PrefFragment2 extends UIFragment {
             scrollView.setBackgroundColor(Color.BLACK);
         }
 
-        ((TextView) inflate.findViewById(R.id.section6)).setText(String.format("%s: %s", getString(R.string.product), Apps.getApplicationName(getActivity())));
+
         // ((TextView) findViewById(R.id.appName)).setText(AppsConfig.APP_NAME);
 
         try {
             PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-            String version = packageInfo.versionName + " (" + LibreraApp.MUPDF_VERSION + "-" + BuildConfig.FLAVOR + ")";
+            String version = packageInfo.versionName + " (" + AppsConfig.MUPDF_VERSION + "-" + BuildConfig.FLAVOR + ")";
             if (Dips.isEInk()) {
                 version += " INK";
             }
@@ -589,6 +589,7 @@ public class PrefFragment2 extends UIFragment {
             // ((TextView) inflate.findViewById(R.id.pVersion)).setText(String.format("%s:
             // %s (%s)", getString(R.string.version), version, AppsConfig.MUPDF_VERSION));
             ((TextView) inflate.findViewById(R.id.pVersion)).setText(String.format("%s: %s", getString(R.string.version), version));
+            ((TextView) inflate.findViewById(R.id.section6)).setText(String.format("%s: %s %s", getString(R.string.product), Apps.getApplicationName(getActivity()), version));
         } catch (final NameNotFoundException e) {
         }
 
@@ -765,10 +766,31 @@ public class PrefFragment2 extends UIFragment {
                                                   public void onClick(final View v) {
 
                                                       PopupMenu p = new PopupMenu(getContext(), themeColor);
+                                                      p.getMenu().add(R.string.system).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+
+                                                          @Override
+                                                          public boolean onMenuItemClick(MenuItem item) {
+                                                              AppState.get().isSystemThemeColor = true;
+                                                              AppState.get().appTheme = Dips.isDarkThemeOn() ? AppState.THEME_DARK : AppState.THEME_LIGHT;
+                                                              AppState.get().contrastImage = 0;
+                                                              AppState.get().brigtnessImage = 0;
+                                                              AppState.get().bolderTextOnImage = false;
+                                                              AppState.get().isEnableBC = false;
+
+
+                                                              IMG.clearDiscCache();
+                                                              IMG.clearMemoryCache();
+                                                              onTheme();
+
+                                                              return false;
+                                                          }
+                                                      });
+
                                                       p.getMenu().add(R.string.light).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
                                                           @Override
                                                           public boolean onMenuItemClick(MenuItem item) {
+                                                              AppState.get().isSystemThemeColor = false;
                                                               AppState.get().appTheme = AppState.THEME_LIGHT;
 
                                                               AppState.get().contrastImage = 0;
@@ -788,6 +810,7 @@ public class PrefFragment2 extends UIFragment {
 
                                                           @Override
                                                           public boolean onMenuItemClick(MenuItem item) {
+                                                              AppState.get().isSystemThemeColor = false;
                                                               AppState.get().appTheme = AppState.THEME_DARK;
 
                                                               AppState.get().contrastImage = 0;
@@ -807,6 +830,7 @@ public class PrefFragment2 extends UIFragment {
 
                                                           @Override
                                                           public boolean onMenuItemClick(MenuItem item) {
+                                                              AppState.get().isSystemThemeColor = false;
                                                               AppState.get().appTheme = AppState.THEME_DARK_OLED;
 
                                                               AppState.get().contrastImage = 0;
@@ -827,7 +851,7 @@ public class PrefFragment2 extends UIFragment {
 
                                                           @Override
                                                           public boolean onMenuItemClick(MenuItem item) {
-
+                                                              AppState.get().isSystemThemeColor = false;
                                                               IMG.clearDiscCache();
                                                               IMG.clearMemoryCache();
 
@@ -838,6 +862,45 @@ public class PrefFragment2 extends UIFragment {
                                                       p.show();
                                                   }
                                               });
+
+
+        TextView appEngine = inflate.findViewById(R.id.appEngine);
+        appEngine.setText(AppsConfig.getCurrentEngine(getActivity()));
+        TxtUtils.underlineTextView(appEngine);
+        appEngine.setOnClickListener(v -> {
+            if (BooksService.isRunning) {
+                Toast.makeText(getActivity(), R.string.please_wait_books_are_being_processed_, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            PopupMenu p = new PopupMenu(getContext(), appEngine);
+
+            p.getMenu().add(AppsConfig.ENGINE_MuPDF_1_11).setOnMenuItemClickListener(item -> {
+                AlertDialogs.showDialog(getActivity(), getString(R.string.restart_manually), getString(R.string.ok), new Runnable() {
+                    @Override
+                    public void run() {
+                        AppsConfig.setEngine(getActivity(), AppsConfig.ENGINE_MuPDF_1_11);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                    }
+                });
+
+                return false;
+            });
+            p.getMenu().add(AppsConfig.ENGINE_MuPDF_LATEST).setOnMenuItemClickListener(item -> {
+                AlertDialogs.showDialog(getActivity(), getString(R.string.restart_manually), getString(R.string.ok), new Runnable() {
+                    @Override
+                    public void run() {
+                        AppsConfig.setEngine(getActivity(), AppsConfig.ENGINE_MuPDF_LATEST);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                    }
+                });
+
+                return false;
+            });
+
+            p.show();
+        });
+
 
         final TextView hypenLang = inflate.findViewById(R.id.appLang);
         hypenLang.setText(DialogTranslateFromTo.getLanuageByCode(AppState.get().appLang));
@@ -876,8 +939,8 @@ public class PrefFragment2 extends UIFragment {
                                                          String name = all[0];
                                                          final String code = all[1];
 
-                                                         if(BuildConfig.DEBUG){
-                                                             name += " [" + code+"]";
+                                                         if (BuildConfig.DEBUG) {
+                                                             name += " [" + code + "]";
                                                          }
                                                          popupMenu.getMenu().add(name).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
@@ -1193,14 +1256,14 @@ public class PrefFragment2 extends UIFragment {
         isRestoreSearchQuery.setChecked(AppState.get().isRestoreSearchQuery);
         isRestoreSearchQuery.setOnCheckedChangeListener(new
 
-                                                          OnCheckedChangeListener() {
+                                                                OnCheckedChangeListener() {
 
-                                                              @Override
-                                                              public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                           final boolean isChecked) {
-                                                                  AppState.get().isRestoreSearchQuery = isChecked;
-                                                              }
-                                                          });
+                                                                    @Override
+                                                                    public void onCheckedChanged(final CompoundButton buttonView,
+                                                                                                 final boolean isChecked) {
+                                                                        AppState.get().isRestoreSearchQuery = isChecked;
+                                                                    }
+                                                                });
 
         CheckBox isShowCloseAppDialog = inflate.findViewById(R.id.isShowCloseAppDialog);
         isShowCloseAppDialog.setChecked(AppState.get().isShowCloseAppDialog);
@@ -1257,13 +1320,17 @@ public class PrefFragment2 extends UIFragment {
             final CheckBox isDisplayAnnotation = new CheckBox(v.getContext());
             isDisplayAnnotation.setText(R.string.show_book_description);
 
+            final CheckBox isHideReadBook = new CheckBox(v.getContext());
+            isHideReadBook.setText(R.string.hide_read_books);
+
             final AlertDialog d = AlertDialogs.showViewDialog(getActivity(), null,
                     isFirstSurname,
                     isSkipFolderWithNOMEDIA,
                     isShowOnlyOriginalFileNames,
                     isAuthorTitleFromMetaPDF,
                     isUseCalibreOpf,
-                    isDisplayAnnotation);
+                    isDisplayAnnotation,
+                    isHideReadBook);
 
             isFirstSurname.setChecked(AppState.get().isFirstSurname);
             isSkipFolderWithNOMEDIA.setChecked(AppState.get().isSkipFolderWithNOMEDIA);
@@ -1271,6 +1338,7 @@ public class PrefFragment2 extends UIFragment {
             isShowOnlyOriginalFileNames.setChecked(AppState.get().isShowOnlyOriginalFileNames);
             isUseCalibreOpf.setChecked(AppState.get().isUseCalibreOpf);
             isDisplayAnnotation.setChecked(AppState.get().isDisplayAnnotation);
+            isHideReadBook.setChecked(AppState.get().isHideReadBook);
 
 
             final OnCheckedChangeListener listener = (buttonView, isChecked) -> {
@@ -1299,6 +1367,14 @@ public class PrefFragment2 extends UIFragment {
             isShowOnlyOriginalFileNames.setOnCheckedChangeListener(listener);
             isUseCalibreOpf.setOnCheckedChangeListener(listener);
             isDisplayAnnotation.setOnCheckedChangeListener(listener);
+            isHideReadBook.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    AppState.get().isHideReadBook = isHideReadBook.isChecked();
+                    TempHolder.listHash++;
+                    notifyFragment();
+                }
+            });
 
         });
 
@@ -2070,7 +2146,7 @@ public class PrefFragment2 extends UIFragment {
                 getResources().
 
                         getColor(R.color.tint_gray));
-        img.setImageResource(R.drawable.glyphicons_433_plus);
+        img.setImageResource(R.drawable.glyphicons_371_plus);
         img.setBackgroundColor(AppState.get().userColor);
         colorsLine.addView(view, new
 
@@ -2213,7 +2289,7 @@ public class PrefFragment2 extends UIFragment {
         if (AppsConfig.checkIsProInstalled(
 
                 getActivity())) {
-            ((View) proText.getParent()).setVisibility(View.GONE);
+            //((View) proText.getParent()).setVisibility(View.GONE);
         }
 
         inflate.findViewById(R.id.cleanRecent).
@@ -2373,6 +2449,7 @@ public class PrefFragment2 extends UIFragment {
 
 
         TextView onProfile = inflate.findViewById(R.id.onProfile);
+        TextView restoreDefaultProfile = inflate.findViewById(R.id.restoreDefaultProfile);
 
         profileLetter = inflate.findViewById(R.id.profileLetter);
 
@@ -2390,6 +2467,7 @@ public class PrefFragment2 extends UIFragment {
         onProfile.setContentDescription(p + " " + getString(R.string.profile));
 
         TxtUtils.underlineTextView(onProfile);
+        TxtUtils.underlineTextView(restoreDefaultProfile);
         onProfile.setOnClickListener(v ->
 
         {
@@ -2450,6 +2528,20 @@ public class PrefFragment2 extends UIFragment {
 
                     IO.writeObjAsync(AppProfile.syncState, o);
 
+                    AppProfile.syncExclude.delete();
+
+                    File rootFiles = AppProfile.SYNC_FOLDER_DEVICE_PROFILE;
+
+                    for (File file : rootFiles.listFiles()) {
+                        String name = file.getName();
+                        if (name.endsWith(".css")) {
+                            file.delete();
+                            LOG.d("Delete-css", file);
+
+                        }
+                    }
+
+
                     //AppProfile.init(getActivity());
                     BooksService.startForeground(getActivity(), BooksService.ACTION_SEARCH_ALL);
                     onTheme();
@@ -2460,6 +2552,7 @@ public class PrefFragment2 extends UIFragment {
             return true;
         };
         onProfile.setOnLongClickListener(onDefaultProfile);
+        restoreDefaultProfile.setOnClickListener(v -> onDefaultProfile.onLongClick(v));
         profileLetter.setOnLongClickListener(onDefaultProfile);
 
         inflate.findViewById(R.id.onProfileEdit).
@@ -2669,7 +2762,10 @@ public class PrefFragment2 extends UIFragment {
         super.onActivityCreated(savedInstanceState);
         rotationText();
 
-        if (AppState.get().appTheme == AppState.THEME_INK) {
+
+        if (AppState.get().isSystemThemeColor) {
+            themeColor.setText(TxtUtils.underline(getString(R.string.system)));
+        } else if (AppState.get().appTheme == AppState.THEME_INK) {
             themeColor.setText(TxtUtils.underline("Ink"));
         } else if (AppState.get().appTheme == AppState.THEME_LIGHT) {
             themeColor.setText(TxtUtils.underline(getString(R.string.light)));

@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Atnaujinus programą rodyti langą "Kas naujo"</string>
    <string name="what_is_new_in">Kas naujo</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Visas su vaizdais susijusių pakeitimų sąrašas (žiniatinklis, PDF)</string>
-   <string name="search_for_text_in_documents">Kelių dokumentų paieška</string>
+   <string name="search_for_text_in_multiple_documents">Ieškoti teksto keliuose dokumentuose</string>
    <string name="search_in_the_subfolders">Ieškoti visuose kataloguose</string>
    <string name="stop">Stabdyti</string>
    <string name="document_converter_online_">Performuoti dokumentą (internete)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Tinkintas CSS</string>
    <string name="styles">Stiliai</string>
    <string name="document_styles">Dokumento</string>
-   <string name="user_styles">Vartotojo</string>
    <string name="automatic_hyphenation">Automatinė pertrauka</string>
    <string name="empty_line">Tuščia linija</string>
    <string name="margin_width">Paraštės plotis</string>
@@ -329,7 +328,7 @@
    <string name="copy">Kopijuoti</string>
    <string name="search_in_google">Ieškoti Google</string>
    <string name="search_in_document">Ieškoti dokumente</string>
-   <string name="web_dict">Internetinis žodynas</string>
+   <string name="web_dict_oxfort">Žiniatinklio žodynas (oksfordas, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Šriftas</string>
    <string name="font_name">Šrifto pavadinimas</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Sumažinti sienas simetriškai</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Rodoma autoriaus ir PDF knygos pavadinimo iš meta žymeles</string>
    <string name="meta_tags">Meta žymeles</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">\"Librera PRO\" - programa, skirta skaityti knygas be reklamos, ją įdiegus, šioje programoje ištrinama reklama</string>
+   <string name="librera_pro">Librera pro: ši programa, bet be skelbimų</string>
    <string name="annotation">Anotacija</string>
    <string name="book">Knyga</string>
    <string name="information">Informacija</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Slankiklio skalė</string>
    <string name="chapter_format">Skyriaus formatas</string>
    <string name="play_a_music_file">Groti muzikos failą</string>
-   <string name="rate_us">Įvertinkite mus</string>
+   <string name="rate_app">Įvertinkite programėlę</string>
    <string name="reset">Atstatyti</string>
    <string name="status_bar_location">Būsenos juostos vieta</string>
    <string name="add_to_bookmark">Pridėti prie žymių</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Peržiūros meniu</string>
    <string name="cd_download_more_fonts">Atsisiųskite daugiau šriftų</string>
    <string name="restore_search_query_when_the_application_starts">Atkurti paieškos užklausą paleidžiant</string>
+   <string name="hide_read_books">Slėpti perskaitytas knygas</string>
+   <string name="graphics_scale">Grafikos skalė</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Sukurti aplanką su knygos pavadinimu</string>
+   <string name="memory">Atmintis</string>
+   <string name="accessibility">Prieinamumas</string>
+   <string name="web_search_google">Žiniatinklio paieška (Google,...)</string>
+   <string name="synced_books">Sinchronizuotos knygos</string>
+   <string name="smart_reflow">Protingas pertvarkymas</string>
+   <string name="user_styles">Vartotojo</string>
+   <string name="engine">Variklis</string>
+   <string name="restart_manually">Dėl šio pakeitimo reikia rankiniu būdu iš naujo paleisti programą</string>
 </resources>

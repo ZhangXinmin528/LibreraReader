@@ -22,6 +22,7 @@ import com.foobnix.android.utils.LOG;
 import com.foobnix.model.AppState;
 import com.foobnix.pdf.info.wrapper.MagicHelper;
 
+import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -106,9 +107,13 @@ public class TintUtil {
     }
 
     public static void setBackgroundFillColor(View textView, int color) {
-        GradientDrawable drawable = (GradientDrawable) textView.getBackground().getCurrent();
-        drawable.setColor(color);
-        drawable.setCornerRadius(RADIUS);
+        try {
+            GradientDrawable drawable = (GradientDrawable) textView.getBackground().getCurrent();
+            drawable.setColor(color);
+            drawable.setCornerRadius(RADIUS);
+        }catch (Exception e){
+            LOG.e(e);
+        }
 
     }
 
@@ -122,6 +127,8 @@ public class TintUtil {
         GradientDrawable drawable = (GradientDrawable) textView.getBackground().getCurrent();
         drawable.setStroke(STROKE, color);
         drawable.setCornerRadius(RADIUS);
+
+
     }
 
 
@@ -320,10 +327,10 @@ public class TintUtil {
 
     public static void drawStar(final ImageView imageView, boolean isStar) {
         if (isStar) {
-            imageView.setImageResource(R.drawable.star_1);
+            imageView.setImageResource(R.drawable.glyphicons_49_star);
             TintUtil.setTintImageWithAlpha(imageView, TintUtil.color);
         } else {
-            imageView.setImageResource(R.drawable.star_2);
+            imageView.setImageResource(R.drawable.glyphicons_50_star_empty);
             TintUtil.setTintImageWithAlpha(imageView, TintUtil.color);
         }
     }

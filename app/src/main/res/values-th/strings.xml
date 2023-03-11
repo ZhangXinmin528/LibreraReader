@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">แสดงข้อมูลการอัพเดทล่าสุด</string>
    <string name="what_is_new_in">มีอะไรใหม่ๆใน</string>
    <string name="full_list_of_changes_with_images_web_pdf_">ดาวน์โหลดรายการที่มีการเปลี่ยนแปลงทั้งหมด(ไฟล์ PDF)</string>
-   <string name="search_for_text_in_documents">ค้นหาข้อความ</string>
+   <string name="search_for_text_in_multiple_documents">ค้นหาข้อความในเอกสารหลายฉบับ</string>
    <string name="search_in_the_subfolders">ค้นหาในโฟลเดอร์ย่อย</string>
    <string name="stop">หยุด</string>
    <string name="document_converter_online_">ตัวแปลงเอกสาร (ออนไลน์)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Custom CSS</string>
    <string name="styles">รูปแบบ</string>
    <string name="document_styles">รูปแบบเอกสาร</string>
-   <string name="user_styles">สไตล์ของผู้ใช้</string>
    <string name="automatic_hyphenation">เปิดใช้งานการแบ่งพยางค์ด้วยเครื่องหมายยัติภังค์</string>
    <string name="empty_line">บรรทัดว่าง</string>
    <string name="margin_width">ความกว้างขอบ</string>
@@ -329,7 +328,7 @@
    <string name="copy">คัดลอก</string>
    <string name="search_in_google">ค้นหาใน Google</string>
    <string name="search_in_document">ค้นหาในเอกสาร</string>
-   <string name="web_dict">เว็บพจนานุกรม</string>
+   <string name="web_dict_oxfort">พจนานุกรมเว็บ (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">ตัวอักษร</string>
    <string name="font_name">ชื่อแบบอักษร</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">ครอบตัดขอบสมมาตร</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">แสดงชื่อผู้แต่งและชื่อหนังสือ PDF จากเมตาแท็ก</string>
    <string name="meta_tags">แท็ก meta</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - โปรแกรมสำหรับอ่านหนังสือที่ไม่มีโฆษณา</string>
+   <string name="librera_pro">Librera pro: แอพนี้ แต่ไม่มีโฆษณา</string>
    <string name="annotation">คำอธิบายประกอบ</string>
    <string name="book">หนังสือ</string>
    <string name="information">ข้อมูล</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">สเกลเลื่อน</string>
    <string name="chapter_format">รูปแบบบท</string>
    <string name="play_a_music_file">เล่นไฟล์เพลง</string>
-   <string name="rate_us">ให้คะแนนเรา</string>
+   <string name="rate_app">ให้คะแนนแอพ</string>
    <string name="reset">รีเซ็ต</string>
    <string name="status_bar_location">ตำแหน่งแถบสถานะ</string>
    <string name="add_to_bookmark">เพิ่มในบุ๊กมาร์ก</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">ลงชื่อเข้าใช้</string>
    <string name="sign_out">ออกจากระบบ</string>
    <string name="wifi_sync_only">Wifi sync เท่านั้น</string>
-   <string name="sync_google_drive">ซิงค์ (google ไดรฟ์)</string>
+   <string name="sync_google_drive">ซิงค์ (Google ไดรฟ์)</string>
    <string name="single_tap_to_select_text">แตะครั้งเดียวเพื่อเลือกข้อความ</string>
    <string name="sync_book">ซิงค์หนังสือ</string>
    <string name="sync">ซิงค์</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">ดูเมนู</string>
    <string name="cd_download_more_fonts">ดาวน์โหลดแบบอักษรเพิ่มเติม</string>
    <string name="restore_search_query_when_the_application_starts">กู้คืนคำค้นหาเมื่อเริ่มต้น</string>
+   <string name="hide_read_books">ซ่อนอ่านหนังสือ</string>
+   <string name="graphics_scale">สเกลกราฟิก</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">สร้างโฟลเดอร์ชื่อหนังสือ</string>
+   <string name="memory">หน่วยความจำ</string>
+   <string name="accessibility">การเข้าถึง</string>
+   <string name="web_search_google">ค้นเว็บ (Google, ...)</string>
+   <string name="synced_books">หนังสือที่ซิงค์</string>
+   <string name="smart_reflow">สมาร์ทรีโฟลว์</string>
+   <string name="user_styles">สไตล์ของผู้ใช้</string>
+   <string name="engine">เครื่องยนต์</string>
+   <string name="restart_manually">การเปลี่ยนแปลงนี้ต้องรีสตาร์ทแอปพลิเคชันด้วยตนเอง</string>
 </resources>

@@ -15,7 +15,10 @@ echo "================== "
 if [ "$1" == "clean" ]; then
   git reset --hard
   git clean -f -d
+  rm -rf generated
   make clean
+  make generate
+  make release
 fi
 make generate
 echo "================== "
@@ -47,6 +50,7 @@ cp -rp jni/~mupdf-1.11/css-apply.c    $MUPDF_ROOT/source/html/css-apply.c
 cp -rp jni/~mupdf-1.11/html-layout.c  $MUPDF_ROOT/source/html/html-layout.c
 cp -rp jni/~mupdf-1.11/xml.c          $MUPDF_ROOT/source/fitz/xml.c
 cp -rp jni/~mupdf-1.11/stext-output.c $MUPDF_ROOT/source/fitz/stext-output.c
+cp -rp jni/~mupdf-1.11/buffer.c       $MUPDF_ROOT/source/fitz/buffer.c
 cp -rp jni/~mupdf-1.11/mucbz.c        $MUPDF_ROOT/source/cbz/mucbz.c
 
 cp -rp jni/~mupdf-1.11/load-webp.c    $MUPDF_ROOT/source/fitz/load-webp.c
@@ -55,6 +59,7 @@ cp -rp jni/~mupdf-1.11/image.c        $MUPDF_ROOT/source/fitz/image.c
 
 cp -rp jni/~mupdf-1.11/structured-text.h    $MUPDF_ROOT/include/mupdf/fitz/structured-text.h
 cp -rp jni/~mupdf-1.11/compressed-buffer.h  $MUPDF_ROOT/include/mupdf/fitz/compressed-buffer.h
+cp -rp jni/~mupdf-1.11/context.h  $MUPDF_ROOT/include/mupdf/fitz/context.h
 
 
 cd $MUPDF_JAVA
@@ -63,10 +68,11 @@ whereis ndk-build
 echo "================== "
 
 if [ "$1" == "clean_ndk" ]; then
-ndk-build clean
+/home/dev/Android/Sdk/ndk/21.4.7075529/ndk-build clean
+rm -rf $MUPDF_JAVA/obj
 fi
 
-ndk-build
+/home/dev/Android/Sdk/ndk/21.4.7075529/ndk-build NDK_APPLICATION_MK=jni/Application-16.mk
 echo "================== "
 echo "MUPDF:" $MUPDF_JAVA
 echo "LIBS:"  $LIBS

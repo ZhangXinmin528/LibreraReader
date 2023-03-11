@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_87_display"
+                android:src="@drawable/glyphicons_87_tv"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_281_settings"
+                android:src="@drawable/glyphicons_5_settings"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -392,9 +392,8 @@
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
                 android:background="@drawable/bg_clickable"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_21_arrow_down"
-                android:tint="@color/link_color" />
+                android:src="@drawable/glyphicons_211_arrow_down"
+                android:tint="@color/tint_gray" />
         </LinearLayout>
 
         <CheckBox

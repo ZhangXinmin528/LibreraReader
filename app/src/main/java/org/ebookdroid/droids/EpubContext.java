@@ -5,6 +5,8 @@ import com.foobnix.ext.CacheZipUtils;
 import com.foobnix.ext.EpubExtractor;
 import com.foobnix.model.AppSP;
 import com.foobnix.model.AppState;
+import com.foobnix.pdf.info.AppsConfig;
+import com.foobnix.pdf.info.BuildConfig;
 import com.foobnix.pdf.info.JsonHelper;
 import com.foobnix.pdf.info.model.BookCSS;
 import com.foobnix.sys.TempHolder;
@@ -24,7 +26,15 @@ public class EpubContext extends PdfContext {
     @Override
     public File getCacheFileName(String fileNameOriginal) {
         LOG.d(TAG, "getCacheFileName", fileNameOriginal, AppSP.get().hypenLang);
-        cacheFile = new File(CacheZipUtils.CACHE_BOOK_DIR, (fileNameOriginal + AppState.get().isReferenceMode + AppState.get().isShowFooterNotesInText + AppState.get().isAccurateFontSize + BookCSS.get().isAutoHypens + AppSP.get().hypenLang+AppState.get().isExperimental).hashCode() + ".epub");
+        cacheFile = new File(CacheZipUtils.CACHE_BOOK_DIR, (fileNameOriginal +
+                AppState.get().isReferenceMode +
+                AppState.get().isShowFooterNotesInText +
+                //AppState.get().isAccurateFontSize +
+                BookCSS.get().documentStyle+
+                BookCSS.get().isAutoHypens +
+                AppSP.get().hypenLang+
+                AppState.get().isExperimental)
+                .hashCode() + ".epub");
         return cacheFile;
     }
 
@@ -38,7 +48,7 @@ public class EpubContext extends PdfContext {
             LOG.d("footer-notes-extracted");
         }
 
-        if ((BookCSS.get().isAutoHypens || AppState.get().isReferenceMode || AppState.get().isShowFooterNotesInText) && !cacheFile.isFile()) {
+        if (/** BuildConfig.DEBUG || **/ (BookCSS.get().isAutoHypens || AppState.get().isReferenceMode || AppState.get().isShowFooterNotesInText) && !cacheFile.isFile()) {
             EpubExtractor.proccessHypens(fileName, cacheFile.getPath(), notes);
         }
         if (TempHolder.get().loadingCancelled) {
@@ -74,7 +84,7 @@ public class EpubContext extends PdfContext {
     public Map<String, String> getNotes(String fileName) {
         Map<String, String> notes = null;
         final File jsonFile = new File(cacheFile + ".json");
-        if (jsonFile.isFile()) {
+        if (/** !BuildConfig.DEBUG && **/ jsonFile.isFile()) {
             LOG.d("getNotes cache", fileName);
             notes = JsonHelper.fileToMap(jsonFile);
         } else {

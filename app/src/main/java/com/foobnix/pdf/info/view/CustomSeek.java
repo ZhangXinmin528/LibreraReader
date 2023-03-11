@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.foobnix.android.utils.IntegerResponse;
 import com.foobnix.android.utils.LOG;
@@ -43,6 +44,12 @@ public class CustomSeek extends FrameLayout {
             titleText.setTextColor(Color.parseColor(textColor));
             textCurerntValue.setTextColor(Color.parseColor(textColor));
         }
+        titleText.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), titleText.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         seek = (SeekBar) inflate.findViewById(R.id.seek);
 
@@ -56,8 +63,10 @@ public class CustomSeek extends FrameLayout {
                 int i = seek.getProgress() + step;
                 if (i < distance) {
                     seek.setProgress(i);
+                }else {
+                    seek.setMax(i);
+                    seek.setProgress(i);
                 }
-                seek.setProgress(i);
             }
         });
         minus.setOnClickListener(new OnClickListener() {
@@ -85,27 +94,27 @@ public class CustomSeek extends FrameLayout {
                 public boolean onTouch(View v, MotionEvent event) {
                     int action = event.getAction();
                     switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        x = event.getX();
-                        y = event.getY();
-                        // Disallow Drawer to intercept touch events.
-                        v.getParent().requestDisallowInterceptTouchEvent(true);
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-                        float dx = Math.abs(x - event.getX());
-                        float dy = Math.abs(y - event.getY());
-                        if (dx > dy) {
+                        case MotionEvent.ACTION_DOWN:
+                            x = event.getX();
+                            y = event.getY();
+                            // Disallow Drawer to intercept touch events.
                             v.getParent().requestDisallowInterceptTouchEvent(true);
-                        } else {
-                            v.getParent().requestDisallowInterceptTouchEvent(false);
-                        }
-                        break;
+                            break;
 
-                    case MotionEvent.ACTION_UP:
-                        // Allow Drawer to intercept touch events.
-                        v.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
+                        case MotionEvent.ACTION_MOVE:
+                            float dx = Math.abs(x - event.getX());
+                            float dy = Math.abs(y - event.getY());
+                            if (dx > dy) {
+                                v.getParent().requestDisallowInterceptTouchEvent(true);
+                            } else {
+                                v.getParent().requestDisallowInterceptTouchEvent(false);
+                            }
+                            break;
+
+                        case MotionEvent.ACTION_UP:
+                            // Allow Drawer to intercept touch events.
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
                     }
 
                     // Handle seekbar touch events.
@@ -189,9 +198,13 @@ public class CustomSeek extends FrameLayout {
         this.current = current;
         valueResponse = current;
         distance = max - min;
-        textCurerntValue.setText("" + current + sufix);
-        seek.setMax(distance);
+        seek.setMax(Math.max(distance,current));
         seek.setProgress(current - min);
+        if (isFloatResult) {
+            textCurerntValue.setText("" + (float) valueResponse / 10 + sufix);
+        } else {
+            textCurerntValue.setText("" + valueResponse + sufix);
+        }
 
         seek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -208,7 +221,14 @@ public class CustomSeek extends FrameLayout {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 valueResponse = min + progress;
-                textCurerntValue.setText("" + valueResponse + sufix);
+
+                if (isFloatResult) {
+                    textCurerntValue.setText("" + (float) valueResponse / 10 + sufix);
+                } else {
+                    textCurerntValue.setText("" + valueResponse + sufix);
+                }
+
+
                 if (integerResponse != null) {
                     integerResponse.onResultRecive(valueResponse);
                 }
@@ -250,4 +270,9 @@ public class CustomSeek extends FrameLayout {
         });
     }
 
+    boolean isFloatResult = false;
+
+    public void setFloatResult(boolean b) {
+        isFloatResult = b;
+    }
 }

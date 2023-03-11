@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Afficher la boîte de dialogue Qu\'est-ce qui est nouveau pour les mises à jour</string>
    <string name="what_is_new_in">Quoi de neuf dans</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Liste complète des changements avec des images (web, PDF)</string>
-   <string name="search_for_text_in_documents">Recherche de documents multiples</string>
+   <string name="search_for_text_in_multiple_documents">Rechercher du texte dans plusieurs documents</string>
    <string name="search_in_the_subfolders">Rechercher dans les sous-dossiers</string>
    <string name="stop">Arrêter</string>
    <string name="document_converter_online_">Convertisseur de documents (en ligne)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">CSS personnalisé</string>
    <string name="styles">Modes</string>
    <string name="document_styles">Styles de document</string>
-   <string name="user_styles">Styles utilisateur</string>
    <string name="automatic_hyphenation">Césure automatique</string>
    <string name="empty_line">Ligne vide</string>
    <string name="margin_width">Largeur de marge</string>
@@ -329,7 +328,7 @@
    <string name="copy">Copier</string>
    <string name="search_in_google">Recherche dans Google</string>
    <string name="search_in_document">Rechercher dans le document</string>
-   <string name="web_dict">Dictionnaire Web</string>
+   <string name="web_dict_oxfort">Dictionnaire web (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Font</string>
    <string name="font_name">Nom de la police</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Rogner les bordures symétriquement</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Affichage de l\'auteur et du titre du livre PDF à partir des meta balises</string>
    <string name="meta_tags">Meta balises</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - programme pour lire des livres sans publicité, l\'installer supprime la publicité dans cette application</string>
+   <string name="librera_pro">Librera pro : cette appli mais sans publicité</string>
    <string name="annotation">Annotation</string>
    <string name="book">Livre</string>
    <string name="information">Information</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Échelle de curseur</string>
    <string name="chapter_format">Format de chapitre</string>
    <string name="play_a_music_file">Lire un fichier de musique</string>
-   <string name="rate_us">Évaluez nous</string>
+   <string name="rate_app">Application de taux</string>
    <string name="reset">Réinitialiser</string>
    <string name="status_bar_location">Emplacement de la barre d\'état</string>
    <string name="add_to_bookmark">Ajouter aux signets</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Connexion</string>
    <string name="sign_out">Déconnexion</string>
    <string name="wifi_sync_only">Sync par Wifi seulement</string>
-   <string name="sync_google_drive">Sync (google drive)</string>
+   <string name="sync_google_drive">Sync (Google drive)</string>
    <string name="single_tap_to_select_text">Appuyer une seule fois pour sélectionner du texte</string>
    <string name="sync_book">Synchroniser un livre</string>
    <string name="sync">Synchroniser</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Afficher le menu</string>
    <string name="cd_download_more_fonts">Télécharger plus de polices</string>
    <string name="restore_search_query_when_the_application_starts">Restaurer la requête de recherche au démarrage</string>
+   <string name="hide_read_books">Masquer les livres lus</string>
+   <string name="graphics_scale">Échelle graphique</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Créer un dossier avec le nom du livre</string>
+   <string name="memory">Mémoire</string>
+   <string name="accessibility">Accessibilité</string>
+   <string name="web_search_google">Recherche internet (Google, ...)</string>
+   <string name="synced_books">Livres synchronisés</string>
+   <string name="smart_reflow">Refusion intelligente</string>
+   <string name="user_styles">Styles utilisateur</string>
+   <string name="engine">Moteur</string>
+   <string name="restart_manually">Ce changement nécessite un redémarrage manuel de l\'application</string>
 </resources>

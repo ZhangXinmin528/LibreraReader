@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">顯示更新記錄</string>
    <string name="what_is_new_in">關于</string>
    <string name="full_list_of_changes_with_images_web_pdf_">下載官網PDF格式更新記錄...</string>
-   <string name="search_for_text_in_documents">多文檔中搜索文本</string>
+   <string name="search_for_text_in_multiple_documents">在多個文檔中搜索文本</string>
    <string name="search_in_the_subfolders">子文件夾</string>
    <string name="stop">停止</string>
    <string name="document_converter_online_">文檔格式線上轉換</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">自定義CSS</string>
    <string name="styles">樣式</string>
    <string name="document_styles">文檔樣式</string>
-   <string name="user_styles">用戶樣式</string>
    <string name="automatic_hyphenation">自動斷字</string>
    <string name="empty_line">標題間距</string>
    <string name="margin_width">頁邊空白</string>
@@ -329,7 +328,7 @@
    <string name="copy">複製</string>
    <string name="search_in_google">穀歌搜索</string>
    <string name="search_in_document">文內搜索</string>
-   <string name="web_dict">線上詞典</string>
+   <string name="web_dict_oxfort">網絡詞典（牛津，...）</string>
    <string name="___TO___CHECK___SECTION___">檢查</string>
    <string name="font">字體</string>
    <string name="font_name">字體名稱</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">裁剪邊界對稱</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">從PDF元標籤顯示作者和書名</string>
    <string name="meta_tags">元標籤</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO  - 無廣告的書籍閱讀程式，安裝它可以在此應用程式中刪除廣告</string>
+   <string name="librera_pro">Librera pro：這個應用程序但沒有廣告</string>
    <string name="annotation">簡介</string>
    <string name="book">書名</string>
    <string name="information">資訊</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">滑塊刻度</string>
    <string name="chapter_format">章節格式</string>
    <string name="play_a_music_file">播放音頻文件</string>
-   <string name="rate_us">評價</string>
+   <string name="rate_app">評價應用</string>
    <string name="reset">重置</string>
    <string name="status_bar_location">狀態位置</string>
    <string name="add_to_bookmark">加入書簽</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">查看菜單</string>
    <string name="cd_download_more_fonts">下載更多字體</string>
    <string name="restore_search_query_when_the_application_starts">在啟動時恢復搜索查詢</string>
+   <string name="hide_read_books">隱藏讀過的書</string>
+   <string name="graphics_scale">圖形比例</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">用書名創建一個文件夾</string>
+   <string name="memory">記憶</string>
+   <string name="accessibility">可訪問性</string>
+   <string name="web_search_google">網絡搜索（谷歌，...）</string>
+   <string name="synced_books">同步書籍</string>
+   <string name="smart_reflow">智能回流</string>
+   <string name="user_styles">用戶樣式</string>
+   <string name="engine">引擎</string>
+   <string name="restart_manually">此更改需要手動重新啟動應用程序</string>
 </resources>

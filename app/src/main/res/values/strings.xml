@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Show What\'s New after updates</string>
    <string name="what_is_new_in">What is new in</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Download a full list of changes (PDF file).</string>
-   <string name="search_for_text_in_documents">Search for Text</string>
+   <string name="search_for_text_in_multiple_documents">Search for text in multiple documents</string>
    <string name="search_in_the_subfolders">Include subfolders</string>
    <string name="stop">Stop</string>
    <string name="document_converter_online_">Convert Document Online</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Custom CSS Code</string>
    <string name="styles">Styles</string>
    <string name="document_styles">Document</string>
-   <string name="user_styles">User-defined</string>
    <string name="automatic_hyphenation">Enable hyphenation</string>
    <string name="empty_line">Stanza break</string>
    <string name="margin_width">Page margins</string>
@@ -329,7 +328,7 @@
    <string name="copy">Copy</string>
    <string name="search_in_google">Google Search</string>
    <string name="search_in_document">Find in Document</string>
-   <string name="web_dict">Web Dictionary Lookup</string>
+   <string name="web_dict_oxfort">Web Dictionary (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Font</string>
    <string name="font_name">Font</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Mirrored crop</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Extract authors\' names and book titles from meta-data (PDF)</string>
    <string name="meta_tags">Meta tags</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO: Install to remove ads</string>
+   <string name="librera_pro">Librera PRO: This app but without ads</string>
    <string name="annotation">Annotation</string>
    <string name="book">Book</string>
    <string name="information">File Info</string>
@@ -492,13 +491,13 @@
    <string name="slider_scale">Slider scale</string>
    <string name="chapter_format">Legend</string>
    <string name="play_a_music_file">Play an audio file</string>
-   <string name="rate_us">Rate us</string>
+   <string name="rate_app">Rate app</string>
    <string name="reset">Reset</string>
    <string name="status_bar_location">Position</string>
    <string name="add_to_bookmark">Bookmark</string>
    <string name="fast_reading">Speed read (RSVP)</string>
    <string name="minimum_line_length">Minimum line length (CPL)</string>
-   <string name="ask_rate_us1">If you like this application, please rate and review us on Google Play. Thank you!</string>
+   <string name="ask_rate_us1">If you like this application, please rate and review us. Thank you!</string>
    <string name="message">Message</string>
    <string name="exit_application">Exit</string>
    <string name="exit_application_question">Exit application?</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">View menu</string>
    <string name="cd_download_more_fonts">Download more fonts</string>
    <string name="restore_search_query_when_the_application_starts">Restore search query at startup</string>
+   <string name="hide_read_books">Hide read books</string>
+   <string name="graphics_scale">Graphics scale</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Create a folder with the name of the book</string>
+   <string name="memory">Memory</string>
+   <string name="accessibility">Accessibility</string>
+   <string name="web_search_google">Web Search (Google, ...)</string>
+   <string name="synced_books">Synced books</string>
+   <string name="smart_reflow">Smart reflow</string>
+   <string name="user_styles">User styles</string>
+   <string name="engine">Engine</string>
+   <string name="restart_manually">This change requires a manual restart of the application</string>
 </resources>

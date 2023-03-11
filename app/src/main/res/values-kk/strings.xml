@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Жаңартулардан кейінгі жаңалықтарды көрсету</string>
    <string name="what_is_new_in">Жаңа нәрсе</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Өзгерістердің толық тізімін жүктеп алыңыз (PDF файлы)</string>
-   <string name="search_for_text_in_documents">Мәтінді іздеу</string>
+   <string name="search_for_text_in_multiple_documents">Бірнеше құжаттардағы мәтінді іздеу</string>
    <string name="search_in_the_subfolders">Ішкі қалталарды қосыңыз</string>
    <string name="stop">Тоқта</string>
    <string name="document_converter_online_">Құжатты онлайн түрлендіру</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Таңдамалы CSS коды</string>
    <string name="styles">Стильдер</string>
    <string name="document_styles">Құжат</string>
-   <string name="user_styles">Пайдаланушы анықтаған</string>
    <string name="automatic_hyphenation">Тасымалдауды қосу</string>
    <string name="empty_line">Бос жол</string>
    <string name="margin_width">Бет жағы</string>
@@ -329,7 +328,7 @@
    <string name="copy">Көшіру</string>
    <string name="search_in_google">Google іздеу</string>
    <string name="search_in_document">Құжатта табу</string>
-   <string name="web_dict">Веб-сөзді іздеу</string>
+   <string name="web_dict_oxfort">Веб-сөздік (оксфорд, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Қаріп</string>
    <string name="font_name">Қаріп</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Айналдырылған дақыл</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Авторлардың атауын және метадеректерден кітаптың атауын шығарып алу (PDF)</string>
    <string name="meta_tags">Мета тегтері</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO: жарнамаларды алып тастау үшін орнатыңыз</string>
+   <string name="librera_pro">Librera pro: бұл қолданба, бірақ жарнамасыз</string>
    <string name="annotation">Аннотация</string>
    <string name="book">Кітап</string>
    <string name="information">Файл туралы ақпарат</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Слайдер шкаласы</string>
    <string name="chapter_format">Мәтіннің пішімі</string>
    <string name="play_a_music_file">Аудио файлды ойнату</string>
-   <string name="rate_us">Бізге баға беріңіз</string>
+   <string name="rate_app">Баға қолданбасы</string>
    <string name="reset">Қалпына келтіру</string>
    <string name="status_bar_location">Позиция</string>
    <string name="add_to_bookmark">Бетбелгі</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Кіру</string>
    <string name="sign_out">Шығу</string>
    <string name="wifi_sync_only">Тек Wi-Fi синхрондалуы</string>
-   <string name="sync_google_drive">Синхрондау (google drive)</string>
+   <string name="sync_google_drive">Синхрондау (Google drive)</string>
    <string name="single_tap_to_select_text">Мәтінді таңдау үшін бір рет түртіңіз</string>
    <string name="sync_book">Кітапты синхрондау</string>
    <string name="sync">Синхрондау</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Мәзірді қарау</string>
    <string name="cd_download_more_fonts">Қосымша қаріптерді жүктеп алыңыз</string>
    <string name="restore_search_query_when_the_application_starts">Іске қосу кезінде іздеу сұрауын қалпына келтіріңіз</string>
+   <string name="hide_read_books">Оқыған кітаптарды жасыру</string>
+   <string name="graphics_scale">Графикалық масштаб</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Кітап атауы бар қалта жасаңыз</string>
+   <string name="memory">Жады</string>
+   <string name="accessibility">Қолжетімділік</string>
+   <string name="web_search_google">Веб-іздеу (Google, ...)</string>
+   <string name="synced_books">Синхрондалған кітаптар</string>
+   <string name="smart_reflow">Ақылды қайта өңдеу</string>
+   <string name="user_styles">Пайдаланушы анықтаған</string>
+   <string name="engine">Қозғалтқыш</string>
+   <string name="restart_manually">Бұл өзгеріс қолданбаны қолмен қайта іске қосуды талап етеді</string>
 </resources>

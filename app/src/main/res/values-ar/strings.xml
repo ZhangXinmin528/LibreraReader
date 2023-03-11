@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">عرض الحوار ما هو جديد للحصول على التحديثات</string>
    <string name="what_is_new_in">ما هو الجديد في</string>
    <string name="full_list_of_changes_with_images_web_pdf_">قائمة كاملة بالتغييرات مع الصور (الويب، بدف)</string>
-   <string name="search_for_text_in_documents">بحث متعدد المستندات</string>
+   <string name="search_for_text_in_multiple_documents">البحث عن نص في مستندات متعددة</string>
    <string name="search_in_the_subfolders">البحث في المجلدات الفرعية</string>
    <string name="stop">توقف</string>
    <string name="document_converter_online_">تحويل المستندات (عبر الإنترنت)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">لغة تنسيق ويب حسب الطلب</string>
    <string name="styles">الأنماط</string>
    <string name="document_styles">أنماط المستند</string>
-   <string name="user_styles">أساليب العضو</string>
    <string name="automatic_hyphenation">الواصلة التلقائي</string>
    <string name="empty_line">خط فارغ</string>
    <string name="margin_width">عرض الهوامش</string>
@@ -329,7 +328,7 @@
    <string name="copy">نسخ</string>
    <string name="search_in_google">البحث في جوجل</string>
    <string name="search_in_document">البحث في المستند</string>
-   <string name="web_dict">قاموس على شبكة الإنترنت</string>
+   <string name="web_dict_oxfort">قاموس الويب (أكسفورد ، ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">الخط</string>
    <string name="font_name">اسم الخط</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">حدود المحاصيل متناظرة</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">عرض المؤلف وعنوان كتاب PDF من العلامات الوصفية</string>
    <string name="meta_tags">العلامات الفوقية</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - برنامج لقراءة الكتب دون الإعلان ، تثبيته يزيل الإعلانات في هذا التطبيق</string>
+   <string name="librera_pro">Librera pro: هذا التطبيق ولكن بدون إعلانات</string>
    <string name="annotation">حاشية</string>
    <string name="book">كتاب</string>
    <string name="information">معلومات</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">مقياس المنزلق</string>
    <string name="chapter_format">تنسيق الفصل</string>
    <string name="play_a_music_file">تشغيل ملف موسيقى</string>
-   <string name="rate_us">قيمنا</string>
+   <string name="rate_app">قيم التطبيق</string>
    <string name="reset">إعادة تعيين</string>
    <string name="status_bar_location">موقع شريط الحالة</string>
    <string name="add_to_bookmark">إضافة إلى المواقع المفضلة</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">قائمة العرض</string>
    <string name="cd_download_more_fonts">تنزيل المزيد من الخطوط</string>
    <string name="restore_search_query_when_the_application_starts">استعادة استعلام البحث عند بدء التشغيل</string>
+   <string name="hide_read_books">إخفاء قراءة الكتب</string>
+   <string name="graphics_scale">مقياس الرسومات</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">إنشاء مجلد باسم الكتاب</string>
+   <string name="memory">ذاكرة</string>
+   <string name="accessibility">إمكانية الوصول</string>
+   <string name="web_search_google">بحث الويب (Google ، ...)</string>
+   <string name="synced_books">الكتب المتزامنة</string>
+   <string name="smart_reflow">إعادة التدفق الذكي</string>
+   <string name="user_styles">أساليب العضو</string>
+   <string name="engine">محرك</string>
+   <string name="restart_manually">يتطلب هذا التغيير إعادة التشغيل اليدوي للتطبيق</string>
 </resources>

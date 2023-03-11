@@ -96,6 +96,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -158,7 +159,6 @@ public class ExtUtils {
 
         mimeCache.put(".chm", "application/x-chm");
         mimeCache.put(".xps", "application/vnd.ms-xpsdocument");
-        mimeCache.put(".chm", "application/x-chm");
         mimeCache.put(".lit", "application/x-ms-reader");
 
         mimeCache.put(".doc", "application/msword");
@@ -224,6 +224,7 @@ public class ExtUtils {
 
         if (AppState.get().supportEPUB) {
             result.add(".epub");
+            result.add(".ePub");
         }
 
         if (AppState.get().supportDJVU) {
@@ -1947,6 +1948,29 @@ public class ExtUtils {
 //        return encoding == null ? "UTF-8" : encoding;
 //
 //    }
+
+    public static void removeReadBooks(List<FileMeta> all) {
+        if (AppState.get().isHideReadBook) {
+            Iterator<FileMeta> iterator = all.iterator();
+            while (iterator.hasNext()) {
+                FileMeta next = iterator.next();
+                LOG.d("isHideReadBook-progress", next.getIsRecentProgress(), next.getPath());
+                if (next.getIsRecentProgress() != null && next.getIsRecentProgress() == 1.0) {
+                    iterator.remove();
+                }
+            }
+        }
+    }
+
+    public static void removeNotFound(List<FileMeta> all) {
+        Iterator<FileMeta> iterator = all.iterator();
+        while (iterator.hasNext()) {
+            FileMeta next = iterator.next();
+            if (!new File(next.getPath()).exists()) {
+                iterator.remove();
+            }
+        }
+    }
 
 
     public static boolean deleteRecursive(File fileOrDirectory) {

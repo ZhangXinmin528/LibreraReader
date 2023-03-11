@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Ammustra ite b\'at de nou a pustis de sas atualizatziones</string>
    <string name="what_is_new_in">Ite b\'at de nou in</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Iscàrriga una lista intrea de sas modìficas (documentu PDF)</string>
-   <string name="search_for_text_in_documents">Chirca testu</string>
+   <string name="search_for_text_in_multiple_documents">Search for text in multiple documents</string>
    <string name="search_in_the_subfolders">Include sas suta-cartellas</string>
    <string name="stop">Firma</string>
    <string name="document_converter_online_">Cunverte unu documentu in lìnia</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Còdighe CSS personalizadu</string>
    <string name="styles">Istiles</string>
    <string name="document_styles">Documentu</string>
-   <string name="user_styles">Definidu dae s\'utente</string>
    <string name="automatic_hyphenation">Abìlita sa sillabatzione</string>
    <string name="empty_line">Lìnia bòida</string>
    <string name="margin_width">Oros de sa pàgina</string>
@@ -172,7 +171,7 @@
    <string name="no_genre">Perunu gènere</string>
    <string name="no_language">Peruna limba</string>
    <string name="without_series">Chene sèrie</string>
-   <string name="folders">Cartella</string>
+   <string name="folders">Cartellas</string>
    <string name="recent">Reghentes</string>
    <string name="clear_all">Isbòida totu</string>
    <string name="search_history_and_autocomplete">Chirca in sa cronologia e in sa cumpridura automàtica</string>
@@ -329,7 +328,7 @@
    <string name="copy">Còpia</string>
    <string name="search_in_google">Chirca in Google</string>
    <string name="search_in_document">Busca in su documentu</string>
-   <string name="web_dict">Chirca in su ditzionàriu web</string>
+   <string name="web_dict_oxfort">Web dictionary (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Caràtere</string>
    <string name="font_name">Caràtere</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Mutzinadura de oros simmètrica</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Estrai sos nùmenes de sos autores e sos tìtulos de sos libros dae sos metadatos (PDF)</string>
    <string name="meta_tags">Etichetas meta</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO: installa pro bogare sa publitzitade</string>
+   <string name="librera_pro">Librera pro: this app but without ads</string>
    <string name="annotation">Annotatzione</string>
    <string name="book">Libru</string>
    <string name="information">Informatziones de su documentu</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Iscala de su dispositivu de iscurrimentu</string>
    <string name="chapter_format">Legenda</string>
    <string name="play_a_music_file">Riprodui unu documentu àudio</string>
-   <string name="rate_us">Vota·nos</string>
+   <string name="rate_app">Rate app</string>
    <string name="reset">Reseta</string>
    <string name="status_bar_location">Positzione</string>
    <string name="add_to_bookmark">Annanghe a sos sinnalibros</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">View menu</string>
    <string name="cd_download_more_fonts">Download more fonts</string>
    <string name="restore_search_query_when_the_application_starts">Restore search query at startup</string>
+   <string name="hide_read_books">Hide read books</string>
+   <string name="graphics_scale">Graphics scale</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Create a folder with the name of the book</string>
+   <string name="memory">Memory</string>
+   <string name="accessibility">Accessibility</string>
+   <string name="web_search_google">Web search (Google, ...)</string>
+   <string name="synced_books">Synced books</string>
+   <string name="smart_reflow">Smart reflow</string>
+   <string name="user_styles">Definidu dae s\'utente</string>
+   <string name="engine">Engine</string>
+   <string name="restart_manually">This change requires a manual restart of the application</string>
 </resources>

@@ -40,7 +40,7 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray_dash2"
-            android:src="@drawable/glyphicons_73_bookmark1"
+            android:src="@drawable/glyphicons_73_bookmark"
             android:tint="@color/lt_grey_dima" />
     </LinearLayout>
 
@@ -121,7 +121,7 @@
         android:background="@drawable/bg_search_second_clickable"
         android:contentDescription="@string/text_to_speech"
         android:padding="7dip"
-        android:src="@drawable/glyphicons_185_volume_up"
+        android:src="@drawable/glyphicons_186_volume_up"
         android:tint="@color/white"
         android:visibility="gone" />
 
@@ -227,7 +227,7 @@
         android:layout_width="@dimen/wh_button"
         android:layout_height="@dimen/wh_button"
         android:layout_marginTop="100dip"
-        android:src="@drawable/glyphicons_basic_299_circle_selected"
+        android:src="@drawable/glyphicons_299_circle_selected"
         android:tint="@color/tint_blue" />
 
     <ImageView
@@ -235,7 +235,7 @@
         android:layout_width="@dimen/wh_button"
         android:layout_height="@dimen/wh_button"
         android:layout_marginTop="150dip"
-        android:src="@drawable/glyphicons_basic_298_circle_empty"
+        android:src="@drawable/glyphicons_298_circle_empty"
         android:tint="@color/tint_blue" />
 
     <FrameLayout

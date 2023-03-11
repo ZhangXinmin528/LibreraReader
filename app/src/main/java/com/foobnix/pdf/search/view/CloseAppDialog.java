@@ -66,12 +66,16 @@ public class CloseAppDialog {
         final TextView onRateUs = (TextView) inflate.findViewById(R.id.onRateUs);
         final View topLayout = inflate.findViewById(R.id.topLayout);
         final ImageView onClose = (ImageView) inflate.findViewById(R.id.onClose);
+        final TextView dialogTitle = (TextView) inflate.findViewById(R.id.dialogTitle);
 
         long delta = System.currentTimeMillis() - AppState.get().installationDate;
 
         topLayout.setBackgroundColor(TintUtil.color);
 
-        topLayout.setVisibility(TxtUtils.visibleIf(AppState.get().isShowRateUsOnExit && TimeUnit.MILLISECONDS.toDays(delta) > 2));
+        onRateUs.setText(onRateUs.getText());
+        onAsk.setText(onAsk.getText()+" ★★★★★");
+
+        topLayout.setVisibility(TxtUtils.visibleIf(AppState.get().isShowRateUsOnExit && TimeUnit.MILLISECONDS.toDays(delta) > 1));
         // topLayout.setVisibility(View.VISIBLE);
         onAsk.setOnClickListener(new View.OnClickListener() {
 

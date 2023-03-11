@@ -40,7 +40,7 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray_dash2"
-            android:src="@drawable/glyphicons_73_bookmark1"
+            android:src="@drawable/glyphicons_73_bookmark"
             android:tint="@color/lt_grey_dima" />
     </LinearLayout>
 
@@ -238,7 +238,7 @@
                 android:layout_marginRight="10dip"
                 android:layout_weight="0"
                 android:contentDescription="@string/close_book"
-                android:src="@drawable/glyphicons_208_remove_2" />
+                android:src="@drawable/glyphicons_599_menu_close" />
         </RelativeLayout>
 
         <LinearLayout
@@ -255,7 +255,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="align document"
-                android:src="@drawable/glyphicons_114_justify_new" />
+                android:src="@drawable/glyphicons_112_paragraph_center" />
 
             <ImageView
                 android:id="@+id/onMove"
@@ -264,7 +264,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/move"
-                android:src="@drawable/glyphicons_187_move"
+                android:src="@drawable/glyphicons_809_drop_plus"
                 android:visibility="visible" />
 
             <com.foobnix.pdf.info.view.UnderlineImageView
@@ -274,7 +274,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/contrast"
-                android:src="@drawable/glyphicons_190_brightness_my"
+                android:src="@drawable/glyphicons_92_contrast"
                 android:visibility="visible" />
 
             <com.foobnix.pdf.info.view.UnderlineImageView
@@ -303,7 +303,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/full_screen"
-                android:src="@drawable/glyphicons_488_fit_image_to_frame" />
+                android:src="@drawable/glyphicons_216_fullscreen" />
 
             <ImageView
                 android:id="@+id/bookPref"
@@ -333,7 +333,7 @@
         android:background="@drawable/bg_search_second_clickable"
         android:contentDescription="read aloudW"
         android:padding="7dip"
-        android:src="@drawable/glyphicons_185_volume_up"
+        android:src="@drawable/glyphicons_186_volume_up"
         android:tint="@color/white"
         android:visibility="gone" />
 
@@ -385,7 +385,7 @@
         android:layout_width="@dimen/wh_button"
         android:layout_height="@dimen/wh_button"
         android:layout_marginTop="100dip"
-        android:src="@drawable/glyphicons_basic_299_circle_selected"
+        android:src="@drawable/glyphicons_299_circle_selected"
         android:tint="@color/tint_blue" />
 
     <ImageView
@@ -393,7 +393,7 @@
         android:layout_width="@dimen/wh_button"
         android:layout_height="@dimen/wh_button"
         android:layout_marginTop="150dip"
-        android:src="@drawable/glyphicons_basic_298_circle_empty"
+        android:src="@drawable/glyphicons_298_circle_empty"
         android:tint="@color/tint_blue" />
 
     <FrameLayout

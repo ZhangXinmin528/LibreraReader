@@ -77,7 +77,6 @@ import com.foobnix.ui2.AppDB;
 import com.foobnix.ui2.MainTabs2;
 
 import org.ebookdroid.BookType;
-import org.ebookdroid.LibreraApp;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -193,24 +192,24 @@ public class DocumentWrapperUI {
         public void onClick(final View v) {
             MyPopupMenu p = new MyPopupMenu(v.getContext(), v);
 
-            p.getMenu().add(R.string.one_page).setIcon(R.drawable.glyphicons_two_page_one).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+            p.getMenu().add(R.string.one_page).setIcon(R.drawable.my_glyphicons_two_page_one).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     closeDialogs();
-                    onModeChange.setImageResource(R.drawable.glyphicons_two_page_one);
+                    onModeChange.setImageResource(R.drawable.my_glyphicons_two_page_one);
                     AppSP.get().isCut = !false;
                     onCut.onClick(null);
                     hideShowEditIcon();
                     return false;
                 }
             });
-            p.getMenu().add(R.string.half_page).setIcon(R.drawable.glyphicons_page_split).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+            p.getMenu().add(R.string.half_page).setIcon(R.drawable.my_glyphicons_page_split).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     closeDialogs();
-                    onModeChange.setImageResource(R.drawable.glyphicons_page_split);
+                    onModeChange.setImageResource(R.drawable.my_glyphicons_page_split);
                     AppSP.get().isCut = !true;
                     onCut.onClick(null);
                     hideShowEditIcon();
@@ -289,7 +288,6 @@ public class DocumentWrapperUI {
 
         @Override
         public void onClick(final View arg0) {
-            LOG.d("DEBUG", "Click");
             doHideShowToolBar();
         }
     };
@@ -339,7 +337,7 @@ public class DocumentWrapperUI {
         @Override
         public void onClick(final View v) {
             if (AppSP.get().isCut) {
-                onModeChange.setImageResource(R.drawable.glyphicons_two_page_one);
+                onModeChange.setImageResource(R.drawable.my_glyphicons_two_page_one);
                 onCut.onClick(null);
                 return;
             }
@@ -674,7 +672,6 @@ public class DocumentWrapperUI {
     //
     // }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void onLongPress(MotionEvent ev) {
         if (dc.isTextFormat() && TxtUtils.isFooterNote(AppState.get().selectedText)) {
             DragingDialogs.showFootNotes(anchor, dc, new Runnable() {
@@ -1074,14 +1071,14 @@ public class DocumentWrapperUI {
         // int mode = View.VISIBLE;
 
         if (AppSP.get().isLocked) {
-            lockUnlock.setImageResource(R.drawable.glyphicons_204_lock);
-            lockUnlockTop.setImageResource(R.drawable.glyphicons_204_lock);
+            lockUnlock.setImageResource(R.drawable.glyphicons_217_lock);
+            lockUnlockTop.setImageResource(R.drawable.glyphicons_217_lock);
             // lockUnlock.setColorFilter(a.getResources().getColor(R.color.tint_yellow));
             // lockUnlockTop.setColorFilter(a.getResources().getColor(R.color.tint_yellow));
             // mode = View.VISIBLE;
         } else {
-            lockUnlock.setImageResource(R.drawable.glyphicons_205_unlock);
-            lockUnlockTop.setImageResource(R.drawable.glyphicons_205_unlock);
+            lockUnlock.setImageResource(R.drawable.glyphicons_218_lock_open);
+            lockUnlockTop.setImageResource(R.drawable.glyphicons_218_lock_open);
             // lockUnlock.setColorFilter(a.getResources().getColor(R.color.tint_white));
             // lockUnlockTop.setColorFilter(a.getResources().getColor(R.color.tint_white));
             // mode = View.GONE;
@@ -1260,6 +1257,7 @@ public class DocumentWrapperUI {
         toolBarButton = (ImageView) a.findViewById(R.id.imageToolbar);
         toolBarButton.setOnClickListener(onHideShowToolBar);
 
+
         // nextPage.setOnClickListener(onNextPage);
         // prevPage.setOnClickListener(onPrevPage);
 
@@ -1274,7 +1272,7 @@ public class DocumentWrapperUI {
 
         ImageView brightness = (ImageView) a.findViewById(R.id.brightness);
         brightness.setOnClickListener(onSun);
-        brightness.setImageResource(!AppState.get().isDayNotInvert ? R.drawable.glyphicons_232_sun : R.drawable.glyphicons_2_moon);
+        brightness.setImageResource(!AppState.get().isDayNotInvert ? R.drawable.glyphicons_232_sun : R.drawable.glyphicons_231_moon);
 
         // if (Dips.isEInk(dc.getActivity())) {
         // brightness.setVisibility(View.GONE);
@@ -1301,7 +1299,7 @@ public class DocumentWrapperUI {
 
         onModeChange = (ImageView) a.findViewById(R.id.onModeChange);
         onModeChange.setOnClickListener(onModeChangeClick);
-        onModeChange.setImageResource(AppSP.get().isCut ? R.drawable.glyphicons_page_split : R.drawable.glyphicons_two_page_one);
+        onModeChange.setImageResource(AppSP.get().isCut ? R.drawable.my_glyphicons_page_split : R.drawable.my_glyphicons_two_page_one);
 
         View prefTop = a.findViewById(R.id.prefTop);
         prefTop.setOnClickListener(onPrefTop);
@@ -1378,7 +1376,12 @@ public class DocumentWrapperUI {
         TintUtil.setDrawableTint(toastBrightnessText.getCompoundDrawables()[0], Color.WHITE);
 
         TextView modeName = (TextView) a.findViewById(R.id.modeName);
-        modeName.setText(AppState.get().nameVerticalMode);
+
+        if(AppState.get().isEnableAccessibility){
+            modeName.setText(AppState.get().nameVerticalMode + " ("+ dc.getString(R.string.accessibility)+")");
+        }else{
+            modeName.setText(AppState.get().nameVerticalMode);
+        }
 
         pagesCountIndicator = (TextView) a.findViewById(R.id.currentPageIndex);
         pagesCountIndicator.setVisibility(View.GONE);
@@ -1389,6 +1392,7 @@ public class DocumentWrapperUI {
 
         currentTime = (TextView) a.findViewById(R.id.currentTime);
         batteryLevel = (TextView) a.findViewById(R.id.currentBattery);
+        batteryLevel.setOnClickListener(onHideShowToolBar);
 
         currentSeek.setOnLongClickListener(new OnLongClickListener() {
 
@@ -1434,7 +1438,6 @@ public class DocumentWrapperUI {
 
         anchor.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 
-            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
             @Override
             public void onGlobalLayout() {
                 if (anchor.getVisibility() == View.VISIBLE || dc.isMusicianMode()) {
@@ -1506,7 +1509,12 @@ public class DocumentWrapperUI {
             reverseKeysIndicator.setVisibility(View.GONE);
             textToSpeachTop.setVisibility(View.GONE);
             progressDraw.setVisibility(View.GONE);
-            modeName.setText(AppState.get().nameMusicianMode);
+
+            if(AppState.get().isEnableAccessibility){
+                modeName.setText(AppState.get().nameMusicianMode + " ("+ dc.getString(R.string.accessibility)+")");
+            }else{
+                modeName.setText(AppState.get().nameMusicianMode);
+            }
         }
 
         currentSeek.setVisibility(View.GONE);
@@ -1555,7 +1563,7 @@ public class DocumentWrapperUI {
         lirbiLogo.setTextSize(AppState.get().statusBarTextSizeAdv);
 
         int iconSize = Dips.spToPx(AppState.get().statusBarTextSizeAdv);
-        int smallIconSize = iconSize - Dips.dpToPx(5);
+
 
         textToSpeachTop.getLayoutParams().height = textToSpeachTop.getLayoutParams().width = iconSize;
         lockUnlockTop.getLayoutParams().height = lockUnlockTop.getLayoutParams().width = iconSize;
@@ -1564,8 +1572,8 @@ public class DocumentWrapperUI {
         closeTop.getLayoutParams().height = closeTop.getLayoutParams().width = iconSize;
         toolBarButton.getLayoutParams().height = toolBarButton.getLayoutParams().width = iconSize;
 
-        clockIcon.getLayoutParams().height = clockIcon.getLayoutParams().width = smallIconSize;
-        batteryIcon.getLayoutParams().height = batteryIcon.getLayoutParams().width = smallIconSize;
+        clockIcon.getLayoutParams().height = clockIcon.getLayoutParams().width = iconSize;
+        batteryIcon.getLayoutParams().height = batteryIcon.getLayoutParams().width = iconSize;
 
         // lirbiLogo.getLayoutParams().height = panelSize;
 
@@ -1725,9 +1733,9 @@ public class DocumentWrapperUI {
 
     public void initToolBarPlusMinus() {
         if (AppState.get().isShowToolBar) {
-            toolBarButton.setImageResource(R.drawable.glyphicons_336_pushpin);
+            toolBarButton.setImageResource(R.drawable.glyphicons_415_push_pin);
         } else {
-            toolBarButton.setImageResource(R.drawable.glyphicons_200_ban);
+            toolBarButton.setImageResource(R.drawable.glyphicons_305_no_symbol);
         }
         if (AppState.get().isEditMode || AppState.get().isShowToolBar) {
             titleBar.setVisibility(View.VISIBLE);
@@ -1750,7 +1758,7 @@ public class DocumentWrapperUI {
     public void initNextType() {
         if (AppState.get().nextScreenScrollBy == AppState.NEXT_SCREEN_SCROLL_BY_PAGES) {
             nextTypeBootom.setText(R.string.by_pages);
-            nextScreenType.setImageResource(R.drawable.glyphicons_full_page);
+            nextScreenType.setImageResource(R.drawable.my_glyphicons_full_page);
 
         } else {
             if (AppState.get().nextScreenScrollBy == 100) {
@@ -1758,7 +1766,7 @@ public class DocumentWrapperUI {
             } else {
                 nextTypeBootom.setText(AppState.get().nextScreenScrollBy + "% " + dc.getString(R.string.of_screen));
             }
-            nextScreenType.setImageResource(R.drawable.glyphicons_halp_page);
+            nextScreenType.setImageResource(R.drawable.my_glyphicons_halp_page);
 
         }
 
@@ -1766,7 +1774,7 @@ public class DocumentWrapperUI {
 
     public void hideShow() {
         if (AppState.get().isEnableAccessibility) {
-            AppState.get().isEditMode = true;
+            //AppState.get().isEditMode = true;
         }
 
         if (AppState.get().isEditMode) {
@@ -1783,9 +1791,9 @@ public class DocumentWrapperUI {
         initToolBarPlusMinus();
 
         if (AppState.get().isAutoScroll) {
-            autoScroll.setImageResource(R.drawable.glyphicons_37_file_pause);
+            autoScroll.setImageResource(R.drawable.glyphicons_174_pause);
         } else {
-            autoScroll.setImageResource(R.drawable.glyphicons_37_file_play);
+            autoScroll.setImageResource(R.drawable.glyphicons_439_video_play_empty);
         }
 
         if (dc.isMusicianMode()) {
@@ -1860,7 +1868,7 @@ public class DocumentWrapperUI {
 
     public void showSearchDialog() {
         if (AppSP.get().isCut) {
-            onModeChange.setImageResource(R.drawable.glyphicons_two_page_one);
+            onModeChange.setImageResource(R.drawable.my_glyphicons_two_page_one);
             AppSP.get().isCut = !false;
             onCut.onClick(null);
         }
@@ -1868,7 +1876,7 @@ public class DocumentWrapperUI {
             onCrop.onClick(null);
         }
 
-        DragingDialogs.searchMenu(anchor, dc);
+        DragingDialogs.searchMenu(anchor, dc,"");
     }
 
     public void onAutoScrollClick() {
@@ -1957,7 +1965,7 @@ public class DocumentWrapperUI {
             if (dc != null && passwordProtected) {
                 editTop2.setVisibility(View.GONE);
             } else {
-                if (LibreraApp.MUPDF_VERSION == AppsConfig.MUPDF_1_11) {
+                if (AppsConfig.MUPDF_VERSION == AppsConfig.MUPDF_1_11) {
                     editTop2.setVisibility(View.VISIBLE);
                 } else {
                     editTop2.setVisibility(View.VISIBLE);

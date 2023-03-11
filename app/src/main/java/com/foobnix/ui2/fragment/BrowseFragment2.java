@@ -49,6 +49,7 @@ import com.foobnix.dao2.FileMeta;
 import com.foobnix.drive.GFile;
 import com.foobnix.model.AppData;
 import com.foobnix.model.AppProfile;
+import com.foobnix.model.AppSP;
 import com.foobnix.model.AppState;
 import com.foobnix.pdf.info.AppsConfig;
 import com.foobnix.pdf.info.Clouds;
@@ -196,8 +197,8 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
             @Override
             public void onClick(View v) {
                 AppState.get().sortByReverse = !AppState.get().sortByReverse;
-                onSort.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_410_sort_by_attributes_alt : R.drawable.glyphicons_409_sort_by_attributes);
-                sortOrder.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_601_chevron_up : R.drawable.glyphicons_602_chevron_down);
+                onSort.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_477_sort_attributes_alt : R.drawable.glyphicons_476_sort_attributes);
+                sortOrder.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_222_chevron_up : R.drawable.glyphicons_221_chevron_down);
 
 
                 populate();
@@ -241,8 +242,8 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
         });
         openAsBook.setVisibility(View.GONE);
 
-        onSort.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_410_sort_by_attributes_alt : R.drawable.glyphicons_409_sort_by_attributes);
-        sortOrder.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_601_chevron_up : R.drawable.glyphicons_602_chevron_down);
+        onSort.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_477_sort_attributes_alt : R.drawable.glyphicons_476_sort_attributes);
+        sortOrder.setImageResource(AppState.get().sortByReverse ? R.drawable.glyphicons_222_chevron_up : R.drawable.glyphicons_221_chevron_down);
 
         sortOrder.setContentDescription(getString(R.string.ascending) + " " + getString(R.string.descending));
         onSort.setContentDescription(getString(R.string.cd_sort_results));
@@ -320,14 +321,29 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
 
                 MyPopupMenu menu = new MyPopupMenu(getActivity(), onHome);
 
-                menu.getMenu().add(R.string.internal_storage).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+                menu.getMenu().add(R.string.memory).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         displayAnyPath(Environment.getExternalStorageDirectory().getPath());
                         return false;
                     }
-                }).setIcon(R.drawable.glyphicons_146_folder_sd1);
+                }).setIcon(R.drawable.glyphicons_336_folder);
+
+                String pathDownloads = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
+                if (new File(pathDownloads).isDirectory()) {
+                    menu.getMenu().add(getString(R.string.memory) + "/" + ExtUtils.getFileName(pathDownloads)).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            displayAnyPath(pathDownloads);
+                            return false;
+                        }
+                    }).setIcon(R.drawable.glyphicons_336_folder);
+                }
+
+
 
                 for (final String info : extFolders) {
 
@@ -346,19 +362,30 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                             displayAnyPath(info);
                             return false;
                         }
-                    }).setIcon(R.drawable.glyphicons_146_folder_sd1);
+                    }).setIcon(R.drawable.glyphicons_336_folder);
 
                 }
 
                 if (new File(BookCSS.get().downlodsPath).isDirectory()) {
-                    menu.getMenu().add(R.string.downloads).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+                    menu.getMenu().add("Librera/" + getString(R.string.downloads)).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             displayAnyPath(BookCSS.get().downlodsPath);
                             return false;
                         }
-                    }).setIcon(R.drawable.glyphicons_591_folder_heart);
+                    }).setIcon(R.drawable.glyphicons_336_folder);
+                }
+                if(AppSP.get().isEnableSync){
+                    menu.getMenu().add("Librera" + "/" + "Sync").setOnMenuItemClickListener(new OnMenuItemClickListener() {
+
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            displayAnyPath(AppProfile.SYNC_FOLDER_BOOKS.getPath());
+                            return false;
+                        }
+                    }).setIcon(R.drawable.glyphicons_336_folder);
                 }
 
 
@@ -396,7 +423,7 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                                 StringDB.delete(BookCSS.get().pathSAF, saf, (String db) -> BookCSS.get().pathSAF = db);
                                 return false;
                             }
-                        }).setIcon(R.drawable.glyphicons_146_folder_sd1);
+                        }).setIcon(R.drawable.glyphicons_336_folder);
 
 
                     }
@@ -429,7 +456,7 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                             displayAnyPath(info);
                             return false;
                         }
-                    }).setIcon(R.drawable.glyphicons_591_folder_star);
+                    }).setIcon(R.drawable.glyphicons_150_folder_star);
 
                 }
 
@@ -878,7 +905,11 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                 return items;
 
             } else {
-                return SearchCore.getFilesAndDirs(displayPath, fragmentType == TYPE_DEFAULT, AppState.get().isDisplayAllFilesInFolder);
+                boolean isDisplayAllFilesInFolder = Environment.getExternalStorageDirectory().getPath().equals(displayPath) || AppState.get().isDisplayAllFilesInFolder;
+                LOG.d("isDisplayAllFilesInFolder1", isDisplayAllFilesInFolder);
+                List<FileMeta> filesAndDirs = SearchCore.getFilesAndDirs(displayPath, fragmentType == TYPE_DEFAULT, isDisplayAllFilesInFolder);
+                ExtUtils.removeReadBooks(filesAndDirs);
+                return filesAndDirs;
             }
         } catch (Exception e) {
             LOG.e(e);
@@ -1204,9 +1235,9 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
         }
 
         if (AppDB.get().isStarFolder(displayPath)) {
-            starIcon.setImageResource(R.drawable.star_1);
+            starIcon.setImageResource(R.drawable.glyphicons_49_star);
         } else {
-            starIcon.setImageResource(R.drawable.star_2);
+            starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
         }
         TintUtil.setTintImageWithAlpha(starIcon, Color.WHITE);
 
@@ -1219,18 +1250,18 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                 fileMeta.setPathTxt(ExtUtils.getFileName(displayPath));
                 DefaultListeners.getOnStarClick(getActivity()).onResultRecive(fileMeta, null);
                 if (AppDB.get().isStarFolder(displayPath)) {
-                    starIcon.setImageResource(R.drawable.star_1);
+                    starIcon.setImageResource(R.drawable.glyphicons_49_star);
                 } else {
-                    starIcon.setImageResource(R.drawable.star_2);
+                    starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
                 }
             }
         });
 
         final String ldir = FolderContext.genarateXML(searchAdapter.getItemsList(), displayPath, false).toString();
         if (AppDB.get().isStarFolder(ldir)) {
-            starIconDir.setImageResource(R.drawable.star_1);
+            starIconDir.setImageResource(R.drawable.glyphicons_49_star);
         } else {
-            starIconDir.setImageResource(R.drawable.star_2);
+            starIconDir.setImageResource(R.drawable.glyphicons_50_star_empty);
         }
         TintUtil.setTintImageWithAlpha(starIconDir, getActivity() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
 
@@ -1244,9 +1275,9 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
                 FileMetaCore.createMetaIfNeed(genarateXMLBook.getPath(), false);
                 DefaultListeners.getOnStarClick(getActivity()).onResultRecive(fileMeta, null);
                 if (AppDB.get().isStarFolder(ldir)) {
-                    starIconDir.setImageResource(R.drawable.star_1);
+                    starIconDir.setImageResource(R.drawable.glyphicons_49_star);
                 } else {
-                    starIconDir.setImageResource(R.drawable.star_2);
+                    starIconDir.setImageResource(R.drawable.glyphicons_50_star_empty);
                 }
                 TintUtil.setTintImageWithAlpha(starIconDir, getActivity() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
             }
@@ -1306,7 +1337,7 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
         PopupHelper.addPROIcon(p, getActivity());
 
         List<Integer> names = Arrays.asList(R.string.list, R.string.compact, R.string.grid, R.string.cover);
-        final List<Integer> icons = Arrays.asList(R.drawable.glyphicons_114_justify, R.drawable.glyphicons_114_justify_compact, R.drawable.glyphicons_156_show_big_thumbnails, R.drawable.glyphicons_157_show_thumbnails);
+        final List<Integer> icons = Arrays.asList(R.drawable.my_glyphicons_114_paragraph_justify, R.drawable.my_glyphicons_114_justify_compact, R.drawable.glyphicons_157_thumbnails, R.drawable.glyphicons_158_thumbnails_small);
         final List<Integer> actions = Arrays.asList(AppState.MODE_LIST, AppState.MODE_LIST_COMPACT, AppState.MODE_GRID, AppState.MODE_COVERS);
 
 
@@ -1314,6 +1345,15 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 AppState.get().isDisplayAllFilesInFolder = isChecked;
+
+                populate();
+            }
+        });
+        p.getMenu().addCheckbox(getString(R.string.hide_read_books), AppState.get().isHideReadBook, new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                AppState.get().isHideReadBook = isChecked;
+                TempHolder.listHash++;
 
                 populate();
             }
@@ -1362,8 +1402,15 @@ public class BrowseFragment2 extends UIFragment<FileMeta> {
 
     @Override
     public void resetFragment() {
-        onGridList();
-        populate();
+        LOG.d("Browse resetFragment");
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onGridList();
+                populate();
+            }
+        }, 150);
+
     }
 
 }

@@ -1,23 +1,30 @@
 package org.ebookdroid;
 
+import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Environment;
+import android.os.StrictMode;
 
+import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
+//import androidx.multidex.MultiDexApplication;
 
 import com.foobnix.android.utils.Apps;
 import com.foobnix.android.utils.Dips;
 import com.foobnix.android.utils.LOG;
 import com.foobnix.ext.CacheZipUtils;
-import com.foobnix.ext.Fb2Extractor;
 import com.foobnix.pdf.info.AppsConfig;
 import com.foobnix.pdf.info.BuildConfig;
 import com.foobnix.pdf.info.IMG;
 import com.foobnix.pdf.info.R;
 import com.foobnix.pdf.info.TintUtil;
 import com.foobnix.tts.TTSNotification;
+import com.foobnix.ui2.MyContextWrapper;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import org.ebookdroid.droids.mupdf.codec.MuPdfDocument;
 
@@ -27,19 +34,30 @@ import java.io.StringWriter;
 
 public class LibreraApp extends MultiDexApplication {
 
-    public final static int MUPDF_VERSION;
+
     public static Context context;
 
-    static {
-        System.loadLibrary("mypdf");
-        System.loadLibrary("mobi");
-        System.loadLibrary("antiword");
-        MUPDF_VERSION = MuPdfDocument.getMupdfVersion();
-    }
+
 
     @Override
     public void onCreate() {
+        if(false){
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()
+                    .penaltyLog()
+                    .build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+        }
         super.onCreate();
+
+        AppsConfig.loadEngine(this);
 
 
         context = getApplicationContext();
@@ -47,7 +65,14 @@ public class LibreraApp extends MultiDexApplication {
 
         try {
             if (!AppsConfig.checkIsProInstalled(this)) {
-                MobileAds.initialize(this, Apps.getMetaData(this, "com.google.android.gms.ads.APPLICATION_ID"));
+                //MobileAds.initialize(this, Apps.getMetaData(this, "com.google.android.gms.ads.APPLICATION_ID"));
+                MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                    @Override
+                    public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                        LOG.d("ads-complete");
+
+                    }
+                });
             }
         } catch (Exception e) {
             AppsConfig.IS_NO_ADS = true;
@@ -111,6 +136,9 @@ public class LibreraApp extends MultiDexApplication {
                     }
                 }
             });
+        }
+        if(LOG.isEnable){
+            IMG.clearDiscCache();
         }
 
 

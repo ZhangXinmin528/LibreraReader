@@ -64,7 +64,7 @@
                 android:layout_width="@dimen/wh_button"
                 android:layout_height="@dimen/wh_button"
                 android:contentDescription="@string/back"
-                android:src="@drawable/glyphicons_222_unshare"
+                android:src="@drawable/glyphicons_885_step_back"
                 android:visibility="visible" />
 
             <ImageView
@@ -74,7 +74,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/search"
-                android:src="@drawable/glyphicons_28_search1"
+                android:src="@drawable/glyphicons_28_search"
                 android:textColor="#ffffff" />
 
             <ImageView
@@ -84,7 +84,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/recent"
-                android:src="@drawable/glyphicons_72_book1" />
+                android:src="@drawable/glyphicons_422_book_library" />
 
             <ImageView
                 android:id="@+id/editTop2"
@@ -93,7 +93,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/annotations_draw"
-                android:src="@drawable/glyphicons_151_edit" />
+                android:src="@drawable/glyphicons_151_square_edit" />
 
             <ImageView
                 android:id="@+id/thumbnail"
@@ -111,7 +111,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/bookmarks"
-                android:src="@drawable/glyphicons_73_bookmark1" />
+                android:src="@drawable/glyphicons_73_bookmark" />
 
             <ImageView
                 android:id="@+id/onDocDontext"
@@ -120,7 +120,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/content_of_book"
-                android:src="@drawable/glyphicons_115_list1" />
+                android:src="@drawable/glyphicons_115_list" />
 
             <com.foobnix.pdf.search.view.HeightImageView
                 android:id="@+id/onModeChange"
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
-                android:src="@drawable/glyphicons_two_page_one"
+                android:src="@drawable/my_glyphicons_two_page_one"
                 android:visibility="visible" />
 
             <Button
@@ -217,7 +217,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/automatic"
-                android:src="@drawable/glyphicons_37_file_play" />
+                android:src="@drawable/glyphicons_439_video_play_empty" />
 
             <ImageView
                 android:id="@+id/textToSpeach"
@@ -226,7 +226,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/text_to_speech"
-                android:src="@drawable/glyphicons_185_volume_up1" />
+                android:src="@drawable/glyphicons_smileys_100_headphones" />
 
             <ImageView
                 android:id="@+id/toPage"
@@ -234,7 +234,7 @@
                 android:layout_width="@dimen/wh_button"
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
-                android:src="@drawable/document"
+                android:src="@drawable/glyphicons_37_file"
                 android:visibility="gone" />
 
             <TextView
@@ -256,7 +256,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/menu"
-                android:src="@drawable/glyphicons_518_option_vertical" />
+                android:src="@drawable/glyphicons_498_more_vertical" />
 
             <ImageView
                 android:id="@+id/lockUnlock"
@@ -265,7 +265,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
                 android:contentDescription="@string/block_page_movement_horizontally"
-                android:src="@drawable/glyphicons_204_lock" />
+                android:src="@drawable/glyphicons_217_lock" />
         </LinearLayout>
     </LinearLayout>
 

@@ -101,7 +101,7 @@ public class BrowserAdapter extends BaseAdapter {
         imageView.setColorFilter(null);
 
         if (file.getPath().equals(currentDirectory.getParent())) {
-            imageView.setImageResource(R.drawable.glyphicons_217_circle_arrow_left);
+            imageView.setImageResource(R.drawable.glyphicons_649_circle_left);
             TintUtil.setTintImageWithAlpha(imageView);
             imageView.setBackgroundColor(Color.TRANSPARENT);
 
@@ -125,7 +125,7 @@ public class BrowserAdapter extends BaseAdapter {
             imageView.setLayoutParams(imageView.getLayoutParams());
 
             title1.setSingleLine();
-            imageView.setImageResource(R.drawable.glyphicons_441_folder_closed);
+            imageView.setImageResource(R.drawable.glyphicons_145_folder_open);
             TintUtil.setTintImageWithAlpha(imageView);
             imageView.setBackgroundColor(Color.TRANSPARENT);
 

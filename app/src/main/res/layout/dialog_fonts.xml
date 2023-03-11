@@ -39,8 +39,8 @@
             android:layout_alignParentRight="true"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_214_arrow_up"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_212_arrow_up"
             android:tint="@color/tint_gray" />
 
         <ImageView
@@ -51,8 +51,8 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_21_arrow_down"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_211_arrow_down"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 
@@ -89,8 +89,8 @@
             android:layout_alignParentRight="true"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_214_arrow_up"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_212_arrow_up"
             android:tint="@color/tint_gray" />
 
         <ImageView
@@ -101,8 +101,8 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_21_arrow_down"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_211_arrow_down"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 
@@ -139,8 +139,8 @@
             android:layout_alignParentRight="true"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_214_arrow_up"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_212_arrow_up"
             android:tint="@color/tint_gray" />
 
         <ImageView
@@ -151,8 +151,8 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_21_arrow_down"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_211_arrow_down"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 
@@ -189,8 +189,8 @@
             android:layout_alignParentRight="true"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_214_arrow_up"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_212_arrow_up"
             android:tint="@color/tint_gray" />
 
         <ImageView
@@ -201,8 +201,8 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_21_arrow_down"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_211_arrow_down"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 
@@ -240,8 +240,8 @@
             android:layout_alignParentRight="true"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_214_arrow_up"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_212_arrow_up"
             android:tint="@color/tint_gray" />
 
         <ImageView
@@ -252,8 +252,8 @@
             android:layout_marginLeft="4dip"
             android:layout_weight="0"
             android:background="@drawable/bg_border_ltgray"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_21_arrow_down"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_211_arrow_down"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 
@@ -309,8 +309,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_weight="0"
                 android:background="@drawable/bg_border_ltgray"
-                android:padding="10dip"
-                android:src="@drawable/glyphicons_214_arrow_up"
+                android:padding="4dip"
+                android:src="@drawable/glyphicons_212_arrow_up"
                 android:tint="@color/tint_gray" />
 
             <ImageView
@@ -321,8 +321,8 @@
                 android:layout_marginLeft="4dip"
                 android:layout_weight="0"
                 android:background="@drawable/bg_border_ltgray"
-                android:padding="10dip"
-                android:src="@drawable/glyphicons_21_arrow_down"
+                android:padding="4dip"
+                android:src="@drawable/glyphicons_211_arrow_down"
                 android:tint="@color/tint_gray" />
         </LinearLayout>
 

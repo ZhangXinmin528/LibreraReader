@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Δείξτε τι νέο υπάρχει μετά τις ενημερώσεις</string>
    <string name="what_is_new_in">Τι νέο υπάρχει</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Κατεβάστε μια πλήρη λίστα αλλαγών (αρχείο pdf)</string>
-   <string name="search_for_text_in_documents">Αναζήτηση κειμένου</string>
+   <string name="search_for_text_in_multiple_documents">Αναζήτηση κειμένου σε πολλά έγγραφα</string>
    <string name="search_in_the_subfolders">Συμπεριλάβετε υποφακέλους</string>
    <string name="stop">Να σταματήσει</string>
    <string name="document_converter_online_">Μετατροπή εγγράφου σε απευθείας σύνδεση</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Προσαρμοσμένος κωδικός CSS</string>
    <string name="styles">Στυλ</string>
    <string name="document_styles">Έγγραφο</string>
-   <string name="user_styles">Ορισμένο από τον χρήστη</string>
    <string name="automatic_hyphenation">Ενεργοποίηση συλλαβισμού</string>
    <string name="empty_line">Διάλειμμα στάνζας</string>
    <string name="margin_width">Περιθώρια σελίδας</string>
@@ -329,7 +328,7 @@
    <string name="copy">Αντίγραφο</string>
    <string name="search_in_google">Αναζήτηση Google</string>
    <string name="search_in_document">Βρείτε στο έγγραφο</string>
-   <string name="web_dict">Αναζήτηση λεξικού ιστού</string>
+   <string name="web_dict_oxfort">Διαδικτυακό λεξικό (Οξφόρδη, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Γραμματοσειρά</string>
    <string name="font_name">Γραμματοσειρά</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Είδωλο καλλιέργειας</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Εξαγωγή ονομάτων συγγραφέων και τίτλων βιβλίων από μετα-δεδομένα (pdf)</string>
    <string name="meta_tags">Μετα-ετικέτες</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera pro: εγκατάσταση για κατάργηση διαφημίσεων</string>
+   <string name="librera_pro">Librera pro: αυτή η εφαρμογή αλλά χωρίς διαφημίσεις</string>
    <string name="annotation">Σχόλιο</string>
    <string name="book">Βιβλίο</string>
    <string name="information">Πληροφορίες αρχείου</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Ρυθμιστική κλίμακα</string>
    <string name="chapter_format">Θρύλος</string>
    <string name="play_a_music_file">Αναπαραγωγή αρχείου ήχου</string>
-   <string name="rate_us">Βαθμολογήστε μας</string>
+   <string name="rate_app">Βαθμολόγησε την εφαρμογη</string>
    <string name="reset">Επαναφορά</string>
    <string name="status_bar_location">Θέση</string>
    <string name="add_to_bookmark">Σελιδοδείκτης</string>
@@ -544,7 +543,7 @@
    <string name="sign_in">Συνδεθείτε</string>
    <string name="sign_out">Αποσύνδεση</string>
    <string name="wifi_sync_only">Συγχρονισμός μόνο μέσω Wi-Fi</string>
-   <string name="sync_google_drive">Συγχρονισμός (google drive)</string>
+   <string name="sync_google_drive">Συγχρονισμός (Google drive)</string>
    <string name="single_tap_to_select_text">Επιλογή με ένα πάτημα</string>
    <string name="sync_book">Συγχρονισμός</string>
    <string name="sync">Συγχρονισμός</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Προβολή μενού</string>
    <string name="cd_download_more_fonts">Κατεβάστε περισσότερες γραμματοσειρές</string>
    <string name="restore_search_query_when_the_application_starts">Επαναφορά ερωτήματος αναζήτησης κατά την εκκίνηση</string>
+   <string name="hide_read_books">Κρύψτε τα διαβασμένα βιβλία</string>
+   <string name="graphics_scale">Κλίμακα γραφικών</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Δημιουργήστε ένα φάκελο με το όνομα του βιβλίου</string>
+   <string name="memory">Μνήμη</string>
+   <string name="accessibility">Προσιτότητα</string>
+   <string name="web_search_google">Αναζήτηση ιστού (Google, ...)</string>
+   <string name="synced_books">Συγχρονισμένα βιβλία</string>
+   <string name="smart_reflow">Έξυπνη ανανέωση</string>
+   <string name="user_styles">Ορισμένο από τον χρήστη</string>
+   <string name="engine">Κινητήρας</string>
+   <string name="restart_manually">Αυτή η αλλαγή απαιτεί μη αυτόματη επανεκκίνηση της εφαρμογής</string>
 </resources>

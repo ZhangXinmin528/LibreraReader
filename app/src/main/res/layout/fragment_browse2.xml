@@ -24,7 +24,7 @@
             android:layout_height="@dimen/wh_button"
             android:layout_weight="0"
             android:contentDescription="@string/back"
-            android:src="@drawable/glyphicons_225_chevron_left" />
+            android:src="@drawable/glyphicons_223_chevron_left" />
 
         <View
             android:layout_width="1dip"
@@ -71,13 +71,13 @@
 
         <ImageView
             android:id="@+id/createFolder"
+            style="@style/buttonWhite"
             android:layout_width="@dimen/wh_button"
             android:layout_height="@dimen/wh_button"
             android:layout_weight="0"
             android:contentDescription="@string/create_folder"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="10dip"
-            android:src="@drawable/glyphicons_433_plus"
+            android:padding="6dip"
+            android:src="@drawable/glyphicons_371_plus"
             android:tint="@color/tint_white" />
 
         <View
@@ -93,7 +93,7 @@
             android:layout_weight="0"
             android:background="?android:attr/selectableItemBackground"
             android:padding="7dip"
-            android:src="@drawable/star_2"
+            android:src="@drawable/glyphicons_50_star_empty"
             android:tint="@color/tint_gray" />
 
         <View
@@ -108,18 +108,18 @@
             android:layout_height="@dimen/wh_button"
             android:layout_weight="0"
             android:contentDescription="@string/cd_sort_order"
-            android:src="@drawable/glyphicons_409_sort_by_attributes" />
+            android:src="@drawable/glyphicons_476_sort_attributes" />
         
         <ImageView
                 android:contentDescription="@string/cd_sort_order"
                 android:id="@+id/sortOrder"
-                android:layout_width="@dimen/wh_button"
-                android:layout_height="@dimen/wh_button"
+                android:layout_width="@dimen/wh_button_small"
+                android:layout_height="@dimen/wh_button_small"
                 android:layout_weight="0"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:padding="12dip"
-                android:src="@drawable/glyphicons_601_chevron_up"
+                android:padding="4dip"
+                android:src="@drawable/glyphicons_222_chevron_up"
                 android:tint="@color/white" />
 
         <View
@@ -134,8 +134,7 @@
             android:layout_height="@dimen/wh_button"
             android:layout_weight="0"
             android:contentDescription="@string/favorites"
-            android:padding="6dip"
-            android:src="@drawable/glyphicons_146_folder_sd1" />
+            android:src="@drawable/glyphicons_336_folder" />
 
         <View
             android:layout_width="1dip"
@@ -149,7 +148,7 @@
             android:layout_height="@dimen/wh_button"
             android:layout_weight="0"
             android:contentDescription="@string/menu"
-            android:src="@drawable/glyphicons_114_justify" />
+            android:src="@drawable/my_glyphicons_114_paragraph_justify" />
     </LinearLayout>
 
    <androidx.cardview.widget.CardView
@@ -179,7 +178,7 @@
             android:padding="4dip"
             android:layout_weight="0"
             android:tintMode="@color/tint_blue"
-            android:src="@drawable/glyphicons_2_book_open" />
+            android:src="@drawable/glyphicons_589_book_open" />
 
         <LinearLayout
             android:layout_weight="1"
@@ -212,7 +211,7 @@
             android:layout_marginRight="8dip"
             android:background="?android:attr/selectableItemBackground"
             android:padding="7dip"
-            android:src="@drawable/star_2"
+            android:src="@drawable/glyphicons_50_star_empty"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 

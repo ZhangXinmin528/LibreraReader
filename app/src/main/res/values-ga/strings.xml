@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Taispeáin cad atá nua tar éis nuashonruithe</string>
    <string name="what_is_new_in">Cad atá nua i</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Liosta iomlán na n-athruithe a íoslódáil (comhad pdf)</string>
-   <string name="search_for_text_in_documents">Cuardach téacs</string>
+   <string name="search_for_text_in_multiple_documents">Cuardach a dhéanamh ar théacs i ndoiciméid iolracha</string>
    <string name="search_in_the_subfolders">Cuir isteach fofhillteáin</string>
    <string name="stop">Stad</string>
    <string name="document_converter_online_">Doiciméad a thiontú ar líne</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Cód saincheaptha CSS</string>
    <string name="styles">Stíleanna</string>
    <string name="document_styles">Doiciméad</string>
-   <string name="user_styles">Sainithe ag an úsáideoir</string>
    <string name="automatic_hyphenation">Hyphenation a chumasú</string>
    <string name="empty_line">Briseadh stanza</string>
    <string name="margin_width">Corrlaigh leathanaigh</string>
@@ -329,7 +328,7 @@
    <string name="copy">Cóip</string>
    <string name="search_in_google">Cuardach google</string>
    <string name="search_in_document">Faigh sa doiciméad</string>
-   <string name="web_dict">Amharcfhoclóir lookup</string>
+   <string name="web_dict_oxfort">Foclóir gréasáin (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Cló</string>
    <string name="font_name">Cló</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Barr scáthánach</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Sleachta ainmneacha údair agus teidil leabhar ó mheiteashonraí (pdf)</string>
    <string name="meta_tags">Meta tags</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera pro: suiteáil chun fógraí a bhaint</string>
+   <string name="librera_pro">Librera pro: an aip seo ach gan fógraí</string>
    <string name="annotation">Anótáil</string>
    <string name="book">Leabhar</string>
    <string name="information">Eolas comhaid</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Scála sleamhnáin</string>
    <string name="chapter_format">Finscéal</string>
    <string name="play_a_music_file">Comhad fuaime a sheinm</string>
-   <string name="rate_us">Rátáil dúinn</string>
+   <string name="rate_app">App ráta</string>
    <string name="reset">Athshocrú</string>
    <string name="status_bar_location">Post</string>
    <string name="add_to_bookmark">Leabharmharc</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Roghchlár amharc</string>
    <string name="cd_download_more_fonts">Íosluchtaigh clónna níos mó</string>
    <string name="restore_search_query_when_the_application_starts">Ceist chuardaigh a chur ar ais ag am tosaithe</string>
+   <string name="hide_read_books">Hide léamh leabhair</string>
+   <string name="graphics_scale">Scála grafach</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Cruthaigh fillteán le hainm an leabhair</string>
+   <string name="memory">Cuimhne</string>
+   <string name="accessibility">Inrochtaineacht</string>
+   <string name="web_search_google">Cuardach gréasáin (Google, ...)</string>
+   <string name="synced_books">Leabhair synced</string>
+   <string name="smart_reflow">Reflow cliste</string>
+   <string name="user_styles">Sainithe ag an úsáideoir</string>
+   <string name="engine">Inneall</string>
+   <string name="restart_manually">Teastaíonn atosú láimhe den fheidhmchlár leis an athrú seo</string>
 </resources>

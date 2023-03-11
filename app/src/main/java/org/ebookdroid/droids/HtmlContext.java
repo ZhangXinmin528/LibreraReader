@@ -26,6 +26,14 @@ public class HtmlContext extends PdfContext {
 
     public CodecDocument openDocumentInnerForce(String fileName, String password, boolean forse) {
 
+
+//        if(AppsConfig.IS_LOG){
+//            MuPdfDocument muPdfDocument = new MuPdfDocument(this, MuPdfDocument.FORMAT_PDF, fileName, password);
+//            return muPdfDocument;
+//        }
+
+
+
         Map<String, String> notes = null;
         try {
             FooterNote extract = HtmlExtractor.extract(fileName, CacheZipUtils.CACHE_BOOK_DIR.getPath(), forse);

@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">संवाद क्या अपडेट के लिए नया है दिखाएँ</string>
    <string name="what_is_new_in">नया क्या है</string>
    <string name="full_list_of_changes_with_images_web_pdf_">छवियों के साथ परिवर्तनों की पूरी सूची (वेब, पीडीएफ)</string>
-   <string name="search_for_text_in_documents">बहु दस्तावेज़ खोज</string>
+   <string name="search_for_text_in_multiple_documents">एकाधिक दस्तावेज़ों में टेक्स्ट खोजें</string>
    <string name="search_in_the_subfolders">सबफ़ोल्डर्स में खोजें</string>
    <string name="stop">रुकें</string>
    <string name="document_converter_online_">दस्तावेज़ कनवर्टर (ऑनलाइन)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">कस्टम सीएसएस</string>
    <string name="styles">शैलियाँ</string>
    <string name="document_styles">दस्तावेज़ शैलियाँ</string>
-   <string name="user_styles">उपयोगकर्ता शैलियों</string>
    <string name="automatic_hyphenation">स्वत: हायफ़नेशन</string>
    <string name="empty_line">खाली पंक्ति</string>
    <string name="margin_width">मार्जिन चौड़ाई</string>
@@ -329,7 +328,7 @@
    <string name="copy">प्रतिलिपि</string>
    <string name="search_in_google">गूगल में खोजें</string>
    <string name="search_in_document">दस्तावेज़ में खोजें</string>
-   <string name="web_dict">वेब शब्दकोश</string>
+   <string name="web_dict_oxfort">वेब डिक्शनरी (ऑक्सफोर्ड,...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">फ़ॉन्ट</string>
    <string name="font_name">फ़ॉन्ट का नाम</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">सीमाओं को सममित रूप से क्रॉप करें</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">मेटा टैग से पीडीएफ पुस्तक के लेखक और शीर्षक को प्रदर्शित करना</string>
    <string name="meta_tags">मेटा टैग</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">लिब्रेरा प्रो - विज्ञापन के बिना किताबें पढ़ने के लिए कार्यक्रम, इसे स्थापित करने से इस एप्लिकेशन में विज्ञापन हटा दिया जाता है</string>
+   <string name="librera_pro">लाइब्रेरा प्रो: यह ऐप लेकिन विज्ञापनों के बिना</string>
    <string name="annotation">टिप्पणी</string>
    <string name="book">किताब</string>
    <string name="information">जानकारी</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">स्लाइडर पैमाने</string>
    <string name="chapter_format">अध्याय प्रारूप</string>
    <string name="play_a_music_file">एक संगीत फ़ाइल चलाएं</string>
-   <string name="rate_us">हमें रेटिंग दें</string>
+   <string name="rate_app">एप्प का मूल्यांकन</string>
    <string name="reset">रीसेट</string>
    <string name="status_bar_location">स्टेटस बार स्थान</string>
    <string name="add_to_bookmark">बुकमार्क्स में जोड़ें</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">मेनू देखें</string>
    <string name="cd_download_more_fonts">अधिक फोंट डाउनलोड करें</string>
    <string name="restore_search_query_when_the_application_starts">स्टार्टअप पर खोज क्वेरी को पुनर्स्थापित करें</string>
+   <string name="hide_read_books">पढ़ी गई किताबें छुपाएं</string>
+   <string name="graphics_scale">ग्राफिक्स स्केल</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">किताब के नाम से एक फोल्डर बनाएं</string>
+   <string name="memory">स्मृति</string>
+   <string name="accessibility">पहुँच</string>
+   <string name="web_search_google">वेब खोज (गूगल,...)</string>
+   <string name="synced_books">समन्वयित पुस्तकें</string>
+   <string name="smart_reflow">स्मार्ट रिफ्लो</string>
+   <string name="user_styles">उपयोगकर्ता शैलियों</string>
+   <string name="engine">यन्त्र</string>
+   <string name="restart_manually">इस परिवर्तन के लिए एप्लिकेशन के मैन्युअल पुनरारंभ की आवश्यकता है</string>
 </resources>

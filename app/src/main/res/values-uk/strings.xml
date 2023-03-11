@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Показувати вікно "Що нового..." після оновлень</string>
    <string name="what_is_new_in">Що нового у</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Повний список змін із зображеннями (веб, PDF)</string>
-   <string name="search_for_text_in_documents">Пошук тексту в документах</string>
+   <string name="search_for_text_in_multiple_documents">Пошук тексту в кількох документах</string>
    <string name="search_in_the_subfolders">Пошук у вкладених теках</string>
    <string name="stop">Стоп</string>
    <string name="document_converter_online_">Онлайн-конвертер файлів</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Користувацький CSS</string>
    <string name="styles">Стилі</string>
    <string name="document_styles">Вбудовані</string>
-   <string name="user_styles">Користувацькі</string>
    <string name="automatic_hyphenation">Авторозставляння перенесень</string>
    <string name="empty_line">Порожній рядок</string>
    <string name="margin_width">Розмір відступів</string>
@@ -329,7 +328,7 @@
    <string name="copy">Копіювати</string>
    <string name="search_in_google">Пошук у Google</string>
    <string name="search_in_document">Пошук у документі</string>
-   <string name="web_dict">Вебсловник</string>
+   <string name="web_dict_oxfort">Веб-словник (Оксфорд, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Шрифт</string>
    <string name="font_name">Шрифт</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Обрізання меж симетрично</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Показувати авторів та назви книг PDF з метатегів</string>
    <string name="meta_tags">Метатеги</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO — програма для читання книг без реклами, її встановлення видаляє рекламу в цій програмі</string>
+   <string name="librera_pro">Librera pro: ця програма, але без реклами</string>
    <string name="annotation">Анотація</string>
    <string name="book">Книга</string>
    <string name="information">Інформація</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Масштаб слайдера</string>
    <string name="chapter_format">Формат розділу</string>
    <string name="play_a_music_file">Відтворити музичний файл</string>
-   <string name="rate_us">Оцініть нас</string>
+   <string name="rate_app">Оцінити додаток</string>
    <string name="reset">Скинути</string>
    <string name="status_bar_location">Розташування панелі стану</string>
    <string name="add_to_bookmark">Додати до закладок</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Меню перегляду</string>
    <string name="cd_download_more_fonts">Завантажити більше шрифтів</string>
    <string name="restore_search_query_when_the_application_starts">Відновити пошуковий запит під час запуску</string>
+   <string name="hide_read_books">Сховати прочитані книги</string>
+   <string name="graphics_scale">Масштаб графіки</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Створити папку з назвою книги</string>
+   <string name="memory">Пам\'ять</string>
+   <string name="accessibility">Доступність</string>
+   <string name="web_search_google">Веб-пошук (Google, ...)</string>
+   <string name="synced_books">Синхронізовані книги</string>
+   <string name="smart_reflow">Розумне оплавлення</string>
+   <string name="user_styles">Користувацькі</string>
+   <string name="engine">Двигун</string>
+   <string name="restart_manually">Ця зміна вимагає ручного перезапуску програми</string>
 </resources>

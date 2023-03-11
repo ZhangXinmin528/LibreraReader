@@ -72,6 +72,7 @@ import com.foobnix.ui2.fragment.RecentFragment2;
 import com.foobnix.ui2.fragment.SearchFragment2;
 import com.foobnix.ui2.fragment.UIFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+//import com.google.android.gms.auth.api.signin.GoogleSignIn;
 
 import org.ebookdroid.common.settings.books.SharedBooks;
 import org.ebookdroid.ui.viewer.VerticalViewActivity;
@@ -83,8 +84,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import test.SvgActivity;
 
 
 @SuppressLint("NewApi")
@@ -161,6 +160,7 @@ public class MainTabs2 extends AdsFragmentActivity {
     };
     boolean once = true;
     private SlidingTabLayout indicator;
+    private DrawerLayout drawerLayout;
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
         @Override
@@ -189,7 +189,6 @@ public class MainTabs2 extends AdsFragmentActivity {
         }
 
     };
-    private DrawerLayout drawerLayout;
 
     public static boolean isPullToRefreshEnable(Context a, View swipeRefreshLayout) {
         if (a == null || swipeRefreshLayout == null) {
@@ -325,18 +324,16 @@ public class MainTabs2 extends AdsFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        if (AppState.get().isSystemThemeColor) {
+            AppState.get().appTheme = Dips.isDarkThemeOn() ? AppState.THEME_DARK : AppState.THEME_LIGHT;
+        }
+
         if (AppState.get().appTheme == AppState.THEME_LIGHT || AppState.get().appTheme == AppState.THEME_INK) {
             setTheme(R.style.StyledIndicatorsWhite);
         } else {
             setTheme(R.style.StyledIndicatorsBlack);
         }
         super.onCreate(savedInstanceState);
-        //FirebaseAnalytics.getInstance(this);
-
-        if (false) {
-            startActivity(new Intent(this, SvgActivity.class));
-            return;
-        }
 
         if (!Android6.canWrite(this)) {
             Android6.checkPermissions(this, true);
@@ -451,20 +448,11 @@ public class MainTabs2 extends AdsFragmentActivity {
             }
         });
 
-        if (UITab.isShowPreferences()) {
+        if (UITab.isShowLibrary() || !AppState.get().tapPositionTop) {
             imageMenu.setVisibility(View.GONE);
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         } else {
+
             imageMenu.setVisibility(View.VISIBLE);
-        }
-
-        if (AppState.get().isEnableAccessibility) {
-            imageMenu.setVisibility(View.VISIBLE);
-        }
-
-
-        if(UITab.isShowLibrary()) {
-            imageMenu.setVisibility(View.GONE);
         }
 
         // ((BrigtnessDraw)
@@ -557,7 +545,6 @@ public class MainTabs2 extends AdsFragmentActivity {
         indicator.setBackgroundColor(TintUtil.color);
 
         if (!AppState.get().tapPositionTop || !AppState.get().tabWithNames) {
-            imageMenu.setVisibility(View.GONE);
             indicator.setDividerColors(Color.TRANSPARENT);
             indicator.setSelectedIndicatorColors(Color.TRANSPARENT);
             for (int i = 0; i < indicator.getmTabStrip().getChildCount(); i++) {
@@ -571,9 +558,16 @@ public class MainTabs2 extends AdsFragmentActivity {
                 });
             }
         }
-        if (AppState.get().isEnableAccessibility) {
-            imageMenu.setVisibility(View.VISIBLE);
-        }
+        indicator.setOnDoubleClickAction(index -> {
+            try {
+                tabFragments.get(index).onDoubleClick();
+            } catch (Exception e) {
+                LOG.e(e);
+            }
+
+            return false;
+        });
+
 
         if (AppState.get().appTheme == AppState.THEME_INK) {
             TintUtil.setTintImageNoAlpha(imageMenu, TintUtil.color);
@@ -705,7 +699,7 @@ public class MainTabs2 extends AdsFragmentActivity {
             if (pos != -1) {
                 pager.setCurrentItem(pos);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             LOG.e(e);
         }
     }
@@ -726,6 +720,7 @@ public class MainTabs2 extends AdsFragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
 
         AppsConfig.isCloudsEnable = UITab.isShowCloudsPreferences();
 
@@ -800,7 +795,6 @@ public class MainTabs2 extends AdsFragmentActivity {
         // TODO Auto-generated method stub
         return super.onKeyUp(keyCode, event);
     }
-
 
     @Override
     protected void onStop() {
@@ -897,4 +891,6 @@ public class MainTabs2 extends AdsFragmentActivity {
     public void onCloseAppMsg(MsgCloseMainTabs event) {
         onFinishActivity();
     }
+
+
 }

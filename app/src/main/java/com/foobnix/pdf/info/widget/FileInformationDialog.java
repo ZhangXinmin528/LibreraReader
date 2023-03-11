@@ -124,7 +124,7 @@ public class FileInformationDialog {
         boolean isCloud = Clouds.showHideCloudImage(image, fileMeta.getPath());
         if (!isCloud) {
             // image.setVisibility(View.VISIBLE);
-            image.setImageResource(R.drawable.glyphicons_41_cloud_plus);
+            image.setImageResource(R.drawable.glyphicons_545_cloud_upload);
             TintUtil.setTintImageWithAlpha(image);
             image.setOnClickListener(new OnClickListener() {
 
@@ -460,9 +460,9 @@ public class FileInformationDialog {
                 DefaultListeners.getOnStarClick(a).onResultRecive(fileMeta, null);
 
                 if (fileMeta.getIsStar() == null || fileMeta.getIsStar() == false) {
-                    starIcon.setImageResource(R.drawable.star_2);
+                    starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
                 } else {
-                    starIcon.setImageResource(R.drawable.star_1);
+                    starIcon.setImageResource(R.drawable.glyphicons_49_star);
                 }
                 TintUtil.setTintImageNoAlpha(starIcon, TintUtil.getColorInDayNighth());
 
@@ -470,9 +470,9 @@ public class FileInformationDialog {
         });
 
         if (fileMeta.getIsStar() == null || fileMeta.getIsStar() == false) {
-            starIcon.setImageResource(R.drawable.star_2);
+            starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
         } else {
-            starIcon.setImageResource(R.drawable.star_1);
+            starIcon.setImageResource(R.drawable.glyphicons_49_star);
         }
 
         TintUtil.setTintImageNoAlpha(starIcon, TintUtil.getColorInDayNighth());

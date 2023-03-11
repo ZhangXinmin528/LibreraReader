@@ -12,6 +12,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:scrollbars="none">
 
             <LinearLayout
@@ -26,8 +27,8 @@
                     android:layout_height="@dimen/wh_button"
                     android:layout_marginLeft="5dip"
                     android:background="@android:drawable/list_selector_background"
-                    android:padding="5dip"
-                    android:src="@drawable/glyphicons_607_te_background"
+                    android:padding="2dip"
+                    android:src="@drawable/glyphicons_695_text_background"
                     android:tint="@color/tint_gray" />
 
                 <ImageView
@@ -36,8 +37,8 @@
                     android:layout_height="@dimen/wh_button"
                     android:layout_marginLeft="5dip"
                     android:background="@android:drawable/list_selector_background"
-                    android:padding="5dip"
-                    android:src="@drawable/glyphicons_104_te_underline"
+                    android:padding="2dip"
+                    android:src="@drawable/glyphicons_104_underline"
                     android:tint="@color/tint_gray" />
 
                 <ImageView
@@ -46,8 +47,8 @@
                     android:layout_height="@dimen/wh_button"
                     android:layout_marginLeft="5dip"
                     android:background="@android:drawable/list_selector_background"
-                    android:padding="5dip"
-                    android:src="@drawable/glyphicons_105_te_strike"
+                    android:padding="2dip"
+                    android:src="@drawable/glyphicons_105_strikethrough"
                     android:tint="@color/tint_gray" />
 
                 <LinearLayout
@@ -63,8 +64,8 @@
                     android:layout_height="@dimen/wh_button_small"
                     android:layout_marginLeft="5dip"
                     android:background="@android:drawable/list_selector_background"
-                    android:padding="5dip"
-                    android:src="@drawable/glyphicons_433_plus"
+                    android:padding="1dip"
+                    android:src="@drawable/glyphicons_371_plus"
                     android:tint="@color/tint_gray" />
             </LinearLayout>
         </HorizontalScrollView>
@@ -72,6 +73,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dip"
             android:scrollbars="none">
 
             <LinearLayout
@@ -115,28 +117,34 @@
 
             <ImageView
                 android:id="@+id/readTTS"
-                android:layout_width="@dimen/wh_button_small"
-                android:layout_height="@dimen/wh_button_small"
+                android:layout_width="@dimen/wh_button_medium"
+                android:layout_height="@dimen/wh_button_medium"
                 android:layout_weight="0"
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_clickable"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_184_volume_down"
+                android:src="@drawable/glyphicons_1020_head_voice"
                 android:tint="@color/tint_gray" />
 
             <ImageView
                 android:id="@+id/readTTSNext"
-                android:layout_width="@dimen/wh_button_small"
-                android:layout_height="@dimen/wh_button_small"
-                android:layout_marginLeft="4dip"
+                android:layout_width="@dimen/wh_button_medium"
+                android:layout_height="@dimen/wh_button_medium"
+                android:layout_marginLeft="8dip"
                 android:layout_weight="0"
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_clickable"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_185_volume_up1"
+                android:src="@drawable/my_glyphicons_smileys_100_headphones_play"
                 android:tint="@color/tint_gray"
+                android:layout_marginRight="5dip"
                 android:visibility="visible" />
+
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lt_grey_alpha" />
+
 
 
         <LinearLayout
@@ -150,8 +158,7 @@
             <ImageView
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_73_bookmark1"
+                android:src="@drawable/glyphicons_73_bookmark"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -178,8 +185,7 @@
             <ImageView
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_basic_578_share"
+                android:src="@drawable/glyphicons_578_share"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -205,8 +211,7 @@
             <ImageView
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_basic_614_copy"
+                android:src="@drawable/glyphicons_614_copy"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -222,33 +227,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/onGoogle"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="@dimen/wh_button_small"
-                android:layout_height="@dimen/wh_button_small"
-                android:background="@android:drawable/list_selector_background"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_2_global"
-                android:tint="@color/tint_gray" />
-
-            <TextView
-
-                style="@style/textLink"
-                android:layout_width="match_parent"
-                android:layout_height="35dip"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dip"
-                android:singleLine="true"
-                android:text="@string/search_in_google"
-                android:textSize="15sp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/onBookSearch"
@@ -261,7 +240,6 @@
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
                 android:background="@android:drawable/list_selector_background"
-                android:padding="4dip"
                 android:src="@drawable/glyphicons_28_search"
                 android:tint="@color/tint_gray" />
 
@@ -277,6 +255,38 @@
                 android:textSize="15sp" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lt_grey_alpha" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:id="@+id/onGoogle"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/wh_button_small"
+                android:layout_height="@dimen/wh_button_small"
+                android:background="@android:drawable/list_selector_background"
+                android:src="@drawable/glyphicons_417_globe"
+                android:tint="@color/tint_gray" />
+
+            <TextView
+                style="@style/textLink"
+                android:layout_width="match_parent"
+                android:layout_height="35dip"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dip"
+                android:singleLine="true"
+                android:text="@string/web_search_google"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -286,8 +296,7 @@
             <ImageView
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
-                android:padding="4dip"
-                android:src="@drawable/glyphicons_449_translate"
+                android:src="@drawable/glyphicons_580_translate"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -299,10 +308,16 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="10dip"
                 android:singleLine="true"
-                android:text="@string/web_dict"
+                android:text="@string/web_dict_oxfort"
                 android:textSize="15sp" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lt_grey_alpha" />
+
 
         <HorizontalScrollView
             android:layout_width="match_parent"

@@ -84,6 +84,13 @@ public class Urls {
                 }
             }
         });
+        alert.setPositiveButton(R.string.open_in_browser, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                open(a,url);
+                dialog.dismiss();
+            }
+        });
         AlertDialog create = alert.create();
         create.setOnDismissListener(new OnDismissListener() {
 
@@ -118,7 +125,11 @@ public class Urls {
 
     public static void rateIT(Context a) {
         try {
-            Urls.open(a, "market://details?id=" + a.getPackageName());
+            if(AppsConfig.IS_FDROID){
+                Urls.open(a, "https://github.com/foobnix/LibreraReader");
+            }else {
+                Urls.open(a, "market://details?id=" + a.getPackageName());
+            }
         } catch (Exception e) {
             Urls.open(a, "https://play.google.com/store/apps/details?id=" + a.getPackageName());
             LOG.e(e);

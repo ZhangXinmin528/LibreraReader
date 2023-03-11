@@ -32,11 +32,9 @@ import okio.Okio;
 
 public class FontExtractor {
 
+    final static Object lock = new Object();
     public static String FONT_HTTP_ZIP1 = "https://raw.github.com/foobnix/LirbiReader/master/Builder/fonts/fonts.zip";
     public static String FONT_HTTP_ZIP2 = "https://www.dropbox.com/s/c8v7d05vskmjt28/fonts.zip?raw=1";
-
-
-    final static Object lock = new Object();
 
     public static void extractFonts(final Context c) {
         if (c == null) {
@@ -67,6 +65,18 @@ public class FontExtractor {
                             IOUtils.copyClose(c.getAssets().open("fonts.zip"), new FileOutputStream(AppProfile.FONT_LOCAL_ZIP));
                             copyFontsFromZip();
                             LOG.d("copy fonts for IS_FDROID");
+                        }
+
+                        String[] rootFiles = c.getAssets().list("");
+
+                        for (String name : rootFiles) {
+                            if (name.startsWith("app-")) {
+                                File appFile = new File(AppProfile.SYNC_FOLDER_DEVICE_PROFILE, name);
+                                if (BuildConfig.DEBUG || !appFile.exists()) {
+                                    IOUtils.copyClose(c.getAssets().open(name), new FileOutputStream(appFile));
+                                    LOG.d("Copy Asset", name);
+                                }
+                            }
                         }
                     }
                 } catch (Exception e) {
@@ -143,7 +153,6 @@ public class FontExtractor {
                         progressDialog = MyProgressDialog.show(a, a.getString(R.string.please_wait));
 
                     }
-
 
 
                     @Override

@@ -46,7 +46,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class CloudsFragment2 extends UIFragment<FileMeta> {
-    public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.clouds, R.drawable.glyphicons_2_cloud);
+    public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.clouds, R.drawable.glyphicons_544_cloud);
     FileMetaAdapter metaAdapter;
     ImageView onListGrid;
     View panelRecent;
@@ -102,14 +102,14 @@ public class CloudsFragment2 extends UIFragment<FileMeta> {
         });
         cloudsLayout = view.findViewById(R.id.cloudsLayout);
         isShowCloudsLine = view.findViewById(R.id.isShowCloudsLine);
-        isShowCloudsLine.setImageResource(AppState.get().isShowCloudsLine ? R.drawable.glyphicons_602_chevron_down : R.drawable.glyphicons_601_chevron_up);
+        isShowCloudsLine.setImageResource(AppState.get().isShowCloudsLine ? R.drawable.glyphicons_221_chevron_down : R.drawable.glyphicons_222_chevron_up);
         cloudsLayout.setVisibility(TxtUtils.visibleIf(AppState.get().isShowCloudsLine));
         isShowCloudsLine.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 AppState.get().isShowCloudsLine = !AppState.get().isShowCloudsLine;
-                isShowCloudsLine.setImageResource(AppState.get().isShowCloudsLine ? R.drawable.glyphicons_602_chevron_down : R.drawable.glyphicons_601_chevron_up);
+                isShowCloudsLine.setImageResource(AppState.get().isShowCloudsLine ? R.drawable.glyphicons_221_chevron_down : R.drawable.glyphicons_222_chevron_up);
                 cloudsLayout.setVisibility(TxtUtils.visibleIf(AppState.get().isShowCloudsLine));
             }
         });
@@ -338,7 +338,7 @@ public class CloudsFragment2 extends UIFragment<FileMeta> {
         PopupHelper.addPROIcon(p, getActivity());
 
         List<Integer> names = Arrays.asList(R.string.list, R.string.compact, R.string.grid, R.string.cover);
-        final List<Integer> icons = Arrays.asList(R.drawable.glyphicons_114_justify, R.drawable.glyphicons_114_justify_compact, R.drawable.glyphicons_156_show_big_thumbnails, R.drawable.glyphicons_157_show_thumbnails);
+        final List<Integer> icons = Arrays.asList(R.drawable.my_glyphicons_114_paragraph_justify, R.drawable.my_glyphicons_114_justify_compact, R.drawable.glyphicons_157_thumbnails, R.drawable.glyphicons_158_thumbnails_small);
         final List<Integer> actions = Arrays.asList(AppState.MODE_LIST, AppState.MODE_LIST_COMPACT, AppState.MODE_GRID, AppState.MODE_COVERS);
 
         for (int i = 0; i < names.size(); i++) {

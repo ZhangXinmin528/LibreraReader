@@ -200,9 +200,7 @@ public abstract class DocumentController {
             a.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
             final View decorView = a.getWindow().getDecorView();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            }
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
             setNavBarTintColor(a);
 
@@ -244,13 +242,13 @@ public abstract class DocumentController {
     public static int getFullScreenIcon(final Activity a, final int mode) {
         switch (mode) {
             case AppState.FULL_SCREEN_FULLSCREEN_CUTOUT:
-                return R.drawable.glyphicons_487_fit_frame_to_image;
+                return R.drawable.glyphicons_215_fullscreen_off;
             case AppState.FULL_SCREEN_NORMAL:
-                return R.drawable.glyphicons_488_fit_image_to_frame;
+                return R.drawable.glyphicons_216_fullscreen;
             case AppState.FULL_SCREEN_FULLSCREEN:
-                return R.drawable.glyphicons_487_fit_frame_to_image;
+                return R.drawable.glyphicons_215_fullscreen_off;
         }
-        return R.drawable.glyphicons_488_fit_image_to_frame;
+        return R.drawable.glyphicons_216_fullscreen;
     }
 
     public static void showFullScreenPopup(Activity a, View v, IntegerResponse response, int currentMode) {
@@ -398,7 +396,7 @@ public abstract class DocumentController {
 
     public abstract void getOutline(ResultResponse<List<OutlineLinkWrapper>> outline, boolean forse);
 
-    public abstract String getFootNote(String text);
+    public abstract String getFootNote(String text, String chapter);
 
     public abstract List<String> getMediaAttachments();
 
@@ -563,6 +561,10 @@ public abstract class DocumentController {
         return OutlineHelper.getCurrentChapterAsString(this);
     }
 
+    public String getCurrentChapterFile() {
+        return OutlineHelper.getCurrentChapterFile(this);
+    }
+
     public boolean isTextFormat() {
         try {
             boolean textFomat = ExtUtils.isTextFomat(getCurrentBook().getPath());
@@ -590,7 +592,10 @@ public abstract class DocumentController {
         LOG.d("closeDialogs", "isVisible", isVisible);
         if (isVisible) {
             try {
-                activity.findViewById(R.id.closePopup).performClick();
+                if (activity.findViewById(R.id.closePopup) != null) {
+                    activity.findViewById(R.id.closePopup).performClick();
+                }
+                anchor.setVisibility(View.GONE);
                 LOG.d("closeDialogs", "performClick");
             } catch (Exception e) {
                 LOG.e(e);

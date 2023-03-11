@@ -1,27 +1,30 @@
 #!/usr/bin/env bash
 
-
-### 1.20.0
-./link_to_mupdf_1.20.0.sh
+./link_to_mupdf_1.21.1.sh
 
 cd ../
 
 ./gradlew clean incVersion
 
-./gradlew assembleProRelease
-./gradlew assembleLibreraRelease
 ./gradlew assembleFdroidRelease
+./gradlew assembleLibreraRelease
+
+cd Builder
+
+
+./link_two_mupdf.sh
+
+cd ../
+
+./gradlew assembleProRelease
 
 ./gradlew copyApks -Pbeta
 ./gradlew -stop
 
+
+#rm /home/dev/Dropbox/FREE_PDF_APK/testing/*-x86*
+#rm /home/dev/Nextcloud/LibreraBeta/*-x86*
+
 cd Builder
-
-rm /home/dev/Dropbox/FREE_PDF_APK/testing/*-arm*
-rm /home/dev/Dropbox/FREE_PDF_APK/testing/*-x86*
-
 ./remove_all.sh
 ./install_all.sh
-./clear-cache.sh
-
-

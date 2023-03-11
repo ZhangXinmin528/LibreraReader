@@ -96,7 +96,7 @@
                 android:background="@drawable/bg_border_ltgray"
                 android:contentDescription="@string/recent"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_72_book1"
+                android:src="@drawable/glyphicons_422_book_library"
                 android:tint="@color/tint_gray"
                 android:visibility="gone" />
 
@@ -109,7 +109,7 @@
                 android:background="@drawable/bg_border_ltgray"
                 android:contentDescription="@string/recent"
                 android:padding="9dip"
-                android:src="@drawable/glyphicons_174_play"
+                android:src="@drawable/glyphicons_175_play"
                 android:tint="@color/tint_gray" />
 
             <ImageView
@@ -122,7 +122,7 @@
                 android:background="@drawable/bg_border_ltgray"
                 android:contentDescription="@string/preferences"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_166_iphone_exchange"
+                android:src="@drawable/glyphicons_588_book_open_text"
                 android:tint="@color/tint_gray"
                 android:visibility="gone" />
 
@@ -135,7 +135,7 @@
                 android:background="@drawable/bg_border_ltgray"
                 android:contentDescription="@string/recent"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_241_rotation_lock_my"
+                android:src="@drawable/glyphicons_86_reload"
                 android:tint="@color/tint_gray"
                 android:visibility="gone" />
 
@@ -171,7 +171,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_border_ltgray"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_488_fit_image_to_frame"
+                android:src="@drawable/glyphicons_216_fullscreen"
                 android:tint="@color/tint_gray" />
 
             <ImageView
@@ -182,7 +182,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_border_ltgray"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_185_volume_up"
+                android:src="@drawable/glyphicons_186_volume_up"
                 android:tint="@color/tint_gray"
                 android:visibility="gone" />
 
@@ -194,7 +194,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_border_ltgray"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_336_pushpin"
+                android:src="@drawable/glyphicons_415_push_pin"
                 android:tint="@color/tint_gray"
                 android:visibility="gone" />
         </LinearLayout>
@@ -215,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_489_multiple_displays"
+                android:src="@drawable/glyphicons_522_monitors"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -292,7 +292,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_605_textsize"
+                android:src="@drawable/glyphicons_106_text_height"
                 android:tint="@color/tint_gray" />
 
             <LinearLayout
@@ -330,7 +330,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_101_font"
+                android:src="@drawable/glyphicons_101_text"
                 android:tint="@color/tint_gray" />
 
             <TextView
@@ -361,7 +361,7 @@
                 android:layout_weight="0"
                 android:padding="8dip"
                 android:contentDescription="@string/cd_download_more_fonts"
-                android:src="@drawable/glyphicons_182_download_alt"
+                android:src="@drawable/glyphicons_399_import"
                 android:tint="@color/tint_red" />
 
             <ImageView
@@ -374,7 +374,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/bg_border_ltgray"
                 android:padding="8dip"
-                android:src="@drawable/glyphicons_685_article"
+                android:src="@drawable/glyphicons_140_adjust"
                 android:tint="@color/tint_gray" />
         </LinearLayout>
 
@@ -396,7 +396,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_190_brightness_increase"
+                android:src="@drawable/glyphicons_232_sun"
                 android:tint="@color/tint_gray" />
 
             <LinearLayout
@@ -479,7 +479,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_169_ear_plugs"
+                android:src="@drawable/glyphicons_77_headphones"
                 android:tint="@color/tint_gray" />
 
             <LinearLayout
@@ -515,7 +515,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:padding="5dip"
-                android:src="@drawable/glyphicons_449_translate"
+                android:src="@drawable/glyphicons_580_translate"
                 android:tint="@color/tint_gray" />
 
             <CheckBox
@@ -609,7 +609,7 @@
                         android:id="@+id/onDayColorImage"
                         android:layout_width="@dimen/wh_button"
                         android:layout_height="@dimen/wh_button"
-                        android:padding="10dip"
+                        android:padding="6dip"
                         android:src="@drawable/glyphicons_232_sun"
                         android:tint="#000000" />
                 </RelativeLayout>
@@ -635,8 +635,8 @@
                         android:id="@+id/onNigthColorImage"
                         android:layout_width="@dimen/wh_button"
                         android:layout_height="@dimen/wh_button"
-                        android:padding="10dip"
-                        android:src="@drawable/glyphicons_2_moon"
+                        android:padding="6dip"
+                        android:src="@drawable/glyphicons_231_moon"
                         android:tint="#ffffff" />
                 </RelativeLayout>
 
@@ -649,7 +649,7 @@
                     android:layout_weight="0"
                     android:background="@drawable/bg_border_ltgray"
                     android:padding="8dip"
-                    android:src="@drawable/glyphicons_685_article"
+                    android:src="@drawable/glyphicons_140_adjust"
                     android:tint="@color/tint_gray" />
 
                 <TextView

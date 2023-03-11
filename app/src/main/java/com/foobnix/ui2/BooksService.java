@@ -6,7 +6,6 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v4.media.session.MediaSessionCompat;
 
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -38,6 +37,7 @@ import com.foobnix.sys.ImageExtractor;
 import com.foobnix.sys.TempHolder;
 import com.foobnix.tts.TTSNotification;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
+//import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 
 import org.ebookdroid.common.settings.books.SharedBooks;
 import org.greenrobot.eventbus.EventBus;
@@ -69,7 +69,6 @@ public class BooksService extends IntentService {
             handler.postDelayed(timer2, 250);
         }
     };
-    private MediaSessionCompat mediaSessionCompat;
     private List<FileMeta> itemsMeta = new LinkedList<FileMeta>();
     Runnable timer = new Runnable() {
 
@@ -122,7 +121,7 @@ public class BooksService extends IntentService {
         if (!isStartForeground) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
                 Notification notification = new NotificationCompat.Builder(this, TTSNotification.DEFAULT) //
-                        .setSmallIcon(R.drawable.glyphicons_748_synchronization1) //
+                        .setSmallIcon(R.drawable.glyphicons_761_sync) //
                         .setContentTitle(Apps.getApplicationName(this)) //
                         .setContentText(getString(R.string.please_wait_books_are_being_processed_))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)//

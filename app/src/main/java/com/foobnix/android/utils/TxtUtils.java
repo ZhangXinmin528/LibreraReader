@@ -201,14 +201,14 @@ public class TxtUtils {
         return Math.round(f * 100) + "%";
     }
 
-    public static String deltaPageMax(int current) {
+    public static String deltaPageMax(int max) {
         if (AppState.get().pageNumberFormat == AppState.PAGE_NUMBER_FORMAT_PERCENT) {
-            return "100%";
+            return  ""+max;
         }
         if (TempHolder.get().pageDelta == 0) {
-            return "" + current;
+            return "" + max;
         }
-        return "[" + (current + TempHolder.get().pageDelta) + "]";
+        return "[" + (max + TempHolder.get().pageDelta) + "]";
     }
 
     public static void addFilteredGenreSeries(String item, List<String> result, boolean simpleAdd) {
@@ -340,10 +340,9 @@ public class TxtUtils {
             return "";
         }
         LOG.d("pageHTML [before]", pageHTML);
-        if (AppState.get().isAccurateFontSize) {
+        if (BookCSS.get().documentStyle == BookCSS.STYLES_ONLY_USER) {
             pageHTML = pageHTML.toLowerCase();
             LOG.d("pageHTML [isAccurateFontSize]", pageHTML);
-
         }
 
         pageHTML = pageHTML.replace("<pause>", TTS_PAUSE);
@@ -361,10 +360,10 @@ public class TxtUtils {
 
 
         pageHTML = pageHTML.replace("<p>", " ").replace("</p>", " ");
-        pageHTML = pageHTML.replace("&nbsp;", " ").replace("&lt;", " ").replace("&gt;", "").replace("&amp;", " ").replace("&quot;", "\"");
-        pageHTML = pageHTML.replace("[image]", "");
+        pageHTML = pageHTML.replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("&quot;", "\"");
+        pageHTML = pageHTML.replace("[image]", "[image]");
 
-        LOG.d("pageHTML [2", pageHTML);
+        LOG.d("pageHTML [2]", pageHTML);
 
         pageHTML = pageHTML.replace("<end-line>.", ".");
 
@@ -1091,7 +1090,7 @@ public class TxtUtils {
         return false;
     }
 
-    public static String getFooterNote(String input, Map<String, String> footNotes) {
+    public static String getFooterNote(String input, String chapter, Map<String, String> footNotes) {
         if (input == null) {
             return "";
         }
@@ -1099,10 +1098,19 @@ public class TxtUtils {
             return "";
         }
 
+
         try {
             String id = getFooterNoteNumber(input);
 
+
             if (TxtUtils.isNotEmpty(id)) {
+                if(chapter.contains("#")){
+                    chapter = chapter.substring(0, chapter.indexOf("#"));
+                }
+                 id = id+"#"+chapter;
+
+
+                LOG.d("getFooterNote",id);
                 String string = footNotes.get(id);
                 if (TxtUtils.isNotEmpty(string)) {
                     LOG.d("Find note for id", string);
@@ -1140,13 +1148,28 @@ public class TxtUtils {
             return txt;
         }
 
+        LOG.d("filterString-begin",txt);
         String replaceAll = txt.trim().replace("   ", " ").replace("  ", " ").replaceAll("\\s", " ").trim();
         replaceAll = replaceAll(replaceAll, "(\\w+)(-\\s)", "$1").trim();
+
+
 
         if (!replaceAll.contains(" ")) {
             String regexp = "[^\\w\\[\\]\\{\\}’']+";
             replaceAll = replaceAll(replaceAll, regexp + "$", "").replaceAll("^" + regexp, "");
         }
+        if(replaceAll.endsWith(".]")){
+            replaceAll = replaceAll.replace(".]","");
+        }
+        if(replaceAll.endsWith(")")){
+            replaceAll = replaceAll.replace(")","");
+        }
+        if(replaceAll.startsWith("[") && !replaceAll.endsWith("]")){
+            replaceAll = replaceAll.replace("[","");
+        }
+
+
+        LOG.d("filterString-end",replaceAll.trim());
         return replaceAll.trim();
     }
 

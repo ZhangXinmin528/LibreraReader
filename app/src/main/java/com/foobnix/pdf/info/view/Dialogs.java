@@ -155,7 +155,7 @@ public class Dialogs {
                 img.setMaxWidth(Dips.DP_25);
                 img.setMaxHeight(Dips.DP_25);
 
-                img.setImageResource(R.drawable.glyphicons_208_remove_2);
+                img.setImageResource(R.drawable.glyphicons_599_menu_close);
                 TintUtil.setTintImageWithAlpha(img);
 
                 img.setOnClickListener(new OnClickListener() {
@@ -171,7 +171,7 @@ public class Dialogs {
                 move.setMaxWidth(Dips.DP_25);
                 move.setMaxHeight(Dips.DP_25);
 
-                move.setImageResource(R.drawable.glyphicons_517_menu_hamburger);
+                move.setImageResource(R.drawable.glyphicons_600_menu);
                 TintUtil.setTintImageWithAlpha(move);
 
 
@@ -649,7 +649,7 @@ public class Dialogs {
         view.setBackgroundColor(Color.TRANSPARENT);
         final ImageView img = (ImageView) view.findViewById(R.id.itColor);
         img.setColorFilter(a.getResources().getColor(R.color.tint_gray));
-        img.setImageResource(R.drawable.glyphicons_433_plus);
+        img.setImageResource(R.drawable.glyphicons_371_plus);
         img.setBackgroundColor(AppState.get().uiTextColorUser);
         colorsLine1.addView(view, new LayoutParams(Dips.dpToPx(30), Dips.dpToPx(30)));
 

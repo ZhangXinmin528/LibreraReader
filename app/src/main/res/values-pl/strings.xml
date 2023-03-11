@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Pokaż nowości po aktualizacjach</string>
    <string name="what_is_new_in">Co nowego w</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Pobierz pełną listę zmian (plik PDF)</string>
-   <string name="search_for_text_in_documents">Wyszukiwanie w wielu dokumentach</string>
+   <string name="search_for_text_in_multiple_documents">Szukaj tekstu w wielu dokumentach</string>
    <string name="search_in_the_subfolders">Szukaj w podkatalogach</string>
    <string name="stop">Zatrzymaj</string>
    <string name="document_converter_online_">Konwerter dokumentów (online)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Niestandardowy CSS</string>
    <string name="styles">Style</string>
    <string name="document_styles">Style dokumentu</string>
-   <string name="user_styles">Style użytkownika</string>
    <string name="automatic_hyphenation">Automatyczne dzielenie wyrazów</string>
    <string name="empty_line">Pusta linia</string>
    <string name="margin_width">Szerokość marginesu</string>
@@ -329,7 +328,7 @@
    <string name="copy">Kopiuj</string>
    <string name="search_in_google">Szukaj w Google</string>
    <string name="search_in_document">Wyszukaj w dokumencie</string>
-   <string name="web_dict">Słownik internetowy</string>
+   <string name="web_dict_oxfort">Słownik internetowy (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Czcionka</string>
    <string name="font_name">Czcionka</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Przytnij marginesy symetrycznie</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Wyodrębnij nazwiska autorów i tytuły książek z metadanych (PDF)</string>
    <string name="meta_tags">Metatagi</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO: Zainstaluj, aby usunąć reklamy</string>
+   <string name="librera_pro">Librera pro: ta aplikacja, ale bez reklam</string>
    <string name="annotation">Adnotacja</string>
    <string name="book">Książka</string>
    <string name="information">Informacja</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Skala suwaka</string>
    <string name="chapter_format">Format legendy</string>
    <string name="play_a_music_file">Odtwórz plik muzyczny</string>
-   <string name="rate_us">Oceń nas</string>
+   <string name="rate_app">Oceń aplikację</string>
    <string name="reset">Resetuj</string>
    <string name="status_bar_location">Położenie paska stanu</string>
    <string name="add_to_bookmark">Dodaj do zakładek</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Zobacz menu</string>
    <string name="cd_download_more_fonts">Pobierz więcej czcionek</string>
    <string name="restore_search_query_when_the_application_starts">Przywróć zapytanie wyszukiwania przy starcie</string>
+   <string name="hide_read_books">Ukryj przeczytaj książki</string>
+   <string name="graphics_scale">Skala grafiki</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Utwórz folder z nazwą książki</string>
+   <string name="memory">Pamięć</string>
+   <string name="accessibility">Dostępność</string>
+   <string name="web_search_google">Wyszukiwarka internetowa (Google, ...)</string>
+   <string name="synced_books">Zsynchronizowane książki</string>
+   <string name="smart_reflow">Inteligentny reflow</string>
+   <string name="user_styles">Style użytkownika</string>
+   <string name="engine">Silnik</string>
+   <string name="restart_manually">Ta zmiana wymaga ręcznego restartu aplikacji</string>
 </resources>

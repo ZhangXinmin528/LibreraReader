@@ -1,6 +1,8 @@
 package com.foobnix.pdf.info;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -93,23 +95,17 @@ public class DialogSpeedRead {
             @Override
             public boolean onLongClick(View v) {
                 MyPopupMenu menu = new MyPopupMenu(textWord);
-                menu.getMenu().add(R.string.share).setIcon(R.drawable.glyphicons_basic_578_share).setOnMenuItemClickListener((it) -> {
+                menu.getMenu().add(R.string.share).setIcon(R.drawable.glyphicons_578_share).setOnMenuItemClickListener((it) -> {
                     final Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_TEXT, textWord.getText().toString().trim());
                     a.startActivity(Intent.createChooser(intent, a.getString(R.string.share)));
                     return true;
                 });
-                menu.getMenu().add(R.string.copy).setIcon(R.drawable.glyphicons_basic_614_copy).setOnMenuItemClickListener((it) -> {
-
-                    if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                        android.text.ClipboardManager clipboard = (android.text.ClipboardManager) a.getSystemService(Context.CLIPBOARD_SERVICE);
-                        clipboard.setText(textWord.getText().toString().trim());
-                    } else {
-                        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) a.getSystemService(Context.CLIPBOARD_SERVICE);
-                        android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", textWord.getText().toString().trim());
-                        clipboard.setPrimaryClip(clip);
-                    }
+                menu.getMenu().add(R.string.copy).setIcon(R.drawable.glyphicons_614_copy).setOnMenuItemClickListener((it) -> {
+                    ClipboardManager clipboard = (ClipboardManager) a.getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("Copied Text", textWord.getText().toString().trim());
+                    clipboard.setPrimaryClip(clip);
                     Toast.makeText(a, R.string.copy_text, Toast.LENGTH_SHORT).show();
                     return true;
                 });

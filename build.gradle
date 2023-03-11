@@ -4,13 +4,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.1'
-
-        //F-DROID REMOVE THIS LINE
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.android.tools.build:gradle:7.4.1'
     }
 }
 
@@ -19,7 +15,6 @@ allprojects {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        
     }
 }
 

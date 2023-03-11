@@ -1,11 +1,13 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 def taskName = getGradle().getStartParameter().getTaskRequests().toString()
 
 
 ext {
-    FDroidCodeNumber = 4400
-    FDroidVersionNumber = "8.5.23"
+    FDroidCodeNumber = 5100
+    FDroidVersionNumber = "8.8.46"
 }
 
 println " --------------------"
@@ -23,18 +25,17 @@ ext {
 
     println ""
     println "Version: [" + versionNumber + " - " + codeNumber + "]"
-
-
 }
 
 android {
-    buildToolsVersion '31.0.0'
-    compileSdkVersion 31
-    //ndkVersion "21.4.7075529"
+    buildToolsVersion '33.0.2'
+    compileSdk 33
+    namespace "com.foobnix.pdf.info"
+
     defaultConfig {
-        applicationId "com.foobnix.pdf.reader"
-        minSdkVersion 16
-        targetSdkVersion 31
+        namespace "com.foobnix.pdf.info"
+        minSdk 19
+        targetSdk 33
         versionCode codeNumber
         versionName versionNumber
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -48,16 +49,17 @@ android {
         }
     }
 
-    lintOptions {
+    lint {
         abortOnError true
         ignoreWarnings true
         checkReleaseBuilds taskName.contains("Pro")
-
     }
-    testOptions {
-        unitTests.includeAndroidResources = true
-        unitTests.returnDefaultValues = true
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
     }
 
     signingConfigs {
@@ -69,7 +71,6 @@ android {
 //        }
     }
 
-
     buildTypes {
         release {
             minifyEnabled false
@@ -79,16 +80,14 @@ android {
         debug {
             debuggable true
         }
-
-
     }
 
-
     compileOptions {
+        //coreLibraryDesugaringEnabled true
+
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 
     splits {
         abi {
@@ -97,34 +96,16 @@ android {
             include "x86", "x86_64", "armeabi-v7a", "arm64-v8a"
             universalApk true
         }
-
     }
 
-
-    flavorDimensions "version"
+    flavorDimensions.add("version")
     productFlavors {
-
-        beta {
-            dimension "version"
-            applicationId "com.foobnix.pdf.reader"
-            manifestPlaceholders = [
-                    appName      : "MuPDF-1.11",
-                    appIcon      : "@mipmap/icon_pdf_reader",
-                    appRoundIcon : "@mipmap/icon_pdf_reader",
-                    appGdriveKey : "961762082517-dgsen03hb73s6oh59ovivcansatu16lc.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~8769894873",
-                    admobBannerId: "ca-app-pub-8347903083053959/4166397275",
-                    admobFullId  : "ca-app-pub-8347903083053959/2769081274",
-                    appSafeMode  : "true"
-            ]
-        }
-
-        alpha {
-            minSdkVersion 14
+        old {
+            minSdk 14
             dimension "version"
             applicationId "com.foobnix.pdf.reader.a1"
             manifestPlaceholders = [
-                    appName      : "MuPDF-1.20",
+                    appName      : "Librera Old",
                     appIcon      : "@mipmap/icon_pdf_reader",
                     appRoundIcon : "@mipmap/icon_pdf_reader",
                     appGdriveKey : "",
@@ -134,18 +115,32 @@ android {
                     appSafeMode  : "true"
             ]
         }
+        beta {
+            dimension "version"
+            applicationId "com.foobnix.pdf.reader"
+            manifestPlaceholders = [
+                    appName      : "MuPDF-1.11",
+                    appIcon      : "@mipmap/icon_pdf_reader",
+                    appRoundIcon : "@mipmap/icon_pdf_reader",
+                    appGdriveKey : librera_appGdriveKey,
+                    admobAppId   : librera_admobAppId,
+                    admobBannerId: librera_admobBannerId,
+                    admobFullId  : librera_admobFullId,
+                    appSafeMode  : "true"
+            ]
+        }
 
         librera {
             dimension "version"
             applicationId "com.foobnix.pdf.reader"
             manifestPlaceholders = [
-                    appName      : "Librera Reader",
+                    appName      : "Librera",
                     appIcon      : "@mipmap/icon_pdf_reader",
                     appRoundIcon : "@mipmap/icon_pdf_reader",
-                    appGdriveKey : "961762082517-dgsen03hb73s6oh59ovivcansatu16lc.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~8769894873",
-                    admobBannerId: "ca-app-pub-8347903083053959/4166397275",
-                    admobFullId  : "ca-app-pub-8347903083053959/2769081274",
+                    appGdriveKey : librera_appGdriveKey,
+                    admobAppId   : librera_admobAppId,
+                    admobBannerId: librera_admobBannerId,
+                    admobFullId  : librera_admobFullId,
                     appSafeMode  : "false"
             ]
         }
@@ -153,25 +148,25 @@ android {
             dimension "version"
             applicationId "com.foobnix.pdf.reader"
             manifestPlaceholders = [
-                    appName      : "Librera Reader",
+                    appName      : "Librera",
                     appIcon      : "@mipmap/icon_pdf_reader",
                     appRoundIcon : "@mipmap/icon_pdf_reader",
-                    appGdriveKey : "961762082517-dgsen03hb73s6oh59ovivcansatu16lc.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~8769894873",
-                    admobBannerId: "ca-app-pub-8347903083053959/4166397275",
-                    admobFullId  : "ca-app-pub-8347903083053959/2769081274",
+                    appGdriveKey : huawei_appGdriveKey,
+                    admobAppId   : huawei_admobAppId,
+                    admobBannerId: huawei_admobBannerId,
+                    admobFullId  : huawei_admobFullId,
                     appSafeMode  : "false"
             ]
         }
         pro {
-            minSdkVersion 14
+            minSdk 19
             dimension "version"
             applicationId "com.foobnix.pro.pdf.reader"
             manifestPlaceholders = [
-                    appName      : "Librera PRO",
+                    appName      : "Librera",
                     appIcon      : "@mipmap/icon_pdf_pro",
                     appRoundIcon : "@mipmap/icon_pdf_pro",
-                    appGdriveKey : "961762082517-ej9mdc7bgp7jkd6hvbfimvda6vpi5p4t.apps.googleusercontent.com",
+                    appGdriveKey : pro_appGdriveKey,
                     admobAppId   : "",
                     admobBannerId: "",
                     admobFullId  : "",
@@ -185,10 +180,10 @@ android {
                     appName      : "PDF Reader",
                     appIcon      : "@mipmap/icon_pdf_classic",
                     appRoundIcon : "@mipmap/launcher_classic",
-                    appGdriveKey : "961762082517-5825mr1t8duo7tlnkdr6itersmlreejq.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~8457312875",
-                    admobBannerId: "ca-app-pub-8347903083053959/5364245672",
-                    admobFullId  : "ca-app-pub-8347903083053959/7763820878",
+                    appGdriveKey : pdf_classic_appGdriveKey,
+                    admobAppId   : pdf_classic_admobAppId,
+                    admobBannerId: pdf_classic_admobBannerId,
+                    admobFullId  : pdf_classic_admobFullId,
                     appSafeMode  : "true"
             ]
         }
@@ -196,13 +191,13 @@ android {
             dimension "version"
             applicationId "droid.reader.book.epub.mobi.pdf.djvu.fb2.txt.azw.azw3"
             manifestPlaceholders = [
-                    appName      : "Book Reader",
+                    appName      : "RED Reader",
                     appIcon      : "@mipmap/icon_pdf_droid",
                     appRoundIcon : "@mipmap/launcher_droid",
-                    appGdriveKey : "961762082517-3ud6u3hmjlbbpqdsqtk9md55o5jgkg41.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~5153060505",
-                    admobBannerId: "ca-app-pub-8347903083053959/6159730856",
-                    admobFullId  : "ca-app-pub-8347903083053959/2346153515",
+                    appGdriveKey : ebooka_appGdriveKey,
+                    admobAppId   : ebooka_admobAppId,
+                    admobBannerId: ebooka_admobBannerId,
+                    admobFullId  : ebooka_admobFullId,
                     appSafeMode  : "false"
             ]
         }
@@ -213,10 +208,10 @@ android {
                     appName      : "PDF Reader",
                     appIcon      : "@mipmap/icon_pdf_2",
                     appRoundIcon : "@mipmap/launcher_pdf_v2",
-                    appGdriveKey : "961762082517-eiun09s9u6vferhd9avnkjmgs7ob9tns.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~5943988213",
-                    admobBannerId: "ca-app-pub-8347903083053959/6705625294",
-                    admobFullId  : "ca-app-pub-8347903083053959/1346267659",
+                    appGdriveKey : pdf_v2_appGdriveKey,
+                    admobAppId   : pdf_v2_admobAppId,
+                    admobBannerId: pdf_v2_admobBannerId,
+                    admobFullId  : pdf_v2_admobFullId,
                     appSafeMode  : "false"
             ]
         }
@@ -227,10 +222,10 @@ android {
                     appName      : "TTS Reader",
                     appIcon      : "@mipmap/icon_tts_reader_app",
                     appRoundIcon : "@mipmap/launcher_tts_reader_app",
-                    appGdriveKey : "961762082517-kaap4rki1p1vjdcd2jk5j8o8krckm24a.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~1533135764",
-                    admobBannerId: "ca-app-pub-8347903083053959/2702801102",
-                    admobFullId  : "ca-app-pub-8347903083053959/4602986382",
+                    appGdriveKey : tts_reader_appGdriveKey,
+                    admobAppId   : tts_reader_admobAppId,
+                    admobBannerId: tts_reader_admobBannerId,
+                    admobFullId  : tts_reader_admobFullId,
                     appSafeMode  : "false"
             ]
         }
@@ -241,19 +236,19 @@ android {
                     appName      : "Epub Reader",
                     appIcon      : "@mipmap/icon_epub_reader",
                     appRoundIcon : "@mipmap/launcher_epub_reader",
-                    appGdriveKey : "961762082517-p6b2kqqimju6rlp314mu56lipvq2m68r.apps.googleusercontent.com",
-                    admobAppId   : "ca-app-pub-8347903083053959~8118779310",
-                    admobBannerId: "ca-app-pub-8347903083053959/1553370961",
-                    admobFullId  : "ca-app-pub-8347903083053959/6163356354",
+                    appGdriveKey : epub_reader_appGdriveKey,
+                    admobAppId   : epub_reader_admobAppId,
+                    admobBannerId: epub_reader_admobBannerId,
+                    admobFullId  : epub_reader_admobFullId,
                     appSafeMode  : "false"
             ]
         }
         fdroid {
-            minSdkVersion 14
+            minSdk 14
             dimension "version"
             applicationId "com.foobnix.pro.pdf.reader"
             manifestPlaceholders = [
-                    appName      : "Librera PRO",
+                    appName      : "Librera FD",
                     appIcon      : "@mipmap/icon_pdf_pro",
                     appRoundIcon : "@mipmap/icon_pdf_pro",
                     appGdriveKey : "",
@@ -266,7 +261,6 @@ android {
         }
     }
 
-
     def abiCodes = ['armeabi-v7a': 0, 'arm64-v8a': 1, 'x86': 2, 'x86_64': 3]
 
     applicationVariants.all { variant ->
@@ -275,76 +269,72 @@ android {
 
             def flavor = variant.productFlavors[0].name.capitalize()
             def abiName = getFilter("ABI")
-//            if(abiName =="armeabi-v7a"){
-//                variant.mergedFlavor.manifestPlaceholders.appSafeMode =  "true";
-//                //variant.resValue "string", "[appSafeMode]", "true"
-//                println abiName + " : appSafeMode true "
-//            }else{
-//                variant.mergedFlavor.manifestPlaceholders.appSafeMode =  "true";
-//                //variant.resValue "string", "[appSafeMode]", "false"
-//                println abiName + " : appSafeMode false"
-//            }
-
-            if(flavor.equals("Alpha")){
-                flavor = "MuPDF-1.20"
-            }else if(flavor.equals("Beta")){
-                flavor = "MuPDF-1.11"
+/*            if (abiName == "armeabi-v7a") {
+                variant.mergedFlavor.manifestPlaceholders.appSafeMode = "true"
+                //variant.resValue "string", "[appSafeMode]", "true"
+                println abiName + " : appSafeMode true "
+            } else {
+                variant.mergedFlavor.manifestPlaceholders.appSafeMode = "true"
+                //variant.resValue "string", "[appSafeMode]", "false"
+                println abiName + " : appSafeMode false"
             }
-
+*/
             if (abiName != null) {
                 def code = abiCodes.get(abiName, 0) + variant.versionCode
                 abiName = abiName.replace("arm64-v8a", "arm64").replace("armeabi-v7a", "arm")
 
                 output.versionCodeOverride = code
-                //def fullName = "Librera ${flavor}-${versionNumber}-c${code}-d${db}-${abiName}.apk";
+                //def fullName = "Librera ${flavor}-${versionNumber}-c${code}-d${db}-${abiName}.apk"
 
                 def fullName = "Librera ${flavor}-${versionNumber}-${abiName}.apk"
 
                 output.outputFileName = fullName
             } else {
-                //def fullName = "Librera ${flavor}-${versionNumber}-c${codeNumber}-d${db}-universal.apk";
-                //def fullName = "Librera ${flavor}-${versionNumber}-universal.apk";
+                //def fullName = "Librera ${flavor}-${versionNumber}-c${codeNumber}-d${db}-universal.apk"
+                //def fullName = "Librera ${flavor}-${versionNumber}-universal.apk"
                 def fullName = "Librera ${flavor}-${versionNumber}-uni.apk"
                 output.versionCodeOverride = codeNumber
                 output.outputFileName = fullName
-
             }
-
         }
     }
-
 
     sourceSets {
         fdroid { assets.srcDirs = ['src/fdroid/assets', 'src/fdroid/assets/'] }
     }
 
     packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
+        resources {
+            excludes.addAll(
+                    'META-INF/DEPENDENCIES',
+                    'META-INF/NOTICE',
+                    'META-INF/LICENSE',
+                    'META-INF/LICENSE.txt',
+                    'META-INF/NOTICE.txt',
+            )
+        }
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    oldImplementation project(':pro')
+    proImplementation project(':pro')
+    fdroidImplementation project(':pro')
+    implementation project(':smartreflow')
 
-    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+/** Desugaring **/
+    //coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test:runner:1.4.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
-    implementation 'androidx.multidex:multidex:2.0.1'
-
-
-
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+/** AndroidX **/
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.work:work-runtime:2.8.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
-
+/** Third-party **/
     implementation 'com.github.axet:lame:1.0.9'
 
     implementation 'org.greenrobot:eventbus:3.3.1'
@@ -352,7 +342,7 @@ dependencies {
         exclude group: 'org.greenrobot.greendao.rx'
     }
     implementation 'org.greenrobot:greendao-api:3.3.0'
-    implementation 'org.jsoup:jsoup:1.15.1'
+    implementation 'org.jsoup:jsoup:1.15.4'
 
     implementation 'com.github.albfernandez:juniversalchardet:2.4.0'
 
@@ -361,36 +351,31 @@ dependencies {
     implementation 'com.squareup.okio:okio-parent:1.17.5'
 
     implementation 'com.github.joniles:rtfparserkit:1.16.0'
-    implementation 'org.zwobble.mammoth:mammoth:1.4.2'
+    implementation 'org.zwobble.mammoth:mammoth:1.5.0'
     implementation 'javax.xml.stream:stax-api:1.0'
-    implementation 'net.lingala.zip4j:zip4j:2.10.0'
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
-
-
-    alphaImplementation project(':pro')
-    proImplementation project(':pro')
-    fdroidImplementation project(':pro')
-    implementation project(':smartreflow')
-
-
-    libreraImplementation 'com.google.firebase:firebase-ads:19.8.0'
-    betaImplementation 'com.google.firebase:firebase-ads-lite:19.8.0'
-    pdf_v2Implementation 'com.google.firebase:firebase-ads-lite:19.8.0'
-    ebookaImplementation 'com.google.firebase:firebase-ads-lite:19.8.0'
-    tts_readerImplementation 'com.google.firebase:firebase-ads-lite:19.8.0'
-    pdf_classicImplementation 'com.google.firebase:firebase-ads-lite:19.8.0'
-    epub_readerImplementation 'com.google.firebase:firebase-ads-lite:19.8.0'
-    huaweiImplementation 'com.google.firebase:firebase-ads-lite:19.8.0'
+    implementation 'net.lingala.zip4j:zip4j:2.11.5'
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
 
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-    implementation 'androidx.work:work-runtime:2.7.1'
+    implementation "commons-logging:commons-logging-api:1.1"
 
 
+/** Ads **/
+    def google_ads = "com.google.android.gms:play-services-ads:21.5.0"
+    libreraImplementation google_ads
+    betaImplementation google_ads
+    pdf_v2Implementation google_ads
+    ebookaImplementation google_ads
+    tts_readerImplementation google_ads
+    pdf_classicImplementation google_ads
+    epub_readerImplementation google_ads
+    huaweiImplementation google_ads
 
-    //implementation 'com.google.guava:guava:27.0.1-android'
-
-
+/** Testing **/
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
 
@@ -421,7 +406,6 @@ task copyApks() {
             }
         }
 
-
         //File file = new File('/home/data/Dropbox/FREE_PDF_APK/testing/version.txt')
         //file.write versionNumber
     }
@@ -451,22 +435,15 @@ task incVersion() {
 
         println "My Task: [incVersion]"
     }
-
-
 }
 
 if (!taskName.contains("Fdroid")) {
-
-    apply plugin: 'com.google.gms.google-services'
-
     dependencies {
         implementation "com.github.junrar:junrar:4.0.0"
-        implementation "commons-logging:commons-logging-api:1.1"
 
-        implementation 'com.cloudrail:cloudrail-si-android:2.22.4'
-        implementation 'com.google.android.gms:play-services-auth:17.0.0'
-
-        implementation 'com.google.http-client:google-http-client-gson:1.30.2'
+        /** Google Drive Sync **/
+        implementation 'com.google.http-client:google-http-client-gson:1.42.2'
+        implementation 'com.google.android.gms:play-services-auth:20.3.0'
         implementation('com.google.api-client:google-api-client-android:1.30.2') {
             exclude group: 'org.apache.httpcomponents'
         }

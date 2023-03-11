@@ -2,10 +2,101 @@
 layout: main
 ---
 
-# Quoi de neuf (mis à jour)
+# Quoi de neuf
 
-### [8.3.97] activer désactiver l'intégration du menu contextuel (sélection de texte)
+### [8.8.37] Accéder à la bibliothèque depuis le livre
+<img class="i" src="8.8.37.png" />
 
+### [8.8.16] Prise en charge des images externes (http://) dans les livres EPUB.
+
+La fonctionnalité expérimentale doit être activée
+
+### [8.8.0] Modification du moteur de rendu dans l'application
+
+**MuPDF_1.11** moteur de rendu Librera de base
+
+**MuPDF_1.20.x** moteur de rendu moderne, rapide, précis mais peut être avec des bogues, des plantages
+
+||||
+|-|-|-|
+|![](8.8.0a.png)|![](8.8.0b.png)|![](8.8.0c.png)|
+
+### [8.6.44] Faire pivoter la page dans le menu du bas
+<img class="i" src="8.6.44.png" />
+
+### [8.6.47] Prise en charge CSS personnalisée et prise en charge des tableaux
+Ajout de la possibilité de choisir le fichier CSS des styles utilisateur
+```
+/sdcard/Librera/profile.Librera/device.[]/*.css
+
+app-Librera.css - Librera default user styles for documents
+app-MuPDF.css - Default MUPDF styles with Table support
+```
+
+||||
+|-|-|-|
+|![](8.6.47a.png)|![](8.6.47b.png)|![](8.6.47c.png)|
+
+### [8.6.44] Faire pivoter la page dans le menu du bas
+<img class="i" src="8.6.44.png" />
+
+
+### [8.6.43] Faites pivoter la page de 90 degrés, découpez les bordures blanches, coupez en deux pages
+
+||||
+|-|-|-|
+|![](8.6.43a.png)|![](8.6.43b.png)|![](8.6.43c.png)|
+
+### [8.6.41] Afficher le nom de la série, trier par index de série
+<img class="i" src="8.6.41.png" />
+
+### [8.6.40] Configurer ce qu'il faut afficher dans l'onglet des favoris
+<img class="i" src="8.6.40.png" />
+
+### [8.6.39] Déplacement de la recherche Web et des dictionnaires Web vers les fichiers utilisateur app-WebDict.json et app-WebSearch.json
+
+```
+> /storage/emulated/0/Librera/profile.Librera/device.[name]/app-WebSearch.json
+[
+{"name": "_ Disabled dict starts with _", "path": "https://translate.google.com/#%s/%s/%s"},
+{"name": "Google", "path": "http://www.google.com/search?q=%s"},
+{"name": "StartPage", "path": "https://www.startpage.com/sp/search?query=%s"},
+{"name": "DuckDuckGo", "path": "https://duckduckgo.com/?q=%s"}
+]
+```
+
+### [8.6.36] Ajouter la recherche Web dans Google, DuckDuckGo, StartPage
+<img class="i" src="8.6.36.png" />
+
+
+### [8.6.32] Onglet Favoris - Options de tri de la liste
+<img class="i" src="8.6.32.png" />
+
+### [8.6.30] Librera Old pour Android 4.0+ [Télécharger](https://github.com/foobnix/LibreraReader/releases/)
+### [8.6.21] Créer un dossier avec le nom du livre pour les livres téléchargés OPDS
+<img class="i" src="8.6.21.png" />
+
+### [8.6.19] Facteur d'échelle d'image personnalisé (échelle graphique) pour Epub
+
+||||
+|-|-|-|
+|![](8.6.19a.png)|![](8.6.19.png)|![](8.6.19b.png)|
+
+### [8.6.01] Nouvelles icônes vectorielles, interface utilisateur améliorée
+### [8.5.50] Afficher le nombre de livres dans chaque dossier
+<img class="i" src="8.5.50.png" />
+
+### [8.5.40] Masquer les livres lus dans l'onglet Dossier et l'onglet Bibliothèque
+<img class="i" src="8.5.40.png" />
+
+
+### [8.5.27] Restaurer la requête de recherche au démarrage
+
+### [8.5.12] Prise en charge d'EPUB et de bandes dessinées avec des images WEBP
+### [8.4.21] Encodage de texte prédéfini pour les fichiers .TXT
+### [8.4.08] Toujours ouvrir les livres en mode 2 pages
+
+### [8.3.97] Activer désactiver l'intégration du menu contextuel (sélection de texte)
 |||
 |-|-|
 |![](8.3.97a.png)|![](8.3.97b.png)|
@@ -82,4 +173,4 @@ layout: main
 
 ### [8.2.19] Spécifiez les formats de livre pour les modes de lecture (préréglages du mode de lecture)
 
-<img class="i" src="8.2.19.jpg" />
+<img class="i" src="8.2.19.png" />

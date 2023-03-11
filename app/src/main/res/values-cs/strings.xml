@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Po aktualizaci zobrazit dialog Co je nové</string>
    <string name="what_is_new_in">Co je nové v</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Stáhnout úplný seznam změn (soubor PDF)</string>
-   <string name="search_for_text_in_documents">Hledat text v dokumentech</string>
+   <string name="search_for_text_in_multiple_documents">Vyhledávat text ve více dokumentech</string>
    <string name="search_in_the_subfolders">Vyhledávat v podsložkách</string>
    <string name="stop">Zastavit</string>
    <string name="document_converter_online_">Online konvertor dokumentů</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Vlastní CSS styl</string>
    <string name="styles">Styly</string>
    <string name="document_styles">Dokument</string>
-   <string name="user_styles">Uživatelsky definované</string>
    <string name="automatic_hyphenation">Povolit dělení slov</string>
    <string name="empty_line">Prázdný řádek</string>
    <string name="margin_width">Okraje stránky</string>
@@ -329,7 +328,7 @@
    <string name="copy">Kopírovat</string>
    <string name="search_in_google">Vyhledávání Google</string>
    <string name="search_in_document">Vyhledávání v dokumentu</string>
-   <string name="web_dict">Vyhledávání ve webovém slovníku</string>
+   <string name="web_dict_oxfort">Webový slovník (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Písmo</string>
    <string name="font_name">Název písma</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Zrcadlové oříznutí</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Extrahovat jména autorů a názvy knih z metadat (PDF)</string>
    <string name="meta_tags">Meta tagy</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO: instalovat pro odstranění reklam</string>
+   <string name="librera_pro">Librera pro: tato aplikace, ale bez reklam</string>
    <string name="annotation">Poznámka</string>
    <string name="book">Kniha</string>
    <string name="information">Informace o souboru</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Posuvná škála</string>
    <string name="chapter_format">Formát legendy</string>
    <string name="play_a_music_file">Přehrát zvukový soubor</string>
-   <string name="rate_us">Ohodnotit nás</string>
+   <string name="rate_app">Ohodnoťte aplikaci</string>
    <string name="reset">Resetovat</string>
    <string name="status_bar_location">Pozice</string>
    <string name="add_to_bookmark">Záložka</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Zobrazit menu</string>
    <string name="cd_download_more_fonts">Stáhnout více písem</string>
    <string name="restore_search_query_when_the_application_starts">Obnovit vyhledávací dotaz při spuštění</string>
+   <string name="hide_read_books">Skrýt přečtené knihy</string>
+   <string name="graphics_scale">Grafické měřítko</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Vytvořte složku s názvem knihy</string>
+   <string name="memory">Paměť</string>
+   <string name="accessibility">Přístupnost</string>
+   <string name="web_search_google">Vyhledávání na webu (Google, ...)</string>
+   <string name="synced_books">Synchronizované knihy</string>
+   <string name="smart_reflow">Chytré přeformátování</string>
+   <string name="user_styles">Uživatelsky definované</string>
+   <string name="engine">Motor</string>
+   <string name="restart_manually">Tato změna vyžaduje ruční restart aplikace</string>
 </resources>

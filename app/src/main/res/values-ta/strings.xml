@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">புதுப்பிப்புகளுக்குப் பிறகு புதியது என்ன என்பதைக் காட்டு</string>
    <string name="what_is_new_in">புதியது என்ன</string>
    <string name="full_list_of_changes_with_images_web_pdf_">மாற்றங்களின் முழு பட்டியலையும் பதிவிறக்கவும் (PDF கோப்பு)</string>
-   <string name="search_for_text_in_documents">உரையைத் தேடுங்கள்</string>
+   <string name="search_for_text_in_multiple_documents">பல ஆவணங்களில் உரையைத் தேடுங்கள்</string>
    <string name="search_in_the_subfolders">துணை கோப்புறைகளைச் சேர்க்கவும்</string>
    <string name="stop">நிறுத்து</string>
    <string name="document_converter_online_">ஆவணத்தை ஆன்லைனில் மாற்றுங்கள்</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">தனிப்பயன் CSS குறியீடு</string>
    <string name="styles">பாங்குகள்</string>
    <string name="document_styles">ஆவணம்</string>
-   <string name="user_styles">பயனர் வரையறுத்த</string>
    <string name="automatic_hyphenation">சொல்பிரிகை இயக்கு</string>
    <string name="empty_line">ஸ்டான்ஸா இடைவெளி</string>
    <string name="margin_width">பக்க விளிம்புகள்</string>
@@ -329,7 +328,7 @@
    <string name="copy">நகலெடுக்கவும்</string>
    <string name="search_in_google">கூகிளில் தேடு</string>
    <string name="search_in_document">ஆவணத்தில் கண்டுபிடிக்கவும்</string>
-   <string name="web_dict">வலை அகராதி தேடல்</string>
+   <string name="web_dict_oxfort">இணைய அகராதி (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">எழுத்துரு</string>
    <string name="font_name">எழுத்துரு</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">பிரதிபலித்த வெட்டு</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">மெட்டாடேட்டா (PDF) இலிருந்து ஆசிரியர்களின் பெயர்கள் மற்றும் புத்தக தலைப்புகளை பிரித்தெடுக்கவும்</string>
    <string name="meta_tags">மெட்டா குறிச்சொற்கள்</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">லிப்ரெரா புரோ: விளம்பரங்களை அகற்ற நிறுவவும்</string>
+   <string name="librera_pro">Librera pro: இந்த பயன்பாடு ஆனால் விளம்பரங்கள் இல்லாமல்</string>
    <string name="annotation">சிறுகுறிப்பு</string>
    <string name="book">நூல்</string>
    <string name="information">கோப்பு தகவல்</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">ஸ்லைடர் அளவு</string>
    <string name="chapter_format">புராண</string>
    <string name="play_a_music_file">ஆடியோ கோப்பை இயக்கு</string>
-   <string name="rate_us">எங்களை மதிப்பிடு</string>
+   <string name="rate_app">விகிதம் பயன்பாடு</string>
    <string name="reset">மீட்டமை</string>
    <string name="status_bar_location">நிலை</string>
    <string name="add_to_bookmark">புத்தககுறி</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">பார்வை மெனு</string>
    <string name="cd_download_more_fonts">மேலும் எழுத்துருக்களைப் பதிவிறக்கவும்</string>
    <string name="restore_search_query_when_the_application_starts">தொடக்கத்தில் தேடல் வினவலை மீட்டமை</string>
+   <string name="hide_read_books">படித்த புத்தகங்களை மறைக்கவும்</string>
+   <string name="graphics_scale">கிராபிக்ஸ் அளவுகோல்</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">புத்தகத்தின் பெயருடன் ஒரு கோப்புறையை உருவாக்கவும்</string>
+   <string name="memory">நினைவு</string>
+   <string name="accessibility">அணுகல்</string>
+   <string name="web_search_google">இணைய தேடல் (Google, ...)</string>
+   <string name="synced_books">ஒத்திசைக்கப்பட்ட புத்தகங்கள்</string>
+   <string name="smart_reflow">ஸ்மார்ட் ரிஃப்ளோ</string>
+   <string name="user_styles">பயனர் வரையறுத்த</string>
+   <string name="engine">இயந்திரம்</string>
+   <string name="restart_manually">இந்த மாற்றத்திற்கு பயன்பாட்டை கைமுறையாக மறுதொடக்கம் செய்ய வேண்டும்</string>
 </resources>

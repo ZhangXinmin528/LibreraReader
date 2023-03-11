@@ -211,7 +211,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
 
             final FileMetaViewHolder holder = (FileMetaViewHolder) holderAll;
 
-            holder.parent.setContentDescription(holder.getString(R.string.book)+ " " +fileMeta.getAuthor() + " " + fileMeta.getTitle() + " " + fileMeta.getExt());
+            holder.parent.setContentDescription(holder.getString(R.string.book) + " " + fileMeta.getAuthor() + " " + fileMeta.getTitle() + " " + fileMeta.getExt());
 
             if (!AppState.get().isShowImages && adapterType == ADAPTER_COVERS) {
                 adapterType = ADAPTER_GRID;
@@ -295,16 +295,16 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             }
 
             if (fileMeta.getIsStar() != null && fileMeta.getIsStar()) {
-                holder.starIcon.setImageResource(R.drawable.star_1);
+                holder.starIcon.setImageResource(R.drawable.glyphicons_49_star);
             } else {
-                holder.starIcon.setImageResource(R.drawable.star_2);
+                holder.starIcon.setImageResource(R.drawable.glyphicons_50_star_empty);
             }
 
             if (new File(fileMeta.getPath(), "Fonts").isDirectory()) {
                 holder.image.setImageDrawable(Apps.getApplicationImage(holder.image.getContext()));
                 TintUtil.setNoTintImage(holder.image);
             } else {
-                holder.image.setImageResource(R.drawable.glyphicons_441_folder_closed);
+                holder.image.setImageResource(R.drawable.glyphicons_145_folder_open);
                 TintUtil.setTintImageWithAlpha(holder.image, holder.image.getContext() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
             }
 
@@ -401,7 +401,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             final String STARRED = holder.getString(R.string.starred).toUpperCase(Locale.US) + " (" + allStars.size() + ")";
 
             holder.recentName.setText(holder.getString(R.string.recent) + " (" + (getItemCount() - 1) + ")");
-            holder.starredNameIcon.setImageResource(R.drawable.star_1);
+            holder.starredNameIcon.setImageResource(R.drawable.glyphicons_49_star);
             TintUtil.setTintImageNoAlpha(holder.starredNameIcon, Color.WHITE);
 
             TxtUtils.underlineTextView(holder.starredName);
@@ -411,12 +411,12 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
                 public void onClick(final View v) {
                     MyPopupMenu menu = new MyPopupMenu(v.getContext(), v);
 
-                    menu.getMenu().add(STARRED).setIcon(R.drawable.star_1).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+                    menu.getMenu().add(STARRED).setIcon(R.drawable.glyphicons_49_star).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             AppState.get().recentTag = "";
-                            holder.starredNameIcon.setImageResource(R.drawable.star_1);
+                            holder.starredNameIcon.setImageResource(R.drawable.glyphicons_49_star);
                             TintUtil.setTintImageNoAlpha(holder.starredNameIcon, Color.WHITE);
 
                             TxtUtils.underline(holder.starredName, STARRED);
@@ -478,7 +478,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             });
             adapter.getItemsList().clear();
             if (TxtUtils.isEmpty(AppState.get().recentTag)) {
-                holder.starredNameIcon.setImageResource(R.drawable.star_1);
+                holder.starredNameIcon.setImageResource(R.drawable.glyphicons_49_star);
                 TintUtil.setTintImageNoAlpha(holder.starredNameIcon, Color.WHITE);
 
                 TxtUtils.underline(holder.starredName, STARRED);
@@ -653,7 +653,9 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             }
         }
 
-        holder.browserExt.setText(fileMeta.getChild() != null ? fileMeta.getChild() : fileMeta.getExt());
+        String bookExt = fileMeta.getChild() != null ? fileMeta.getChild() : fileMeta.getExt();
+        holder.browserExt.setText(bookExt);
+
         if (holder.size != null) {
             if (fileMeta.getPages() != null && fileMeta.getPages() != 0) {
                 holder.size.setText(fileMeta.getSizeTxt() + " (" + fileMeta.getPages() + ")");
@@ -698,15 +700,16 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
             holder.browserExt.setVisibility(View.VISIBLE);
         }
 
+
         if (fileMeta.getIsStar() == null || fileMeta.getIsStar() == false) {
-            holder.star.setImageResource(R.drawable.star_2);
+            holder.star.setImageResource(R.drawable.glyphicons_50_star_empty);
         } else {
-            holder.star.setImageResource(R.drawable.star_1);
+            holder.star.setImageResource(R.drawable.glyphicons_49_star);
         }
         TintUtil.setTintImageWithAlpha(holder.star, holder.parent.getContext() instanceof MainTabs2 ? TintUtil.getColorInDayNighth() : TintUtil.getColorInDayNighthBook());
 
         if (onStarClickListener != null) {
-            holder.star.setContentDescription(holder.c.getString(fileMeta.getIsStar()!=null && fileMeta.getIsStar() ? R.string.remove_from_favorites : R.string.add_to_favorites));
+            holder.star.setContentDescription(holder.c.getString(fileMeta.getIsStar() != null && fileMeta.getIsStar() ? R.string.remove_from_favorites : R.string.add_to_favorites));
             holder.star.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -821,7 +824,9 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
                 holder.infoLayout.setVisibility(View.VISIBLE);
             }
         }
+
         holder.authorParent.setVisibility(View.VISIBLE);
+
         if (adapterType == ADAPTER_LIST || adapterType == ADAPTER_LIST_COMPACT) {
             if (AppState.get().coverSmallSize >= IMG.TWO_LINE_COVER_SIZE) {
                 holder.title.setSingleLine(false);
@@ -830,12 +835,12 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
                 holder.title.setTextSize(16);
             } else {
                 holder.title.setSingleLine(false);
-                holder.title.setLines(2);
+                holder.title.setLines(1);
                 holder.title.setTextSize(14);
-                holder.authorParent.setVisibility(View.GONE);
+                //holder.authorParent.setVisibility(View.GONE);
                 holder.path.setVisibility(View.GONE);
                 holder.infoLayout.setVisibility(View.VISIBLE);
-                holder.title.setText(fileMeta.getPathTxt());
+                //holder.title.setText(fileMeta.getPathTxt());
             }
         }
 
@@ -897,6 +902,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
                 holder.title.setText("[" + fileMeta.getSIndex() + "] " + fileMeta.getTitle());
             }
         }
+
         if (AppState.get().isShowOnlyOriginalFileNames) {
             if (holder.path != null) {
                 holder.path.setVisibility(View.INVISIBLE);
@@ -909,7 +915,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
 
         TxtUtils.setInkTextView(holder.title, holder.author, holder.path, holder.browserExt, holder.size, holder.date, holder.series, holder.idPercentText);
 
-        Apps.accessibilityButtonSize(holder.star,holder.menu);
+        Apps.accessibilityButtonSize(holder.star, holder.menu);
 
         return fileMeta;
     }

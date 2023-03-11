@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/wh_button"
                 android:layout_margin="4dip"
                 android:layout_weight="0"
-                android:src="@drawable/glyphicons_441_folder_closed" />
+                android:src="@drawable/glyphicons_145_folder_open" />
 
             <TextView
                 android:id="@+id/count"
@@ -56,7 +56,7 @@
                android:layout_weight="0"
                android:paddingLeft="4dip"
                android:paddingRight="4dip"
-               android:src="@drawable/glyphicons_748_synchronization" />
+               android:src="@drawable/glyphicons_761_sync" />
         </RelativeLayout>
 
         <LinearLayout
@@ -100,13 +100,12 @@
 
         <ImageView
             android:id="@+id/starIcon"
-            android:layout_width="@dimen/wh_button"
-            android:layout_height="@dimen/wh_button"
+            android:layout_width="@dimen/wh_button_small"
+            android:layout_height="@dimen/wh_button_small"
             android:layout_marginRight="4dip"
             android:layout_weight="0"
             android:background="?android:attr/selectableItemBackground"
-            android:padding="7dip"
-            android:src="@drawable/star_2"
+            android:src="@drawable/glyphicons_50_star_empty"
             android:tint="@color/tint_gray" />
     </LinearLayout>
 

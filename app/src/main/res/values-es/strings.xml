@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Mostrar \'¿Qué hay de nuevo?\' después de una actualización</string>
    <string name="what_is_new_in">¿Qué hay de nuevo?</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Lista completa de cambios con imágenes (web, PDF)</string>
-   <string name="search_for_text_in_documents">Buscar texto en documentos</string>
+   <string name="search_for_text_in_multiple_documents">Buscar texto en varios documentos</string>
    <string name="search_in_the_subfolders">Buscar en subcarpetas</string>
    <string name="stop">Detener</string>
    <string name="document_converter_online_">Convertir documentos (en línea)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">CSS personalizado</string>
    <string name="styles">Estilos</string>
    <string name="document_styles">Documento</string>
-   <string name="user_styles">Estilos de usuario</string>
    <string name="automatic_hyphenation">Activar separación (-)</string>
    <string name="empty_line">Espacio entre estrofas</string>
    <string name="margin_width">Márgenes</string>
@@ -329,7 +328,7 @@
    <string name="copy">Copiar</string>
    <string name="search_in_google">Buscar en Google</string>
    <string name="search_in_document">Buscar en el documento</string>
-   <string name="web_dict">Diccionario web</string>
+   <string name="web_dict_oxfort">Diccionario web (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Fuente</string>
    <string name="font_name">Fuente</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Recortar bordes simétricamente</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Mostrar el autor y el título del libro de las metaetiquetas</string>
    <string name="meta_tags">Metaetiquetas</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - programa para leer libros sin publicidad, instalarlo elimina la publicidad en esta aplicación</string>
+   <string name="librera_pro">Librera pro: esta app pero sin anuncios</string>
    <string name="annotation">Anotación</string>
    <string name="book">Libro</string>
    <string name="information">Información</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Escala del control deslizante</string>
    <string name="chapter_format">Formato de capítulo</string>
    <string name="play_a_music_file">Reproducir archivo de música</string>
-   <string name="rate_us">Califíquenos</string>
+   <string name="rate_app">Calificar aplicacion</string>
    <string name="reset">Reiniciar</string>
    <string name="status_bar_location">Posición</string>
    <string name="add_to_bookmark">Añadir a marcadores</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Ver menú</string>
    <string name="cd_download_more_fonts">Descargar más fuentes</string>
    <string name="restore_search_query_when_the_application_starts">Restaurar la consulta de búsqueda al inicio</string>
+   <string name="hide_read_books">Ocultar leer libros</string>
+   <string name="graphics_scale">Escala gráfica</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Crear una carpeta con el nombre del libro</string>
+   <string name="memory">Memoria</string>
+   <string name="accessibility">Accesibilidad</string>
+   <string name="web_search_google">Búsqueda web (Google, ...)</string>
+   <string name="synced_books">Libros sincronizados</string>
+   <string name="smart_reflow">Reflujo inteligente</string>
+   <string name="user_styles">Estilos de usuario</string>
+   <string name="engine">Motor</string>
+   <string name="restart_manually">Este cambio requiere un reinicio manual de la aplicación</string>
 </resources>

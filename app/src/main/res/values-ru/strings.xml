@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Показывать окно \"Что нового...\" при обновлениях</string>
    <string name="what_is_new_in">Что нового в</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Полный список изменений с иллюстрациями</string>
-   <string name="search_for_text_in_documents">Поиск внутри нескольких файлов</string>
+   <string name="search_for_text_in_multiple_documents">Поиск текста в нескольких документах</string>
    <string name="search_in_the_subfolders">Искать в подпапках</string>
    <string name="stop">Стоп</string>
    <string name="document_converter_online_">Онлайн-конвертация файлов</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Пользовательские CSS</string>
    <string name="styles">Стили</string>
    <string name="document_styles">Встроенные</string>
-   <string name="user_styles">Пользовательские</string>
    <string name="automatic_hyphenation">Автоматически расставлять переносы</string>
    <string name="empty_line">Пустая строка</string>
    <string name="margin_width">Ширина отступов</string>
@@ -329,7 +328,7 @@
    <string name="copy">Скопировать</string>
    <string name="search_in_google">Найти в Google</string>
    <string name="search_in_document">Искать внутри текста</string>
-   <string name="web_dict">Глянуть в веб-словаре</string>
+   <string name="web_dict_oxfort">Веб-словарь (оксфорд, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Шрифт</string>
    <string name="font_name">Шрифт</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Симметричная обрезка полей</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Отображать имена авторов и названия PDF-книг, используя информацию метаданных</string>
    <string name="meta_tags">Метаданные</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - приложение для чтения книг без рекламы; установите его, и рекламы больше не будет</string>
+   <string name="librera_pro">Librera pro: это приложение, но без рекламы</string>
    <string name="annotation">Аннотация</string>
    <string name="book">Книга</string>
    <string name="information">Дата/формат/размер файла</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Шкала бегунка</string>
    <string name="chapter_format">Прогресс чтения</string>
    <string name="play_a_music_file">Выбрать и проиграть музык. файл</string>
-   <string name="rate_us">Оценить</string>
+   <string name="rate_app">Оценить приложение</string>
    <string name="reset">Сброс</string>
    <string name="status_bar_location">Расположение строки состояния</string>
    <string name="add_to_bookmark">Добавить в закладки</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Меню просмотра</string>
    <string name="cd_download_more_fonts">Скачать больше шрифтов</string>
    <string name="restore_search_query_when_the_application_starts">Восстановить поисковый запрос при запуске</string>
+   <string name="hide_read_books">Скрыть прочитанные книги</string>
+   <string name="graphics_scale">Масштаб графики</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Создать папку с названием книги</string>
+   <string name="memory">Память</string>
+   <string name="accessibility">Доступность</string>
+   <string name="web_search_google">Веб-поиск (Google, ...)</string>
+   <string name="synced_books">Синхронизированные книги</string>
+   <string name="smart_reflow">Умный перекомпоновка</string>
+   <string name="user_styles">Пользовательские</string>
+   <string name="engine">Двигатель</string>
+   <string name="restart_manually">Это изменение требует ручного перезапуска приложения</string>
 </resources>

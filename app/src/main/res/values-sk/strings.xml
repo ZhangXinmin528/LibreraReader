@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Zobraziť dialóg Čo je nové aktualizácií</string>
    <string name="what_is_new_in">Čo je nové v</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Úplný zoznam zmien s obrázkami (web, PDF)</string>
-   <string name="search_for_text_in_documents">Vyhľadávanie viacerých dokumentov</string>
+   <string name="search_for_text_in_multiple_documents">Hľadať text vo viacerých dokumentoch</string>
    <string name="search_in_the_subfolders">Vyhľadávanie v podpriečinkoch</string>
    <string name="stop">Prestať</string>
    <string name="document_converter_online_">Konvertor dokumentov (online)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">Vlastné CSS</string>
    <string name="styles">Štýly</string>
    <string name="document_styles">Štýly dokumentu</string>
-   <string name="user_styles">Štýly užívateľských</string>
    <string name="automatic_hyphenation">Automatické delenie slov</string>
    <string name="empty_line">Prázdny riadok</string>
    <string name="margin_width">Šírka Margin</string>
@@ -329,7 +328,7 @@
    <string name="copy">Kopírovať</string>
    <string name="search_in_google">Vyhľadávanie v Googli</string>
    <string name="search_in_document">Vyhľadávanie v dokumente</string>
-   <string name="web_dict">Web slovník</string>
+   <string name="web_dict_oxfort">Webový slovník (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Písmo</string>
    <string name="font_name">Názov písma</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Orezajte okraje symetricky</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Zobrazenie autora a názvu knihy PDF z meta tagov</string>
    <string name="meta_tags">Meta značky</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - program na čítanie kníh bez reklamy, jeho inštalácia odstraňuje reklamu v tejto aplikácii</string>
+   <string name="librera_pro">Librera pro: táto aplikácia, ale bez reklám</string>
    <string name="annotation">Vysvetlivka</string>
    <string name="book">Kniha</string>
    <string name="information">Informácie</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Posúvač stupnice</string>
    <string name="chapter_format">Formát kapitoly</string>
    <string name="play_a_music_file">Prehrávanie hudobného súboru</string>
-   <string name="rate_us">Ohodnoť nás</string>
+   <string name="rate_app">Hodnotiť aplikáciu</string>
    <string name="reset">Resetovať</string>
    <string name="status_bar_location">Umiestnenie stavovej lišty</string>
    <string name="add_to_bookmark">Pridať do záložiek</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Zobraziť menu</string>
    <string name="cd_download_more_fonts">Stiahnuť viac fontov</string>
    <string name="restore_search_query_when_the_application_starts">Obnoviť vyhľadávací dopyt pri spustení</string>
+   <string name="hide_read_books">Skryť prečítané knihy</string>
+   <string name="graphics_scale">Grafická mierka</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Vytvorte priečinok s názvom knihy</string>
+   <string name="memory">Pamäť</string>
+   <string name="accessibility">Prístupnosť</string>
+   <string name="web_search_google">Vyhľadávanie na webe (Google, ...)</string>
+   <string name="synced_books">Synchronizované knihy</string>
+   <string name="smart_reflow">Inteligentné preformátovanie</string>
+   <string name="user_styles">Štýly užívateľských</string>
+   <string name="engine">Motora</string>
+   <string name="restart_manually">Táto zmena vyžaduje manuálny reštart aplikácie</string>
 </resources>

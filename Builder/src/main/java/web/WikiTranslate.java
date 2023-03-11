@@ -28,9 +28,10 @@ public class WikiTranslate {
         GenerateFAQ.updateIndex(HOME + "/docs/faq", "Frequently Asked Questions");
 
         List<String> paths = Arrays.asList(
-                HOME + "/docs/faq"
-                //HOME + "/docs/download",
-                //HOME + "/docs/what-is-new"
+                HOME + "/docs/faq",
+                HOME + "/docs/what-is-new",
+                HOME + "/docs/download"
+
         );
 
         File file = new File("/home/dev/Dropbox/Dev/cache.json");
@@ -225,7 +226,7 @@ public class WikiTranslate {
         if (line.startsWith("&gt;")) {
             line = line.replace("&gt;", ">");
         }
-        line = line.replace("]]", "]");
+        //line = line.replace("]]", "]");
         line = line.replace("## #","###");
 
 

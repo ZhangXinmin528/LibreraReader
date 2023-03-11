@@ -1,6 +1,7 @@
 package com.foobnix.pdf.info;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
@@ -12,7 +13,7 @@ import com.foobnix.model.AppState;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-import org.ebookdroid.LibreraApp;
+import org.ebookdroid.droids.mupdf.codec.MuPdfDocument;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,16 +23,48 @@ public class AppsConfig {
     public static final String PRO_LIBRERA_READER = "com.foobnix.pro.pdf.reader";
     public static final String LIBRERA_READER = "com.foobnix.pdf.reader";
     public static final boolean ADS_ON_PAGE = false;
-    public static int MUPDF_1_11 = 111;
-    public static boolean isDOCXSupported = Build.VERSION.SDK_INT >= 26;
-    public static boolean isCloudsEnable = false;
-
     public static final boolean IS_FDROID = BuildConfig.FLAVOR.equals("fdroid") || BuildConfig.FLAVOR.equals("huawei");
     public static final boolean IS_LOG = BuildConfig.FLAVOR.equals("alpha") || BuildConfig.FLAVOR.equals("beta");
     public static final boolean IS_ENABLE_1_PAGE_SEARCH = true;
-    public static boolean IS_NO_ADS =  false;
-
     public final static ExecutorService executorService = Executors.newFixedThreadPool(2);
+    public final static String ENGINE_MuPDF_1_11 = "MuPDF_1.11";
+    public final static String ENGINE_MuPDF_LATEST = "MuPDF_1.21.1";
+    public static int MUPDF_VERSION = 0;
+    public static int MUPDF_1_11 = 111;
+    public static boolean isDOCXSupported = Build.VERSION.SDK_INT >= 26;
+    public static boolean isCloudsEnable = false;
+    public static boolean IS_NO_ADS = false;
+
+    public static void loadEngine(Context c) {
+        String engine = getCurrentEngine(c);
+        try {
+            engine = !ENGINE_MuPDF_1_11.equals(engine) ? ENGINE_MuPDF_LATEST : ENGINE_MuPDF_1_11;
+            System.loadLibrary(engine);
+            setEngine(c, engine);
+        } catch (UnsatisfiedLinkError e) {
+            try {
+                System.loadLibrary(ENGINE_MuPDF_1_11);
+                setEngine(c, ENGINE_MuPDF_1_11);
+            } catch (UnsatisfiedLinkError e1) {
+                System.loadLibrary(ENGINE_MuPDF_LATEST);
+                setEngine(c, ENGINE_MuPDF_LATEST);
+            }
+            LOG.e(e);
+        }
+        AppsConfig.MUPDF_VERSION = MuPdfDocument.getMupdfVersion();
+
+    }
+
+    public static void setEngine(Context c, String engine) {
+        LOG.d("setEngine", engine);
+        SharedPreferences sp = c.getSharedPreferences("Engine", Context.MODE_PRIVATE);
+        sp.edit().putString("version", engine).commit();
+    }
+
+    public static String getCurrentEngine(Context c) {
+        return c.getSharedPreferences("Engine", Context.MODE_PRIVATE)
+                .getString("version", IS_FDROID ? ENGINE_MuPDF_LATEST : ENGINE_MuPDF_1_11);
+    }
 
 
     public static boolean isPDF_DRAW_ENABLE() {
@@ -62,7 +95,7 @@ public class AppsConfig {
         if (AppState.get().isEnableAccessibility) {
             return true;
         }
-        if(Apps.isAccessibilityEnable(a)){
+        if (Apps.isAccessibilityEnable(a)) {
             return true;
         }
 

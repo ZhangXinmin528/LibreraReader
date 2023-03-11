@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RecentFragment2 extends UIFragment<FileMeta> {
-    public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.recent, R.drawable.glyphicons_72_book);
+    public static final Pair<Integer, Integer> PAIR = new Pair<Integer, Integer>(R.string.recent, R.drawable.glyphicons_422_book_library);
     FileMetaAdapter recentAdapter;
     ImageView onListGrid;
     View panelRecent;
@@ -163,7 +163,7 @@ public class RecentFragment2 extends UIFragment<FileMeta> {
         PopupHelper.addPROIcon(p, getActivity());
 
         List<Integer> names = Arrays.asList(R.string.list, R.string.compact, R.string.grid, R.string.cover);
-        final List<Integer> icons = Arrays.asList(R.drawable.glyphicons_114_justify, R.drawable.glyphicons_114_justify_compact, R.drawable.glyphicons_156_show_big_thumbnails, R.drawable.glyphicons_157_show_thumbnails);
+        final List<Integer> icons = Arrays.asList(R.drawable.my_glyphicons_114_paragraph_justify, R.drawable.my_glyphicons_114_justify_compact, R.drawable.glyphicons_157_thumbnails, R.drawable.glyphicons_158_thumbnails_small);
         final List<Integer> actions = Arrays.asList(AppState.MODE_LIST, AppState.MODE_LIST_COMPACT, AppState.MODE_GRID, AppState.MODE_COVERS);
 
         for (int i = 0; i < names.size(); i++) {

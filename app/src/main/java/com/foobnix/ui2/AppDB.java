@@ -494,7 +494,9 @@ public class AppDB {
             QueryBuilder<FileMeta> where = fileMetaDao.queryBuilder();
             where = where.where(SEARCH_IN.TAGS.getProperty().like("%" + tagName + StringDB.DIVIDER + "%"), FileMetaDao.Properties.IsSearchBook.eq(1));
             //where = where.where(SEARCH_IN.TAGS.getProperty().like("%" + tagName + StringDB.DIVIDER + "%"));
-            return where.list();
+            List<FileMeta> list = where.list();
+            ExtUtils.removeNotFound(list);
+            return list;
         } catch (Exception e) {
             return new ArrayList<FileMeta>();
         }
@@ -569,11 +571,18 @@ public class AppDB {
             }
 
 
+
+
             if (isAsc) {
                 where = where.orderAsc(sortby.getProperty());
             } else {
                 where = where.orderDesc(sortby.getProperty());
             }
+            if(sortby == SORT_BY.SERIES){
+                where = where.orderAsc(FileMetaDao.Properties.SIndex);
+            }
+
+
             if (sortby != SORT_BY.TITLE) {
                 where = where.orderAsc(SORT_BY.TITLE.getProperty());
             }

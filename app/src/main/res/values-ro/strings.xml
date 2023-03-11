@@ -33,7 +33,7 @@
    <string name="show_the_dialog_what_is_new_for_updates">Afișați dialogul "Ce este nou pentru actualizări"</string>
    <string name="what_is_new_in">Ce este nou în</string>
    <string name="full_list_of_changes_with_images_web_pdf_">Lista completă a modificărilor cu imagini (web, PDF)</string>
-   <string name="search_for_text_in_documents">Căutarea în mai multe documente</string>
+   <string name="search_for_text_in_multiple_documents">Caută text în mai multe documente</string>
    <string name="search_in_the_subfolders">Căutați în subfoldere</string>
    <string name="stop">Stop</string>
    <string name="document_converter_online_">Convertor de documente (online)</string>
@@ -90,7 +90,6 @@
    <string name="custom_css">CSS personalizat</string>
    <string name="styles">Stiluri</string>
    <string name="document_styles">Stilurile documentului</string>
-   <string name="user_styles">Stiluri de utilizare</string>
    <string name="automatic_hyphenation">Automată despărțirea în silabe</string>
    <string name="empty_line">Linie goală</string>
    <string name="margin_width">Lățimea marginii</string>
@@ -329,7 +328,7 @@
    <string name="copy">Copiați</string>
    <string name="search_in_google">Căutare în Google</string>
    <string name="search_in_document">Căutarea în document</string>
-   <string name="web_dict">Dicționar web</string>
+   <string name="web_dict_oxfort">Dicționar web (Oxford, ...)</string>
    <string name="___TO___CHECK___SECTION___"></string>
    <string name="font">Font</string>
    <string name="font_name">Numele fontului</string>
@@ -459,7 +458,7 @@
    <string name="crop_borders_symmetrically">Trasați marginile în mod simetric</string>
    <string name="displaying_the_author_and_title_of_the_pdf_book_from_the_meta_tags">Afișarea autorului și a titlului cărții PDF din etichetele meta</string>
    <string name="meta_tags">Meta etichete</string>
-   <string name="librera_pro_program_for_reading_books_without_advertising_installing_it_removes_advertising_in_this_application">Librera PRO - program pentru citirea cărților fără publicitate, instalarea acestora elimină publicitatea în această aplicație</string>
+   <string name="librera_pro">Librera pro: această aplicație, dar fără reclame</string>
    <string name="annotation">Adnotare</string>
    <string name="book">Carte</string>
    <string name="information">Informație</string>
@@ -492,7 +491,7 @@
    <string name="slider_scale">Glisor scară</string>
    <string name="chapter_format">Formatul capitolului</string>
    <string name="play_a_music_file">Redați un fișier de muzică</string>
-   <string name="rate_us">Ne evalua</string>
+   <string name="rate_app">Rata aplicație</string>
    <string name="reset">Restabili</string>
    <string name="status_bar_location">Bara de stare</string>
    <string name="add_to_bookmark">Adăugați la marcaje</string>
@@ -639,4 +638,15 @@
    <string name="cd_view_menu">Vizualiza meniul</string>
    <string name="cd_download_more_fonts">Descărcați mai multe fonturi</string>
    <string name="restore_search_query_when_the_application_starts">Restabiliți interogarea de căutare la pornire</string>
+   <string name="hide_read_books">Ascunde cărțile citite</string>
+   <string name="graphics_scale">Scara grafica</string>
+   <string name="сreate_a_folder_with_the_name_of_the_book">Creați un folder cu numele cărții</string>
+   <string name="memory">Memorie</string>
+   <string name="accessibility">Accesibilitate</string>
+   <string name="web_search_google">Căutare pe web (Google,...)</string>
+   <string name="synced_books">Cărți sincronizate</string>
+   <string name="smart_reflow">Reflow inteligent</string>
+   <string name="user_styles">Stiluri de utilizare</string>
+   <string name="engine">Motor</string>
+   <string name="restart_manually">Această modificare necesită o repornire manuală a aplicației</string>
 </resources>
