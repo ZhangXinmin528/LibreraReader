@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.foobnix.pdf.info"
     xmlns:tools="http://schemas.android.com/tools"
+    package="com.foobnix.pdf.info"
 
     android:installLocation="auto"
     android:versionCode="941"
@@ -22,7 +22,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
 
-
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT" />
@@ -36,7 +35,7 @@
             <action android:name="android.intent.action.SEARCH" />
         </intent>
         <intent>
-          <action android:name="android.intent.action.TTS_SERVICE" />
+            <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
     </queries>
 
@@ -52,7 +51,9 @@
         android:vmSafeMode="${appSafeMode}"
         tools:replace="label, icon, roundIcon">
 
-        <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
+        <meta-data
+            android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -259,7 +260,8 @@
             </intent-filter>
         </service>
 
-        <receiver android:name="androidx.media.session.MediaButtonReceiver"
+        <receiver
+            android:name="androidx.media.session.MediaButtonReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
@@ -267,9 +269,9 @@
         </receiver>
 
         <activity
-            android:exported="true"
             android:name="com.foobnix.tts.TTSActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -278,8 +280,8 @@
 
 
         <activity
-            android:exported="true"
             android:name="com.foobnix.ui2.CloudrailActivity"
+            android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -294,10 +296,9 @@
         </activity>
 
 
-
         <activity
-            android:exported="true"
             android:name="test.SvgActivity"
+            android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN1" />
@@ -305,6 +306,7 @@
             </intent-filter>
         </activity>
 
+        <!--程序入口-->
         <activity
             android:name="com.foobnix.ui2.MainTabs2"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"

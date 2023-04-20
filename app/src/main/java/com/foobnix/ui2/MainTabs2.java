@@ -217,6 +217,7 @@ public class MainTabs2 extends AdsFragmentActivity {
 
     @Override
     protected void onNewIntent(final Intent intent) {
+        super.onNewIntent(intent);
         LOG.d(TAG, "onNewIntent");
         // testIntentHandler();
         if (intent.getBooleanExtra(EXTRA_EXIT, false)) {
