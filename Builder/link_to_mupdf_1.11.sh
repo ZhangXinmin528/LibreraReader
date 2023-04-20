@@ -5,7 +5,8 @@
 BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 cd $BUILD_DIR
-
+echo "================== "
+echo "BUILD_DIR：$BUILD_DIR"
 echo "MUPDF : 1.11"
 echo "================== "
 
@@ -25,10 +26,12 @@ echo "================== "
 cd ..
 
 MUPDF_ROOT=${BUILD_DIR}/mupdf-1.11
-
 MUPDF_JAVA=$MUPDF_ROOT/platform/librera
-
 mkdir -p $MUPDF_JAVA/jni
+echo "================== "
+echo "MUPDF_JAVA：$MUPDF_JAVA"
+echo "MUPDF_ROOT：$MUPDF_ROOT"
+echo "================== "
 
 LIBS=${BUILD_DIR}/../app/src/main/jniLibs
 
@@ -68,11 +71,12 @@ whereis ndk-build
 echo "================== "
 
 if [ "$1" == "clean_ndk" ]; then
-/home/dev/Android/Sdk/ndk/21.4.7075529/ndk-build clean
+  #1.指定ndk路径
+/home/zxm/Android/Sdk/ndk/22.1.7171670/ndk-build clean
 rm -rf $MUPDF_JAVA/obj
 fi
 
-/home/dev/Android/Sdk/ndk/21.4.7075529/ndk-build NDK_APPLICATION_MK=jni/Application-16.mk
+/home/zxm/Android/Sdk/ndk/22.1.7171670/ndk-build NDK_APPLICATION_MK=jni/Application-16.mk
 echo "================== "
 echo "MUPDF:" $MUPDF_JAVA
 echo "LIBS:"  $LIBS
