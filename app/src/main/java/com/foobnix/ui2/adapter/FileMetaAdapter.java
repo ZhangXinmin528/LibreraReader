@@ -1,5 +1,6 @@
 package com.foobnix.ui2.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.TypedValue;
@@ -168,7 +169,7 @@ public class FileMetaAdapter extends AppRecycleAdapter<FileMeta, RecyclerView.Vi
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holderAll, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holderAll, @SuppressLint("RecyclerView") final int position) {
         final FileMeta fileMeta = getItem(position);
 
 

@@ -2,11 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:myseek="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scroll"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
-
 
 
     <LinearLayout
@@ -14,7 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="3dip">
-
 
 
         <TextView
@@ -57,11 +54,11 @@
                 android:visibility="visible" />
 
             <TextView
-                android:layout_marginLeft="10dip"
                 android:id="@+id/onCloseApp"
                 style="@style/textLinkWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dip"
                 android:layout_marginRight="5dip"
                 android:layout_weight="0"
                 android:ellipsize="end"
@@ -72,8 +69,6 @@
                 android:visibility="visible" />
 
         </LinearLayout>
-
-       " />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,7 +117,6 @@
 
 
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -353,7 +347,6 @@
 
 
             </LinearLayout>
-
 
 
         </LinearLayout>
@@ -625,7 +618,7 @@
             android:id="@+id/customBrightness"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"></com.foobnix.pdf.info.view.CustomSeek>
+            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -752,10 +745,10 @@
 
             <ImageView
                 android:id="@+id/moreModeSettings"
-                android:contentDescription="@string/settings"
                 android:layout_width="@dimen/wh_button"
                 android:layout_height="@dimen/wh_button"
                 android:layout_weight="0"
+                android:contentDescription="@string/settings"
                 android:padding="4dip"
                 android:src="@drawable/glyphicons_137_cogwheel"
                 android:tint="@color/tint_gray" />
@@ -1575,12 +1568,12 @@
 
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/pVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dip"
-            android:text="Version: 1.2.3" />
+            android:text="Version: 1.2.3"
+            android:visibility="gone" />
 
 
         <TextView
@@ -1615,10 +1608,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dip">
+            android:layout_marginTop="7dip"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -1666,10 +1659,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="100dip"
@@ -1686,10 +1679,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="100dip"
@@ -1721,8 +1714,6 @@
             android:gravity="center"
             android:singleLine="false"
             android:text="@string/rate_pdf_reader1" />
-
-
 
 
     </LinearLayout>

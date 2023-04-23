@@ -240,65 +240,6 @@ public class MainTabs2 extends AdsFragmentActivity {
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (Android6.isNeedToGrantAccess(this, requestCode)) {
-            Toast.makeText(this, R.string.the_application_needs_storage_permission, Toast.LENGTH_SHORT).show();
-            Android6.checkPermissions(this, false);
-            return;
-        }
-
-        if (Build.VERSION.SDK_INT < Android6.ANDROID_12_INT && resultCode != Activity.RESULT_OK) {
-            Toast.makeText(this, R.string.fail, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (requestCode == REQUEST_CODE_ADD_RESOURCE && resultCode == Activity.RESULT_OK) {
-            getContentResolver().takePersistableUriPermission(data.getData(), Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            Uri uri = data.getData();
-
-            String pathSAF = uri.toString();
-
-            StringDB.add(BookCSS.get().pathSAF, pathSAF, (db) -> BookCSS.get().pathSAF = db);
-
-            LOG.d("REQUEST_CODE_ADD_RESOURCE", pathSAF, BookCSS.get().pathSAF);
-
-            UIFragment uiFragment = tabFragments.get(pager.getCurrentItem());
-            if (uiFragment instanceof BrowseFragment2) {
-                BrowseFragment2 fr = (BrowseFragment2) uiFragment;
-                fr.displayAnyPath(pathSAF);
-            }
-        } else if (requestCode == GFile.REQUEST_CODE_SIGN_IN) {
-            GoogleSignIn.getSignedInAccountFromIntent(data)
-                    .addOnSuccessListener(googleAccount -> {
-                        AppSP.get().isEnableSync = true;
-                        Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
-                        EventBus.getDefault().post(new GDriveSycnEvent());
-                        GFile.runSyncService(MainTabs2.this);
-
-                        swipeRefreshLayout.setEnabled(isPullToRefreshEnable());
-
-                        AppSP.get().save();
-
-                    })
-                    .addOnFailureListener(exception ->
-                            {
-                                LOG.e(exception);
-                                Toast.makeText(this, R.string.fail, Toast.LENGTH_SHORT).show();
-                                AppSP.get().isEnableSync = false;
-                                swipeRefreshLayout.setEnabled(false);
-                                AppSP.get().save();
-
-                            }
-                    );
-
-
-        }
-
-
-    }
 
     public boolean isPullToRefreshEnable() {
         return isPullToRefreshEnable(MainTabs2.this, swipeRefreshLayout);
@@ -893,5 +834,65 @@ public class MainTabs2 extends AdsFragmentActivity {
         onFinishActivity();
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (Android6.isNeedToGrantAccess(this, requestCode)) {
+            Toast.makeText(this, R.string.the_application_needs_storage_permission, Toast.LENGTH_SHORT).show();
+            Android6.checkPermissions(this, false);
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT < Android6.ANDROID_12_INT && resultCode != Activity.RESULT_OK) {
+            Toast.makeText(this, R.string.fail, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (requestCode == REQUEST_CODE_ADD_RESOURCE && resultCode == Activity.RESULT_OK) {
+            getContentResolver().takePersistableUriPermission(data.getData(), Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            Uri uri = data.getData();
+
+            String pathSAF = uri.toString();
+
+            StringDB.add(BookCSS.get().pathSAF, pathSAF, (db) -> BookCSS.get().pathSAF = db);
+
+            LOG.d("REQUEST_CODE_ADD_RESOURCE", pathSAF, BookCSS.get().pathSAF);
+
+            UIFragment uiFragment = tabFragments.get(pager.getCurrentItem());
+            if (uiFragment instanceof BrowseFragment2) {
+                BrowseFragment2 fr = (BrowseFragment2) uiFragment;
+                fr.displayAnyPath(pathSAF);
+            }
+        } else if (requestCode == GFile.REQUEST_CODE_SIGN_IN) {
+            GoogleSignIn.getSignedInAccountFromIntent(data)
+                    .addOnSuccessListener(googleAccount -> {
+                        AppSP.get().isEnableSync = true;
+                        Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
+                        EventBus.getDefault().post(new GDriveSycnEvent());
+                        GFile.runSyncService(MainTabs2.this);
+
+                        swipeRefreshLayout.setEnabled(isPullToRefreshEnable());
+
+                        AppSP.get().save();
+
+                    })
+                    .addOnFailureListener(exception ->
+                            {
+                                LOG.e(exception);
+                                Toast.makeText(this, R.string.fail, Toast.LENGTH_SHORT).show();
+                                AppSP.get().isEnableSync = false;
+                                swipeRefreshLayout.setEnabled(false);
+                                AppSP.get().save();
+
+                            }
+                    );
+
+
+        }
+
+
+    }
 
 }

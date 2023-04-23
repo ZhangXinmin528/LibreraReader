@@ -105,6 +105,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 抽屉菜单
+ */
 public class PrefFragment2 extends UIFragment {
     public static final Pair<Integer, Integer> PAIR = new Pair<>(R.string.preferences, R.drawable.glyphicons_5_settings);
 
@@ -261,8 +264,7 @@ public class PrefFragment2 extends UIFragment {
     }
 
     @Override
-    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
-                             final Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         inflate = inflater.inflate(R.layout.fragment_preferences, container, false);
 
 
@@ -603,6 +605,7 @@ public class PrefFragment2 extends UIFragment {
             }
         });
 
+        //屏幕设置
         final TextView onFullScreen = inflate.findViewById(R.id.fullscreen);
 
         onFullScreen.setText(DocumentController.getFullScreenName(getActivity(), AppState.get().fullScreenMainMode));
@@ -623,6 +626,7 @@ public class PrefFragment2 extends UIFragment {
 
         });
 
+        //标签导航位置
         final TextView tapPositionTop = inflate.findViewById(R.id.tapPositionTop);
 
         String tabText = AppState.get().tapPositionTop ? getString(R.string.top) : getString(R.string.bottom);
@@ -682,6 +686,7 @@ public class PrefFragment2 extends UIFragment {
 
         });
 
+        //屏幕方向
         screenOrientation = inflate.findViewById(R.id.screenOrientation);
         screenOrientation.setText(DocumentController.getRotationText());
         TxtUtils.underlineTextView(screenOrientation);
@@ -757,6 +762,7 @@ public class PrefFragment2 extends UIFragment {
             onTheme();
         });
 
+        //主题颜色
         themeColor = inflate.findViewById(R.id.themeColor);
         themeColor.setOnClickListener(new
 
@@ -864,6 +870,7 @@ public class PrefFragment2 extends UIFragment {
                                               });
 
 
+        //pdf引擎
         TextView appEngine = inflate.findViewById(R.id.appEngine);
         appEngine.setText(AppsConfig.getCurrentEngine(getActivity()));
         TxtUtils.underlineTextView(appEngine);
@@ -901,7 +908,7 @@ public class PrefFragment2 extends UIFragment {
             p.show();
         });
 
-
+        //语言设置
         final TextView hypenLang = inflate.findViewById(R.id.appLang);
         hypenLang.setText(DialogTranslateFromTo.getLanuageByCode(AppState.get().appLang));
         TxtUtils.underlineTextView(hypenLang);
@@ -958,6 +965,7 @@ public class PrefFragment2 extends UIFragment {
                                                  }
                                              });
 
+        //字号设置
         final TextView appFontScale = inflate.findViewById(R.id.appFontScale);
         appFontScale.setText(
 
@@ -1008,8 +1016,7 @@ public class PrefFragment2 extends UIFragment {
                                                         OnCheckedChangeListener() {
 
                                                             @Override
-                                                            public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                         final boolean isChecked) {
+                                                            public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                 AppState.get().isRememberMode = isChecked;
                                                             }
                                                         });
@@ -1155,8 +1162,7 @@ public class PrefFragment2 extends UIFragment {
                                                             OnCheckedChangeListener() {
 
                                                                 @Override
-                                                                public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                             final boolean isChecked) {
+                                                                public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                     AppState.get().isCropBookCovers = isChecked;
                                                                     TempHolder.listHash++;
 
@@ -1171,8 +1177,7 @@ public class PrefFragment2 extends UIFragment {
                                                              OnCheckedChangeListener() {
 
                                                                  @Override
-                                                                 public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                              final boolean isChecked) {
+                                                                 public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                      AppState.get().isBookCoverEffect = isChecked;
                                                                      IMG.clearMemoryCache();
                                                                      IMG.clearDiscCache();
@@ -1196,8 +1201,7 @@ public class PrefFragment2 extends UIFragment {
                                                              OnCheckedChangeListener() {
 
                                                                  @Override
-                                                                 public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                              final boolean isChecked) {
+                                                                 public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                      AppState.get().isBorderAndShadow = isChecked;
                                                                      TempHolder.listHash++;
 
@@ -1212,8 +1216,7 @@ public class PrefFragment2 extends UIFragment {
                                                         OnCheckedChangeListener() {
 
                                                             @Override
-                                                            public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                         final boolean isChecked) {
+                                                            public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                 AppState.get().isShowImages = isChecked;
                                                                 TempHolder.listHash++;
                                                                 isCropBookCovers.setEnabled(AppState.get().isShowImages);
@@ -1233,8 +1236,7 @@ public class PrefFragment2 extends UIFragment {
                                                           OnCheckedChangeListener() {
 
                                                               @Override
-                                                              public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                           final boolean isChecked) {
+                                                              public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                   AppState.get().isLoopAutoplay = isChecked;
                                                               }
                                                           });
@@ -1246,8 +1248,7 @@ public class PrefFragment2 extends UIFragment {
                                                           OnCheckedChangeListener() {
 
                                                               @Override
-                                                              public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                           final boolean isChecked) {
+                                                              public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                   AppState.get().isOpenLastBook = isChecked;
                                                               }
                                                           });
@@ -1259,8 +1260,7 @@ public class PrefFragment2 extends UIFragment {
                                                                 OnCheckedChangeListener() {
 
                                                                     @Override
-                                                                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                                 final boolean isChecked) {
+                                                                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                         AppState.get().isRestoreSearchQuery = isChecked;
                                                                     }
                                                                 });
@@ -1272,8 +1272,7 @@ public class PrefFragment2 extends UIFragment {
                                                                 OnCheckedChangeListener() {
 
                                                                     @Override
-                                                                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                                 final boolean isChecked) {
+                                                                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                         AppState.get().isShowCloseAppDialog = isChecked;
                                                                     }
                                                                 });
@@ -1297,6 +1296,7 @@ public class PrefFragment2 extends UIFragment {
             }
         };
 
+        //书架设置
         TxtUtils.underlineTextView(inflate.findViewById(R.id.moreLybraryettings)).setOnClickListener(v -> {
 
 
@@ -1323,14 +1323,7 @@ public class PrefFragment2 extends UIFragment {
             final CheckBox isHideReadBook = new CheckBox(v.getContext());
             isHideReadBook.setText(R.string.hide_read_books);
 
-            final AlertDialog d = AlertDialogs.showViewDialog(getActivity(), null,
-                    isFirstSurname,
-                    isSkipFolderWithNOMEDIA,
-                    isShowOnlyOriginalFileNames,
-                    isAuthorTitleFromMetaPDF,
-                    isUseCalibreOpf,
-                    isDisplayAnnotation,
-                    isHideReadBook);
+            final AlertDialog d = AlertDialogs.showViewDialog(getActivity(), null, isFirstSurname, isSkipFolderWithNOMEDIA, isShowOnlyOriginalFileNames, isAuthorTitleFromMetaPDF, isUseCalibreOpf, isDisplayAnnotation, isHideReadBook);
 
             isFirstSurname.setChecked(AppState.get().isFirstSurname);
             isSkipFolderWithNOMEDIA.setChecked(AppState.get().isSkipFolderWithNOMEDIA);
@@ -1379,7 +1372,7 @@ public class PrefFragment2 extends UIFragment {
         });
 
 
-        ////
+        ////各种文件格式
         ((CheckBox) inflate.findViewById(R.id.supportPDF)).
 
                 setChecked(AppState.get().supportPDF);
@@ -1388,8 +1381,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportPDF = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1405,8 +1397,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportXPS = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1422,8 +1413,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportDJVU = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1438,8 +1428,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportEPUB = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1454,8 +1443,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportFB2 = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1471,8 +1459,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportTXT = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1488,8 +1475,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportMOBI = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1505,8 +1491,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportRTF = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1522,8 +1507,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportDOCX = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1543,8 +1527,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportODT = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1560,8 +1543,7 @@ public class PrefFragment2 extends UIFragment {
                 setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                     @Override
-                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                 final boolean isChecked) {
+                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                         AppState.get().supportCBZ = isChecked;
                         ExtUtils.updateSearchExts();
                         handler.removeCallbacks(ask);
@@ -1576,8 +1558,7 @@ public class PrefFragment2 extends UIFragment {
                                                       OnCheckedChangeListener() {
 
                                                           @Override
-                                                          public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                       final boolean isChecked) {
+                                                          public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                               AppState.get().supportZIP = isChecked;
                                                               ExtUtils.updateSearchExts();
                                                               handler.removeCallbacks(ask);
@@ -1595,8 +1576,7 @@ public class PrefFragment2 extends UIFragment {
                                                        OnCheckedChangeListener() {
 
                                                            @Override
-                                                           public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                        final boolean isChecked) {
+                                                           public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                AppState.get().supportArch = isChecked;
                                                                ExtUtils.updateSearchExts();
                                                                handler.removeCallbacks(ask);
@@ -1630,24 +1610,19 @@ public class PrefFragment2 extends UIFragment {
             if (isChecked && PasswordState.get().hasPassword()) {
                 AppState.get().isAppPassword = true;
             } else if (!PasswordState.get().hasPassword()) {
-                PasswordDialog.showDialog(getActivity(), true, () ->
-                        isAppPassword.setChecked(PasswordState.get().hasPassword())
-                );
+                PasswordDialog.showDialog(getActivity(), true, () -> isAppPassword.setChecked(PasswordState.get().hasPassword()));
             } else {
                 AppState.get().isAppPassword = false;
                 isAppPassword.setChecked(false);
             }
         });
 
-        TxtUtils.underlineTextView(inflate.findViewById(R.id.appPassword)).setOnClickListener(v ->
-                PasswordDialog.showDialog(getActivity(), true, () -> {
-                            if (PasswordState.get().hasPassword()) {
-                                isAppPassword.setChecked(true);
-                                AppState.get().isAppPassword = true;
-                            }
-                        }
-                )
-        );
+        TxtUtils.underlineTextView(inflate.findViewById(R.id.appPassword)).setOnClickListener(v -> PasswordDialog.showDialog(getActivity(), true, () -> {
+            if (PasswordState.get().hasPassword()) {
+                isAppPassword.setChecked(true);
+                AppState.get().isAppPassword = true;
+            }
+        }));
 
         // What is new
         CheckBox showWhatIsNew = inflate.findViewById(R.id.isShowWhatIsNewDialog);
@@ -1655,8 +1630,7 @@ public class PrefFragment2 extends UIFragment {
         showWhatIsNew.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
-            public void onCheckedChanged(final CompoundButton buttonView,
-                                         final boolean isChecked) {
+            public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                 AppState.get().isShowWhatIsNewDialog = isChecked;
             }
         });
@@ -1667,8 +1641,7 @@ public class PrefFragment2 extends UIFragment {
         isMenuIntegration.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
-            public void onCheckedChanged(final CompoundButton buttonView,
-                                         final boolean isChecked) {
+            public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                 AppState.get().isMenuIntegration = isChecked;
                 DocumentController.doContextMenu(getActivity());
             }
@@ -2015,8 +1988,7 @@ public class PrefFragment2 extends UIFragment {
                                                                 OnCheckedChangeListener() {
 
                                                                     @Override
-                                                                    public void onCheckedChanged(final CompoundButton buttonView,
-                                                                                                 final boolean isChecked) {
+                                                                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                                                                         AppState.get().isRememberDictionary = isChecked;
                                                                     }
                                                                 });
@@ -2106,11 +2078,11 @@ public class PrefFragment2 extends UIFragment {
                                                 }
                                             });
 
+        //主题颜色
         LinearLayout colorsLine = inflate.findViewById(R.id.colorsLine);
         colorsLine.removeAllViews();
 
-        for (
-                String color : AppState.STYLE_COLORS) {
+        for (String color : AppState.STYLE_COLORS) {
             View view = inflater.inflate(R.layout.item_color, (ViewGroup) inflate, false);
             view.setBackgroundColor(Color.TRANSPARENT);
             final int intColor = Color.parseColor(color);
@@ -2559,28 +2531,27 @@ public class PrefFragment2 extends UIFragment {
 
                 setOnClickListener(v ->
 
-                        {
+                {
 
-                            if (BooksService.isRunning) {
-                                Toast.makeText(getActivity(), R.string.please_wait_books_are_being_processed_, Toast.LENGTH_SHORT).show();
-                                return;
-                            }
+                    if (BooksService.isRunning) {
+                        Toast.makeText(getActivity(), R.string.please_wait_books_are_being_processed_, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-                            AppProfile.showDialog(getActivity(), profile -> {
-                                if (!profile.equals(AppProfile.getCurrent(getActivity()))) {
-                                    AlertDialogs.showOkDialog(getActivity(), getActivity().getString(R.string.do_you_want_to_switch_profile_), new Runnable() {
+                    AppProfile.showDialog(getActivity(), profile -> {
+                        if (!profile.equals(AppProfile.getCurrent(getActivity()))) {
+                            AlertDialogs.showOkDialog(getActivity(), getActivity().getString(R.string.do_you_want_to_switch_profile_), new Runnable() {
 
-                                        @Override
-                                        public void run() {
-                                            AppProfile.saveCurrent(getActivity(), profile);
-                                            onTheme();
-                                        }
-                                    });
+                                @Override
+                                public void run() {
+                                    AppProfile.saveCurrent(getActivity(), profile);
+                                    onTheme();
                                 }
-                                return false;
                             });
                         }
-                );
+                        return false;
+                    });
+                });
 
 
         return inflate;

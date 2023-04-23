@@ -153,11 +153,11 @@ public class DefaultListeners {
                     EventBus.getDefault().post(new OpenDirMessage(result.getPath()));
 
                 } else {
-                    if(AppSP.get().readingMode == AppState.READING_MODE_OPEN_WITH ){
+                    if (AppSP.get().readingMode == AppState.READING_MODE_OPEN_WITH) {
                         AppData.get().addRecent(new SimpleMeta(result.getPath()));
                         EventBus.getDefault().post(new NotifyAllFragments());
                         ExtUtils.openWith(a, new File(result.getPath()));
-                        return  false;
+                        return false;
                     }
 
                     if (AppSP.get().readingMode == AppState.READING_MODE_TAG_MANAGER && !ExtUtils.isExteralSD(result.getPath())) {
@@ -169,6 +169,7 @@ public class DefaultListeners {
                             }
                         });
                     } else {
+                        //todo:item 点击事件打开文档
                         ExtUtils.openFile(a, result);
                     }
                 }

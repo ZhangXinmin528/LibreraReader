@@ -46,6 +46,9 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 图书资源本地搜索
+ */
 public class BooksService extends IntentService {
     public static String TAG = "BooksService";
     public static String INTENT_NAME = "BooksServiceIntent";
@@ -157,7 +160,6 @@ public class BooksService extends IntentService {
             //TESET
 
 
-
             if (ACTION_RUN_SYNCRONICATION.equals(intent.getAction())) {
                 if (AppSP.get().isEnableSync) {
 
@@ -217,7 +219,7 @@ public class BooksService extends IntentService {
                 }
 
                 List<FileMeta> localMeta = new LinkedList<FileMeta>();
-                if(JsonDB.isEmpty(BookCSS.get().searchPathsJson)){
+                if (JsonDB.isEmpty(BookCSS.get().searchPathsJson)) {
                     sendFinishMessage();
                     return;
                 }
@@ -243,7 +245,7 @@ public class BooksService extends IntentService {
 
                 List<FileMeta> allNone = AppDB.get().getAllByState(FileMetaCore.STATE_NONE);
                 for (FileMeta m : allNone) {
-                    LOG.d("BooksService-createMetaIfNeedSafe-service", m.getTitle(),m.getPath(), m.getTitle());
+                    LOG.d("BooksService-createMetaIfNeedSafe-service", m.getTitle(), m.getPath(), m.getTitle());
                     FileMetaCore.createMetaIfNeedSafe(m.getPath(), false);
                 }
 
@@ -265,8 +267,6 @@ public class BooksService extends IntentService {
                         IMG.clearMemoryCache();
                     }
                 });
-
-
 
 
                 AppDB.get().deleteAllData();
@@ -336,13 +336,13 @@ public class BooksService extends IntentService {
 
 
                 for (FileMeta meta : itemsMeta) {
-                    if(FileMetaCore.isSafeToExtactBook(meta.getPath())) {
+                    if (FileMetaCore.isSafeToExtactBook(meta.getPath())) {
                         EbookMeta ebookMeta = FileMetaCore.get().getEbookMeta(meta.getPath(), CacheDir.ZipService, true);
                         FileMetaCore.get().udpateFullMeta(meta, ebookMeta);
                     }
                 }
 
-                SharedBooks.updateProgress(itemsMeta, true,-1);
+                SharedBooks.updateProgress(itemsMeta, true, -1);
                 AppDB.get().updateAll(itemsMeta);
 
 
@@ -359,7 +359,7 @@ public class BooksService extends IntentService {
 
                 List<FileMeta> allNone = AppDB.get().getAllByState(FileMetaCore.STATE_NONE);
                 for (FileMeta m : allNone) {
-                    LOG.d("BooksService-createMetaIfNeedSafe-service", m.getTitle(),m.getPath(), m.getTitle());
+                    LOG.d("BooksService-createMetaIfNeedSafe-service", m.getTitle(), m.getPath(), m.getTitle());
                     FileMetaCore.createMetaIfNeedSafe(m.getPath(), false);
                 }
 

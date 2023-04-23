@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -12,34 +11,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dip"
-        android:layout_marginRight="4dip"
         android:layout_marginTop="4dip"
+        android:layout_marginRight="4dip"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageView
-            android:visibility="visible"
-            android:contentDescription="@string/cd_application_menu"
-                android:id="@+id/menu2"
-            android:padding="4dip"
-
-            android:background="@drawable/bg_search_edit"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:layout_margin="0dip"
+            android:id="@+id/menu2"
             android:layout_width="@dimen/wh_button"
             android:layout_height="@dimen/wh_button"
-            android:src="@drawable/glyphicons_600_menu" />
+            android:layout_margin="0dip"
 
+            android:adjustViewBounds="true"
+            android:background="@drawable/bg_search_edit"
+            android:contentDescription="@string/cd_application_menu"
+            android:cropToPadding="true"
+            android:padding="4dip"
+            android:src="@drawable/glyphicons_600_menu"
+            android:visibility="visible" />
 
 
         <RelativeLayout
-            android:layout_marginLeft="2dip"
-            android:layout_marginRight="2dip"
             android:layout_width="match_parent"
             android:layout_height="@dimen/wh_button"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="2dip"
             android:layout_weight="1"
-            android:focusableInTouchMode="true" >
+            android:focusableInTouchMode="true">
 
             <AutoCompleteTextView
                 android:id="@+id/filterLine"
@@ -82,12 +80,12 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:layout_marginRight="-8dip"
                 android:id="@+id/myAutoCompleteImage"
                 style="@style/buttonClear"
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="-8dip"
                 android:layout_toLeftOf="@+id/cleanFilter"
                 android:layout_weight="0"
                 android:src="@drawable/glyphicons_739_check" />
@@ -110,15 +108,15 @@
             android:layout_height="@dimen/wh_button"
             android:background="@drawable/bg_search_second"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
-                android:contentDescription="@string/cd_sort_results"
                 android:id="@+id/sortBy"
                 android:layout_width="@dimen/sort_by_size"
                 android:layout_height="@dimen/wh_button"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
+                android:contentDescription="@string/cd_sort_results"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:paddingLeft="8dip"
@@ -128,16 +126,16 @@
                 android:textStyle="normal" />
 
             <ImageView
-                android:visibility="visible"
-                android:contentDescription="@string/cd_sort_order"
                 android:id="@+id/sortOrder"
                 android:layout_width="@dimen/wh_button_small"
                 android:layout_height="@dimen/wh_button_small"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
+                android:contentDescription="@string/cd_sort_order"
                 android:padding="4dip"
                 android:src="@drawable/glyphicons_221_chevron_down"
-                android:tint="@color/white" />
+                android:tint="@color/white"
+                android:visibility="visible" />
 
             <View
                 android:layout_width="1dip"
@@ -145,12 +143,12 @@
                 android:background="@color/tint_divider" />
 
             <ImageView
-                android:contentDescription="@string/update_library"
                 android:id="@+id/onRefresh"
                 style="@style/buttonWhite"
                 android:layout_width="@dimen/wh_button"
                 android:layout_height="@dimen/wh_button"
                 android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/update_library"
                 android:src="@drawable/glyphicons_82_refresh" />
 
             <View
@@ -159,19 +157,18 @@
                 android:background="@color/tint_divider" />
 
             <ImageView
-                android:contentDescription="@string/cd_view_menu"
                 android:id="@+id/onGridList"
                 style="@style/buttonWhite"
                 android:layout_width="@dimen/wh_button"
                 android:layout_height="@dimen/wh_button"
+                android:contentDescription="@string/cd_view_menu"
                 android:src="@drawable/my_glyphicons_114_paragraph_justify" />
         </LinearLayout>
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-     >
+        android:layout_height="match_parent">
 
         <com.foobnix.ui2.fast.FastScrollRecyclerView
             android:id="@+id/recyclerView"
@@ -183,8 +180,7 @@
             app:handleColor="#999999"
             app:hideScrollbar="true"
             app:showTrack="false"
-            app:trackColor="#bbbbbb" >
-        </com.foobnix.ui2.fast.FastScrollRecyclerView>
+            app:trackColor="#bbbbbb" />
     </FrameLayout>
 
 </LinearLayout>

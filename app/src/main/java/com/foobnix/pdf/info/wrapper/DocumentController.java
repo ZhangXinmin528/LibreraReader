@@ -60,6 +60,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 文档各种控制
+ */
 public abstract class DocumentController {
 
     public static final String EXTRA_PASSWORD = "password";

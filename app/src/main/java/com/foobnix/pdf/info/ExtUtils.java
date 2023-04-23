@@ -301,6 +301,12 @@ public class ExtUtils {
 
     }
 
+    /**
+     * 打开文档
+     *
+     * @param a
+     * @param meta
+     */
     public static void openFile(Activity a, FileMeta meta) {
         File file = new File(meta.getPath());
 
@@ -757,6 +763,14 @@ public class ExtUtils {
         return uri != null && ("content".equals(uri.getScheme()) || isValidFile(uri.getPath()));
     }
 
+    /**
+     * 设置翻书模式等习惯
+     * TODO:需要
+     *
+     * @param c
+     * @param file
+     * @return
+     */
     public static boolean showDocumentWithoutDialog2(final Context c, final File file) {
         if (c == null) {
             return false;
@@ -1015,6 +1029,14 @@ public class ExtUtils {
         return uri;
     }
 
+    /**
+     * 水平翻页模式
+     *
+     * @param c
+     * @param uri
+     * @param percent
+     * @param playlist
+     */
     private static void openHorizontalView(final Context c, final Uri uri, final float percent, String playlist) {
         if (uri == null) {
             Toast.makeText(c, R.string.file_not_found, Toast.LENGTH_LONG).show();

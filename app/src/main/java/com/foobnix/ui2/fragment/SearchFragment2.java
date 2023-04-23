@@ -80,6 +80,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.Stack;
 
+//书架
 public class SearchFragment2 extends UIFragment<FileMeta> {
 
     public static final String EMPTY_ID = "\u00A0";
@@ -457,6 +458,7 @@ public class SearchFragment2 extends UIFragment<FileMeta> {
         });
         sortOrder.setVisibility(TxtUtils.visibleIf(AppState.get().isVisibleSorting));
 
+        //todo:绑定各种点击事件
         bindAdapter(searchAdapter);
 
         searchAdapter.setOnAuthorClickListener(onAuthorClick);

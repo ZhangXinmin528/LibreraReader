@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dip"
         android:layout_weight="0"
+        android:text="@string/hyphenation_language"
         android:textColor="@color/white"
-        android:text="@string/hyphenation_language" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/hypenLang"
@@ -25,7 +26,8 @@
         android:layout_marginLeft="10dip"
         android:layout_weight="1"
         android:minWidth="50dip"
-        android:text="Russian" />
+        android:text="Russian"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/hypenApply"
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dip"
         android:layout_weight="0"
+        android:text="@string/apply"
         android:textAllCaps="true"
-        android:text="@string/apply" />
+        tools:ignore="TextContrastCheck" />
 </LinearLayout>

@@ -119,6 +119,10 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 水平翻页模式
+ * TODO:需要
+ */
 public class HorizontalViewActivity extends AdsFragmentActivity {
 
     public boolean prev = true;
@@ -146,174 +150,22 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
     int flippingTimer = 0;
     boolean isFlipping = false;
-    Runnable reloadDocBrigntness = new Runnable() {
 
-        @Override
-        public void run() {
-            onBC.underline(AppState.get().isEnableBC);
-            IMG.clearMemoryCache();
-            int position = viewPager.getCurrentItem();
-            ImagePageFragment f2 = (ImagePageFragment) getSupportFragmentManager().findFragmentByTag("f" + (viewPager.getCurrentItem()));
-            LOG.d("reloadDocBrigntness", f2);
-            if (f2 != null) {
-
-                final Bundle b = new Bundle();
-                b.putInt(ImagePageFragment.POS, position);
-                b.putBoolean(ImagePageFragment.IS_TEXTFORMAT, dc.isTextFormat());
-                b.putString(ImagePageFragment.PAGE_PATH, dc.getPageUrl(position).toString());
-
-                f2.setArguments(b);
-
-                f2.loadImageGlide();
-            }
-            return;
-        }
-    };
-    Runnable closeRunnable = new Runnable() {
-
-        @Override
-        public void run() {
-            LOG.d("Close App");
-            if (dc != null) {
-                dc.saveCurrentPageAsync();
-                dc.onCloseActivityAdnShowInterstial();
-                dc.closeActivity();
-            } else {
-                finish();
-            }
-            MainTabs2.closeApp(HorizontalViewActivity.this);
-        }
-    };
     long lastClick = 0;
     long lastClickMaxTime = 300;
-    Runnable onCloseDialog = new Runnable() {
 
-        @Override
-        public void run() {
-            if (AppState.get().selectedText != null) {
-                AppState.get().selectedText = null;
-                EventBus.getDefault().post(new InvalidateMessage());
-            }
-        }
-    };    Runnable flippingRunnable = new Runnable() {
+    UpdatableFragmentPagerAdapter pagerAdapter;
 
-        @Override
-        public void run() {
-            LOG.d("flippingRunnable");
-            if (flippingTimer >= AppState.get().flippingInterval) {
-                flippingTimer = 0;
-                if (dc.getCurentPage() == dc.getPageCount() - 1) {
-                    if (AppState.get().isLoopAutoplay) {
-                        dc.onGoToPage(1);
-                    } else {
-                        onFlippingStop(null);
-                        return;
-                    }
-                } else {
-                    nextPage();
-                }
-            }
-
-            flippingTimer += 1;
-            flippingIntervalView.setText("{" + (AppState.get().flippingInterval - flippingTimer + 1) + "}");
-            flippingIntervalView.setVisibility(AppState.get().isShowToolBar ? View.VISIBLE : View.GONE);
-            flippingHandler.postDelayed(flippingRunnable, 1000);
-
-        }
-    };
-    Runnable clearFlags = new Runnable() {
-
-        @Override
-        public void run() {
-            try {
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                LOG.d("FLAG clearFlags", "FLAG_KEEP_SCREEN_ON", "clear");
-            } catch (Exception e) {
-                LOG.e(e);
-            }
-        }
-    };
-    UpdatableFragmentPagerAdapter pagerAdapter;    Runnable updateTimePower = new Runnable() {
-
-        @Override
-        public void run() {
-            LOG.d("Update time and updateTimePower");
-            try {
-                if (pagesTime != null) {
-                    pagesTime.setText(UiSystemUtils.getSystemTime(HorizontalViewActivity.this));
-                    pagesTime1.setText(UiSystemUtils.getSystemTime(HorizontalViewActivity.this));
-
-                    int myLevel = UiSystemUtils.getPowerLevel(HorizontalViewActivity.this);
-                    pagesPower.setText(myLevel + "%");
-                }
-            } catch (Exception e) {
-                LOG.e(e);
-            }
-            LOG.d("Update time and power");
-            handlerTimer.postDelayed(updateTimePower, AppState.APP_UPDATE_TIME_IN_UI);
-
-        }
-    };
-    Runnable doShowHideWrapperControllsRunnable = new Runnable() {
-
-        @Override
-        public void run() {
-            doShowHideWrapperControlls();
-        }
-    };
     long keyTimeout = 0;
-    OnLongClickListener onCloseLongClick = new OnLongClickListener() {
 
-        @Override
-        public boolean onLongClick(final View v) {
-            Vibro.vibrate();
-            CloseAppDialog.showOnLongClickDialog(HorizontalViewActivity.this, v, dc);
-            hideAds();
-            return true;
-        }
-    };    Runnable onRefresh = new Runnable() {
+    private int currentScrollState;
+    private volatile boolean isMyKey = false;
 
-        @Override
-        public void run() {
-            dc.saveCurrentPageAsync();
-            updateUI(viewPager.getCurrentItem());
-            showHideInfoToolBar();
-            updateSeekBarColorAndSize();
-            BrightnessHelper.updateOverlay(overlay);
-            hideShow();
-            TTSEngine.get().stop();
-            showPagesHelper();
-
-        }
-    };
-    private int currentScrollState;    public View.OnClickListener onBookmarks = new View.OnClickListener() {
-
-        @Override
-        public void onClick(final View v) {
-            DragingDialogs.showBookmarksDialog(anchor, dc, new Runnable() {
-
-                @Override
-                public void run() {
-                    showHideHistory();
-                    showPagesHelper();
-                    updateUI(dc.getCurrentPage());
-                }
-            });
-        }
-    };
-    private volatile boolean isMyKey = false;    View.OnLongClickListener onBookmarksLong = new View.OnLongClickListener() {
-
-        @Override
-        public boolean onLongClick(final View arg0) {
-            DragingDialogs.addBookmarksLong(anchor, dc);
-            showPagesHelper();
-            return true;
-        }
-    };
 
     @Override
     protected void onNewIntent(final Intent intent) {
 
+        super.onNewIntent(intent);
         if (TTSNotification.ACTION_TTS.equals(intent.getAction())) {
             return;
         }
@@ -328,44 +180,9 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         DocumentController.doRotation(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horiziontal_view);
-    }    SeekBar.OnSeekBarChangeListener onSeek = new SeekBar.OnSeekBarChangeListener() {
+    }
 
-        @Override
-        public void onStopTrackingTouch(final SeekBar seekBar) {
-        }
 
-        @Override
-        public void onStartTrackingTouch(final SeekBar seekBar) {
-        }
-
-        @Override
-        public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
-            // updateUI(progress);
-            viewPager.setCurrentItem(progress, false);
-            flippingTimer = 0;
-
-            if (AppState.get().isEditMode && !fromUser) {
-                AppState.get().isEditMode = false;
-                hideShow();
-            }
-            if (fromUser) {
-                //Apps.accessibilityText(HorizontalViewActivity.this, getString(R.string.m_current_page) + " " + dc.getCurentPageFirst1());
-
-            }
-        }
-    };
-
-    final Runnable onCropChange = () -> {
-        SettingsManager.getBookSettings().cp = AppSP.get().isCrop;
-        reloadDocBrigntness.run();
-        onCrop.underline(AppSP.get().isCrop);
-
-        PageImageState.get().isAutoFit = true;
-        EventBus.getDefault().post(new MessageAutoFit(viewPager.getCurrentItem()));
-
-        AppState.get().isEditMode = false;
-        hideShow();
-    };
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -514,6 +331,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         touch1.setOnMove(onMoveAction);
         touch2.setOnMove(onMoveAction);
 
+        //文档居中
         moveCenter = findViewById(R.id.moveCenter);
 
         currentSeek = (TextView) findViewById(R.id.currentSeek);
@@ -921,7 +739,6 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         onCrop.setVisibility(isTextFomat && !AppSP.get().isCrop ? View.GONE : View.VISIBLE);
 
 
-
         onCrop.setOnClickListener(v -> DragingDialogs.customCropDialog(anchor, dc, onCropChange));
         onCrop.setOnLongClickListener(v -> {
             AppSP.get().isCrop = !AppSP.get().isCrop;
@@ -1053,7 +870,6 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                     }
                 });
             }
-
 
 
             @Override
@@ -1342,7 +1158,9 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
         }
 
-    }    OnPageChangeListener onViewPagerChangeListener = new OnPageChangeListener() {
+    }
+
+    OnPageChangeListener onViewPagerChangeListener = new OnPageChangeListener() {
 
         @Override
         public void onPageSelected(final int pos) {
@@ -1390,7 +1208,9 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
     @Subscribe
     public void onMessegeBrightness(MessegeBrightness msg) {
         BrightnessHelper.onMessegeBrightness(handler, msg, toastBrightnessText, overlay);
-    }    Runnable reloadDoc = new Runnable() {
+    }
+
+    Runnable reloadDoc = new Runnable() {
 
         @Override
         public void run() {
@@ -2514,18 +2334,208 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
     }
 
 
+    Runnable reloadDocBrigntness = new Runnable() {
+
+        @Override
+        public void run() {
+            onBC.underline(AppState.get().isEnableBC);
+            IMG.clearMemoryCache();
+            int position = viewPager.getCurrentItem();
+            ImagePageFragment f2 = (ImagePageFragment) getSupportFragmentManager().findFragmentByTag("f" + (viewPager.getCurrentItem()));
+            LOG.d("reloadDocBrigntness", f2);
+            if (f2 != null) {
+
+                final Bundle b = new Bundle();
+                b.putInt(ImagePageFragment.POS, position);
+                b.putBoolean(ImagePageFragment.IS_TEXTFORMAT, dc.isTextFormat());
+                b.putString(ImagePageFragment.PAGE_PATH, dc.getPageUrl(position).toString());
+
+                f2.setArguments(b);
+
+                f2.loadImageGlide();
+            }
+            return;
+        }
+    };
+    Runnable closeRunnable = new Runnable() {
+
+        @Override
+        public void run() {
+            LOG.d("Close App");
+            if (dc != null) {
+                dc.saveCurrentPageAsync();
+                dc.onCloseActivityAdnShowInterstial();
+                dc.closeActivity();
+            } else {
+                finish();
+            }
+            MainTabs2.closeApp(HorizontalViewActivity.this);
+        }
+    };
+    Runnable onCloseDialog = new Runnable() {
+
+        @Override
+        public void run() {
+            if (AppState.get().selectedText != null) {
+                AppState.get().selectedText = null;
+                EventBus.getDefault().post(new InvalidateMessage());
+            }
+        }
+    };
+    Runnable flippingRunnable = new Runnable() {
+
+        @Override
+        public void run() {
+            LOG.d("flippingRunnable");
+            if (flippingTimer >= AppState.get().flippingInterval) {
+                flippingTimer = 0;
+                if (dc.getCurentPage() == dc.getPageCount() - 1) {
+                    if (AppState.get().isLoopAutoplay) {
+                        dc.onGoToPage(1);
+                    } else {
+                        onFlippingStop(null);
+                        return;
+                    }
+                } else {
+                    nextPage();
+                }
+            }
+
+            flippingTimer += 1;
+            flippingIntervalView.setText("{" + (AppState.get().flippingInterval - flippingTimer + 1) + "}");
+            flippingIntervalView.setVisibility(AppState.get().isShowToolBar ? View.VISIBLE : View.GONE);
+            flippingHandler.postDelayed(flippingRunnable, 1000);
+
+        }
+    };
+    Runnable clearFlags = new Runnable() {
+
+        @Override
+        public void run() {
+            try {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                LOG.d("FLAG clearFlags", "FLAG_KEEP_SCREEN_ON", "clear");
+            } catch (Exception e) {
+                LOG.e(e);
+            }
+        }
+    };
+    Runnable updateTimePower = new Runnable() {
+
+        @Override
+        public void run() {
+            LOG.d("Update time and updateTimePower");
+            try {
+                if (pagesTime != null) {
+                    pagesTime.setText(UiSystemUtils.getSystemTime(HorizontalViewActivity.this));
+                    pagesTime1.setText(UiSystemUtils.getSystemTime(HorizontalViewActivity.this));
+
+                    int myLevel = UiSystemUtils.getPowerLevel(HorizontalViewActivity.this);
+                    pagesPower.setText(myLevel + "%");
+                }
+            } catch (Exception e) {
+                LOG.e(e);
+            }
+            LOG.d("Update time and power");
+            handlerTimer.postDelayed(updateTimePower, AppState.APP_UPDATE_TIME_IN_UI);
+
+        }
+    };
+    Runnable doShowHideWrapperControllsRunnable = new Runnable() {
+
+        @Override
+        public void run() {
+            doShowHideWrapperControlls();
+        }
+    };
+    OnLongClickListener onCloseLongClick = new OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(final View v) {
+            Vibro.vibrate();
+            CloseAppDialog.showOnLongClickDialog(HorizontalViewActivity.this, v, dc);
+            hideAds();
+            return true;
+        }
+    };
+    Runnable onRefresh = new Runnable() {
+
+        @Override
+        public void run() {
+            dc.saveCurrentPageAsync();
+            updateUI(viewPager.getCurrentItem());
+            showHideInfoToolBar();
+            updateSeekBarColorAndSize();
+            BrightnessHelper.updateOverlay(overlay);
+            hideShow();
+            TTSEngine.get().stop();
+            showPagesHelper();
+
+        }
+    };
+    public View.OnClickListener onBookmarks = new View.OnClickListener() {
+
+        @Override
+        public void onClick(final View v) {
+            DragingDialogs.showBookmarksDialog(anchor, dc, new Runnable() {
+
+                @Override
+                public void run() {
+                    showHideHistory();
+                    showPagesHelper();
+                    updateUI(dc.getCurrentPage());
+                }
+            });
+        }
+    };
+    View.OnLongClickListener onBookmarksLong = new View.OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(final View arg0) {
+            DragingDialogs.addBookmarksLong(anchor, dc);
+            showPagesHelper();
+            return true;
+        }
+    };
+
+    SeekBar.OnSeekBarChangeListener onSeek = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onStopTrackingTouch(final SeekBar seekBar) {
+        }
+
+        @Override
+        public void onStartTrackingTouch(final SeekBar seekBar) {
+        }
+
+        @Override
+        public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
+            // updateUI(progress);
+            viewPager.setCurrentItem(progress, false);
+            flippingTimer = 0;
+
+            if (AppState.get().isEditMode && !fromUser) {
+                AppState.get().isEditMode = false;
+                hideShow();
+            }
+            if (fromUser) {
+                //Apps.accessibilityText(HorizontalViewActivity.this, getString(R.string.m_current_page) + " " + dc.getCurentPageFirst1());
+
+            }
+        }
+    };
 
 
 
+    final Runnable onCropChange = () -> {
+        SettingsManager.getBookSettings().cp = AppSP.get().isCrop;
+        reloadDocBrigntness.run();
+        onCrop.underline(AppSP.get().isCrop);
 
+        PageImageState.get().isAutoFit = true;
+        EventBus.getDefault().post(new MessageAutoFit(viewPager.getCurrentItem()));
 
-
-
-
-
-
-
-
-
-
+        AppState.get().isEditMode = false;
+        hideShow();
+    };
 }
