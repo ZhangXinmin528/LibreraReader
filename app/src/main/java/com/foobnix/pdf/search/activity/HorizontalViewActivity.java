@@ -10,12 +10,14 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
 import android.text.InputType;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -181,7 +183,6 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horiziontal_view);
     }
-
 
 
     @Override
@@ -849,7 +850,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
         titleTxt.setText(HorizontalModeController.getTempTitle(this));
 
-
+        //TODO：加载PDF资源
         loadinAsyncTask = new CopyAsyncTask() {
             AlertDialog dialog;
             long start = 0;
@@ -857,6 +858,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             @Override
             protected void onPreExecute() {
+                Log.d("zxm==", "CopyAsyncTask..onPreExecute()");
                 start = System.currentTimeMillis();
                 TempHolder.get().loadingCancelled = false;
                 dialog = Dialogs.loadingBook(HorizontalViewActivity.this, new Runnable() {
@@ -874,6 +876,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             @Override
             protected Object doInBackground(Object... params) {
+                Log.d("zxm==", "CopyAsyncTask..doInBackground()");
                 try {
                     LOG.d("doRotation(this)", AppState.get().orientation, HorizontalViewActivity.this.getRequestedOrientation());
                     try {
@@ -881,7 +884,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                             Thread.sleep(250);
                         }
                         int count = 0;
-                        if (AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE || AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE) {
+                        if (AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                                || AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE) {
                             while (viewPager.getHeight() > viewPager.getWidth() && count < 20) {
                                 Thread.sleep(250);
                                 count++;
@@ -916,6 +920,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             @Override
             protected void onCancelled() {
+                Log.d("zxm==", "CopyAsyncTask..onCancelled()");
                 try {
                     if (dialog != null) {
                         dialog.dismiss();
@@ -929,6 +934,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             @Override
             protected void onPostExecute(Object result) {
+                Log.d("zxm==", "CopyAsyncTask..onPostExecute()");
                 if (AppsConfig.IS_LOG) {
                     long time = System.currentTimeMillis() - start;
                     float sec = (float) time / 1000;
@@ -1092,6 +1098,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             ;
         };
+        //TODO:触发pdf加载逻辑
         loadinAsyncTask.executeOnExecutor(Executors.newSingleThreadExecutor());
         updateIconMode();
         BrightnessHelper.updateOverlay(overlay);
@@ -1398,6 +1405,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         Android6.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
@@ -2524,7 +2532,6 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             }
         }
     };
-
 
 
     final Runnable onCropChange = () -> {
