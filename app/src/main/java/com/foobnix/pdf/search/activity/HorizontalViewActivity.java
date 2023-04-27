@@ -130,13 +130,17 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
     public boolean prev = true;
     VerticalViewPager viewPager;
     SeekBar seekBar;
-    TextView toastBrightnessText, floatingBookmarkTextView, maxSeek, currentSeek, pagesCountIndicator, flippingIntervalView, pagesTime, pagesTime1, pagesPower, titleTxt, chapterView, modeName, pannelBookTitle;
-    View adFrame, bottomBar, bottomIndicators, onClose, overlay, pagesBookmark, musicButtonPanel, parentParent;
+    TextView toastBrightnessText, floatingBookmarkTextView, maxSeek, currentSeek,
+            pagesCountIndicator, flippingIntervalView, pagesTime, pagesTime1, pagesPower,
+            titleTxt, chapterView, modeName, pannelBookTitle;
+    View adFrame, bottomBar, bottomIndicators, onClose, overlay, pagesBookmark, musicButtonPanel,
+            parentParent;
     LinearLayout actionBar, bottomPanel;
     TTSControlsView ttsActive;
     FrameLayout anchor;
     UnderlineImageView onCrop, onBC;
-    ImageView moveCenter, lockModelImage, linkHistory, onModeChange, outline, onMove, textToSpeach, onPageFlip1, anchorX, anchorY;
+    ImageView moveCenter, lockModelImage, linkHistory, onModeChange, outline, onMove,
+            textToSpeach, onPageFlip1, anchorX, anchorY;
     HorizontalModeController dc;
     Handler handler = new Handler(Looper.getMainLooper());
     Handler flippingHandler = new Handler(Looper.getMainLooper());
@@ -280,14 +284,18 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             }
         });
 
-        TintUtil.setTintImageWithAlpha(anchorX, AppState.get().isDayNotInvert ? Color.BLUE : Color.YELLOW, 150);
-        TintUtil.setTintImageWithAlpha(anchorY, AppState.get().isDayNotInvert ? Color.BLUE : Color.YELLOW, 150);
+        TintUtil.setTintImageWithAlpha(anchorX, AppState.get().isDayNotInvert ? Color.BLUE :
+                Color.YELLOW, 150);
+        TintUtil.setTintImageWithAlpha(anchorY, AppState.get().isDayNotInvert ? Color.BLUE :
+                Color.YELLOW, 150);
 
         anchorX.setVisibility(View.GONE);
         anchorY.setVisibility(View.GONE);
 
-        DraggbleTouchListener touch1 = new DraggbleTouchListener(anchorX, (View) anchorX.getParent());
-        DraggbleTouchListener touch2 = new DraggbleTouchListener(anchorY, (View) anchorY.getParent());
+        DraggbleTouchListener touch1 = new DraggbleTouchListener(anchorX,
+                (View) anchorX.getParent());
+        DraggbleTouchListener touch2 = new DraggbleTouchListener(anchorY,
+                (View) anchorY.getParent());
 
         final Runnable onMoveActionOnce = new Runnable() {
 
@@ -298,7 +306,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
                 float x1 = anchorY.getX();
                 float y1 = anchorY.getY();
-                EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_SELECT_TEXT, viewPager.getCurrentItem(), x, y, x1, y1));
+                EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_SELECT_TEXT,
+                        viewPager.getCurrentItem(), x, y, x1, y1));
             }
         };
 
@@ -354,7 +363,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         flippingIntervalView = (TextView) findViewById(R.id.flippingIntervalView);
         pagesTime = (TextView) findViewById(R.id.pagesTime);
         pagesTime1 = (TextView) findViewById(R.id.pagesTime1);
-        pagesTime1.setVisibility(AppState.get().fullScreenMode == AppState.FULL_SCREEN_NORMAL ? View.GONE : View.VISIBLE);
+        pagesTime1.setVisibility(AppState.get().fullScreenMode == AppState.FULL_SCREEN_NORMAL ?
+                View.GONE : View.VISIBLE);
 
 
         pagesPower = (TextView) findViewById(R.id.pagesPower);
@@ -434,7 +444,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
                 DocumentController.showFullScreenPopup(dc.getActivity(), v, id -> {
                     AppState.get().fullScreenMode = id;
-                    DocumentController.chooseFullScreen(HorizontalViewActivity.this, AppState.get().fullScreenMode);
+                    DocumentController.chooseFullScreen(HorizontalViewActivity.this,
+                            AppState.get().fullScreenMode);
                     onFullScreen.setImageResource(DocumentController.getFullScreenIcon(HorizontalViewActivity.this, AppState.get().fullScreenMode));
                     if (dc.isTextFormat()) {
                         if (onRefresh != null) {
@@ -480,7 +491,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             }
         });
 
-        dayNightButton.setImageResource(!AppState.get().isDayNotInvert ? R.drawable.glyphicons_232_sun : R.drawable.glyphicons_231_moon);
+        dayNightButton.setImageResource(!AppState.get().isDayNotInvert ?
+                R.drawable.glyphicons_232_sun : R.drawable.glyphicons_231_moon);
 
         moveCenter.setOnClickListener(new OnClickListener() {
 
@@ -495,7 +507,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         if (DocumentController.isEinkOrMode(this) || AppState.get().isEnableBC) {
             onBC.setVisibility(View.VISIBLE);
         }
-        onMove.setVisibility(DocumentController.isEinkOrMode(this) && !isTextFomat ? View.VISIBLE : View.GONE);
+        onMove.setVisibility(DocumentController.isEinkOrMode(this) && !isTextFomat ?
+                View.VISIBLE : View.GONE);
 
         findViewById(R.id.thumbnail).setOnClickListener(new View.OnClickListener() {
 
@@ -542,7 +555,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             @Override
             public void onClick(final View v) {
-                LOG.d("bookTTS", AppSP.get().isDoubleCoverAlone, AppSP.get().isDouble, AppSP.get().isCut);
+                LOG.d("bookTTS", AppSP.get().isDoubleCoverAlone, AppSP.get().isDouble,
+                        AppSP.get().isCut);
                 if (AppSP.get().isDouble || AppSP.get().isCut) {
                     modeOnePage();
                     return;
@@ -878,14 +892,14 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             protected Object doInBackground(Object... params) {
                 Log.d("zxm==", "CopyAsyncTask..doInBackground()");
                 try {
-                    LOG.d("doRotation(this)", AppState.get().orientation, HorizontalViewActivity.this.getRequestedOrientation());
+                    LOG.d("doRotation(this)", AppState.get().orientation,
+                            HorizontalViewActivity.this.getRequestedOrientation());
                     try {
                         while (viewPager.getHeight() == 0) {
                             Thread.sleep(250);
                         }
                         int count = 0;
-                        if (AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-                                || AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE) {
+                        if (AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE || AppState.get().orientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE) {
                             while (viewPager.getHeight() > viewPager.getWidth() && count < 20) {
                                 Thread.sleep(250);
                                 count++;
@@ -938,7 +952,7 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                 if (AppsConfig.IS_LOG) {
                     long time = System.currentTimeMillis() - start;
                     float sec = (float) time / 1000;
-                    modeName.setText(modeName.getText() + " (" + String.format("%.1f", sec) + " sec" + ")");
+                    modeName.setText(modeName.getText() + " (" + String.format("%.1f", sec) + " " + "sec" + ")");
                 }
                 try {
                     // onClose.setVisibility(View.VISIBLE);
@@ -954,7 +968,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                     return;
                 }
                 if ((Integer) result == -2) {
-                    Toast.makeText(HorizontalViewActivity.this, R.string.msg_unexpected_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HorizontalViewActivity.this, R.string.msg_unexpected_error,
+                            Toast.LENGTH_SHORT).show();
                     AppState.get().isEditMode = true;
                     hideShow();
                     onClose.setVisibility(View.VISIBLE);
@@ -966,51 +981,55 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                     input.setSingleLine(true);
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(HorizontalViewActivity.this);
+                    AlertDialog.Builder dialog =
+                            new AlertDialog.Builder(HorizontalViewActivity.this);
                     dialog.setTitle(R.string.enter_password);
                     dialog.setView(input);
                     dialog.setCancelable(false);
-                    dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton(R.string.cancel,
+                            new DialogInterface.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            if (dc != null) {
-                                dc.onCloseActivityFinal(null);
-                            } else {
-                                HorizontalViewActivity.this.finish();
-                            }
-                        }
-
-                    });
-                    dialog.setPositiveButton(R.string.open_file, new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            final String txt = input.getText().toString();
-                            if (TxtUtils.isNotEmpty(txt)) {
-                                dialog.dismiss();
-
-                                final Runnable runnable = () -> {
-                                    HorizontalViewActivity.this.finish();
-                                    getIntent().putExtra(HorizontalModeController.EXTRA_PASSWORD, txt);
-                                    startActivity(getIntent());
-                                };
-                                if (dc != null) {
-                                    dc.onCloseActivityFinal(runnable);
-                                } else {
-                                    runnable.run();
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    if (dc != null) {
+                                        dc.onCloseActivityFinal(null);
+                                    } else {
+                                        HorizontalViewActivity.this.finish();
+                                    }
                                 }
 
-                            } else {
-                                if (dc == null) {
-                                    HorizontalViewActivity.this.finish();
-                                } else {
-                                    dc.onCloseActivityFinal(null);
+                            });
+                    dialog.setPositiveButton(R.string.open_file,
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    final String txt = input.getText().toString();
+                                    if (TxtUtils.isNotEmpty(txt)) {
+                                        dialog.dismiss();
+
+                                        final Runnable runnable = () -> {
+                                            HorizontalViewActivity.this.finish();
+                                            getIntent().putExtra(HorizontalModeController.EXTRA_PASSWORD,
+                                                    txt);
+                                            startActivity(getIntent());
+                                        };
+                                        if (dc != null) {
+                                            dc.onCloseActivityFinal(runnable);
+                                        } else {
+                                            runnable.run();
+                                        }
+
+                                    } else {
+                                        if (dc == null) {
+                                            HorizontalViewActivity.this.finish();
+                                        } else {
+                                            dc.onCloseActivityFinal(null);
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    });
+                            });
                     AlertDialog show = dialog.show();
 
                 } else {
@@ -1049,7 +1068,9 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                     updateUI(pageFromUri);
                     hideShow();
 
-                    Apps.accessibilityText(HorizontalViewActivity.this, getString(R.string.book_is_open), getString(R.string.m_current_page), " " + dc.getCurentPageFirst1());
+                    Apps.accessibilityText(HorizontalViewActivity.this,
+                            getString(R.string.book_is_open), getString(R.string.m_current_page),
+                            " " + dc.getCurentPageFirst1());
 
 
                     EventBus.getDefault().post(new MessageAutoFit(pageFromUri));
@@ -1062,7 +1083,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
                     updateIconMode();
 
-                    onCrop.setVisibility(dc.isTextFormat() && !AppSP.get().isCrop ? View.GONE : View.VISIBLE);
+                    onCrop.setVisibility(dc.isTextFormat() && !AppSP.get().isCrop ? View.GONE :
+                            View.VISIBLE);
                     onMove.setVisibility(DocumentController.isEinkOrMode(HorizontalViewActivity.this) && !dc.isTextFormat() ? View.VISIBLE : View.GONE);
                     onBC.setVisibility(dc.isTextFormat() ? View.GONE : View.VISIBLE);
                     if (Dips.isEInk() || AppState.get().appTheme == AppState.THEME_INK || AppState.get().isEnableBC) {
@@ -1139,7 +1161,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
     public void showPagesHelper() {
         try {
-            BookmarkPanel.showPagesHelper(pageshelper, musicButtonPanel, dc, pagesBookmark, quickBookmark, onRefresh);
+            BookmarkPanel.showPagesHelper(pageshelper, musicButtonPanel, dc, pagesBookmark,
+                    quickBookmark, onRefresh);
         } catch (Exception e) {
             LOG.e(e);
         }
@@ -1184,7 +1207,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 LOG.d("FLAG addFlags", "FLAG_KEEP_SCREEN_ON", "add", AppState.get().inactivityTime);
                 handler.removeCallbacks(clearFlags);
-                handler.postDelayed(clearFlags, TimeUnit.MINUTES.toMillis(AppState.get().inactivityTime));
+                handler.postDelayed(clearFlags,
+                        TimeUnit.MINUTES.toMillis(AppState.get().inactivityTime));
             }
 
             LOG.d("onPageSelected", pos);
@@ -1194,7 +1218,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_HIDE));
 
             if (!TTSEngine.get().isPlaying()) {
-                Apps.accessibilityText(HorizontalViewActivity.this, getString(R.string.m_current_page) + " " + dc.getCurentPageFirst1());
+                Apps.accessibilityText(HorizontalViewActivity.this,
+                        getString(R.string.m_current_page) + " " + dc.getCurentPageFirst1());
             }
 
 
@@ -1298,7 +1323,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         pannelBookTitle.setTextSize((AppState.get().statusBarTextSizeEasy + 2));
         flippingIntervalView.setTextSize(AppState.get().statusBarTextSizeEasy);
 
-        int progressColor = AppState.get().isDayNotInvert ? AppState.get().statusBarColorDay : MagicHelper.otherColor(AppState.get().statusBarColorNight, +0.2f);
+        int progressColor = AppState.get().isDayNotInvert ? AppState.get().statusBarColorDay :
+                MagicHelper.otherColor(AppState.get().statusBarColorNight, +0.2f);
         progressDraw.updateColor(progressColor);
 
         progressDraw.getLayoutParams().height = Dips.dpToPx(AppState.get().progressLineHeight);
@@ -1360,13 +1386,15 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
     public void showHideInfoToolBar() {
         int isVisible = AppState.get().isShowToolBar ? View.VISIBLE : View.GONE;
         pagesTime.setVisibility(isVisible);
-        pagesTime1.setVisibility(AppState.get().fullScreenMode == AppState.FULL_SCREEN_NORMAL ? View.GONE : View.VISIBLE);
+        pagesTime1.setVisibility(AppState.get().fullScreenMode == AppState.FULL_SCREEN_NORMAL ?
+                View.GONE : View.VISIBLE);
 
         pagesCountIndicator.setVisibility(isVisible);
         pagesPower.setVisibility(isVisible);
         bottomIndicators.setVisibility(isVisible);
 
-        pannelBookTitle.setVisibility(AppState.get().isShowPanelBookNameBookMode ? View.VISIBLE : View.GONE);
+        pannelBookTitle.setVisibility(AppState.get().isShowPanelBookNameBookMode ? View.VISIBLE :
+                View.GONE);
 
         progressDraw.setVisibility(AppState.get().isShowReadingProgress ? View.VISIBLE : View.GONE);
 
@@ -1375,7 +1403,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             pagesTime.setVisibility(AppState.get().isShowTime ? View.VISIBLE : View.INVISIBLE);
         }
 
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) bottomPanel.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams =
+                (RelativeLayout.LayoutParams) bottomPanel.getLayoutParams();
 
         if (AppState.get().statusBarPosition == AppState.STATUSBAR_POSITION_TOP) {
 
@@ -1404,7 +1433,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[],
+                                           int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         Android6.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
@@ -1762,8 +1792,10 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         seekBar.setMax(dc.getPageCount() - 1);
         seekBar.setProgress(dc.getCurentPage());
 
-        bottomIndicators.setOnTouchListener(new HorizontallSeekTouchEventListener(onSeek, dc.getPageCount(), false));
-        progressDraw.setOnTouchListener(new HorizontallSeekTouchEventListener(onSeek, dc.getPageCount(), false));
+        bottomIndicators.setOnTouchListener(new HorizontallSeekTouchEventListener(onSeek,
+                dc.getPageCount(), false));
+        progressDraw.setOnTouchListener(new HorizontallSeekTouchEventListener(onSeek,
+                dc.getPageCount(), false));
         bottomIndicators.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -1866,7 +1898,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                     }
                 });
                 rotatoinDialog = dialog.show();
-                rotatoinDialog.getWindow().setLayout((int) (Dips.screenMinWH() * 0.8f), LayoutParams.WRAP_CONTENT);
+                rotatoinDialog.getWindow().setLayout((int) (Dips.screenMinWH() * 0.8f),
+                        LayoutParams.WRAP_CONTENT);
             }
         } else {
             Keyboards.hideNavigationOnCreate(this);
@@ -1945,7 +1978,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                 try {
                     return super.saveState();
                 } catch (Exception e) {
-                    Toast.makeText(HorizontalViewActivity.this, R.string.msg_unexpected_error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(HorizontalViewActivity.this, R.string.msg_unexpected_error,
+                            Toast.LENGTH_LONG).show();
                     LOG.e(e);
                     return null;
                 }
@@ -1956,7 +1990,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                 try {
                     super.restoreState(arg0, arg1);
                 } catch (Exception e) {
-                    Toast.makeText(HorizontalViewActivity.this, R.string.msg_unexpected_error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(HorizontalViewActivity.this, R.string.msg_unexpected_error,
+                            Toast.LENGTH_LONG).show();
                     LOG.e(e);
                 }
             }
@@ -1986,7 +2021,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
     public void updateBannnerTop() {
         try {
-            ((RelativeLayout.LayoutParams) adFrame.getLayoutParams()).topMargin = actionBar.getHeight() + Dips.dpToPx(24);
+            ((RelativeLayout.LayoutParams) adFrame.getLayoutParams()).topMargin =
+                    actionBar.getHeight() + Dips.dpToPx(24);
         } catch (Exception e) {
             LOG.e(e);
         }
@@ -2022,11 +2058,15 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             return;
         }
 
-        final TranslateAnimation hideActionBar = new TranslateAnimation(0, 0, 0, -actionBar.getHeight());
-        final TranslateAnimation hideBottomBar = new TranslateAnimation(0, 0, 0, bottomBar.getHeight());
+        final TranslateAnimation hideActionBar = new TranslateAnimation(0, 0, 0,
+                -actionBar.getHeight());
+        final TranslateAnimation hideBottomBar = new TranslateAnimation(0, 0, 0,
+                bottomBar.getHeight());
 
-        final TranslateAnimation showActoinBar = new TranslateAnimation(0, 0, -actionBar.getHeight(), 0);
-        final TranslateAnimation showBottomBar = new TranslateAnimation(0, 0, bottomBar.getHeight(), 0);
+        final TranslateAnimation showActoinBar = new TranslateAnimation(0, 0,
+                -actionBar.getHeight(), 0);
+        final TranslateAnimation showBottomBar = new TranslateAnimation(0, 0,
+                bottomBar.getHeight(), 0);
 
         final TranslateAnimation adsShow = new TranslateAnimation(-adFrame.getWidth(), 0, 0, 0);
         final TranslateAnimation adsHide = new TranslateAnimation(0, -adFrame.getWidth(), 0, 0);
@@ -2115,7 +2155,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
     }
 
     private void ttsFixPosition() {
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) ttsActive.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams =
+                (RelativeLayout.LayoutParams) ttsActive.getLayoutParams();
         if (AppState.get().isEditMode) {
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 0);
         } else {
@@ -2349,7 +2390,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
             onBC.underline(AppState.get().isEnableBC);
             IMG.clearMemoryCache();
             int position = viewPager.getCurrentItem();
-            ImagePageFragment f2 = (ImagePageFragment) getSupportFragmentManager().findFragmentByTag("f" + (viewPager.getCurrentItem()));
+            ImagePageFragment f2 =
+                    (ImagePageFragment) getSupportFragmentManager().findFragmentByTag("f" + (viewPager.getCurrentItem()));
             LOG.d("reloadDocBrigntness", f2);
             if (f2 != null) {
 
@@ -2411,7 +2453,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
 
             flippingTimer += 1;
             flippingIntervalView.setText("{" + (AppState.get().flippingInterval - flippingTimer + 1) + "}");
-            flippingIntervalView.setVisibility(AppState.get().isShowToolBar ? View.VISIBLE : View.GONE);
+            flippingIntervalView.setVisibility(AppState.get().isShowToolBar ? View.VISIBLE :
+                    View.GONE);
             flippingHandler.postDelayed(flippingRunnable, 1000);
 
         }
@@ -2517,7 +2560,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
         }
 
         @Override
-        public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
+        public void onProgressChanged(final SeekBar seekBar, final int progress,
+                                      final boolean fromUser) {
             // updateUI(progress);
             viewPager.setCurrentItem(progress, false);
             flippingTimer = 0;
@@ -2527,7 +2571,8 @@ public class HorizontalViewActivity extends AdsFragmentActivity {
                 hideShow();
             }
             if (fromUser) {
-                //Apps.accessibilityText(HorizontalViewActivity.this, getString(R.string.m_current_page) + " " + dc.getCurentPageFirst1());
+                //Apps.accessibilityText(HorizontalViewActivity.this, getString(R.string
+                // .m_current_page) + " " + dc.getCurentPageFirst1());
 
             }
         }
