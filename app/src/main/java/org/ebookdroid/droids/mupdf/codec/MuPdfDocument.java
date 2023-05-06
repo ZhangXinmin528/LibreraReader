@@ -19,6 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * PDF打开最终实现类
+ * todo:PDF打开最终实现类
+ */
 public class MuPdfDocument extends AbstractCodecDocument {
 
     public static final int FORMAT_PDF = 0;
@@ -35,15 +39,16 @@ public class MuPdfDocument extends AbstractCodecDocument {
     private String fname;
 
 
-
-    public MuPdfDocument(final MuPdfContext context, final int format, final String fname, final String pwd) {
+    public MuPdfDocument(final MuPdfContext context, final int format, final String fname,
+                         final String pwd) {
         super(context, openFile(format, fname, pwd, BookCSS.get().toCssString(fname)));
         this.fname = fname;
         isEpub = ExtUtils.isTextFomat(fname);
         bookType = BookType.getByUri(fname);
     }
 
-    static void normalizeLinkTargetRect(final long docHandle, final int targetPage, final RectF targetRect, final int flags) {
+    static void normalizeLinkTargetRect(final long docHandle, final int targetPage,
+                                        final RectF targetRect, final int flags) {
 
         if ((flags & 0x0F) == 0) {
             targetRect.right = targetRect.left = 0;
@@ -89,11 +94,12 @@ public class MuPdfDocument extends AbstractCodecDocument {
             int allocatedMemory = AppState.get().allocatedMemorySize * 1024 * 1024;
             // int allocatedMemory = CoreSettings.get().pdfStorageSize;
             LOG.d("allocatedMemory", AppState.get().allocatedMemorySize, " MB " + allocatedMemory);
-            final long open = open(allocatedMemory, format, fname, pwd, css, BookCSS.get().documentStyle == BookCSS.STYLES_ONLY_USER ? 0 : 1,BookCSS.get().imageScale);
+            final long open = open(allocatedMemory, format, fname, pwd, css,
+                    BookCSS.get().documentStyle == BookCSS.STYLES_ONLY_USER ? 0 : 1,
+                    BookCSS.get().imageScale);
             LOG.d("TEST", "Open document " + fname + " " + open);
             LOG.d("TEST", "Open document css ", css);
             LOG.d("MUPDF! >>> open [document]", open, ExtUtils.getFileName(fname));
-
 
 
             if (open == -1) {
@@ -109,7 +115,8 @@ public class MuPdfDocument extends AbstractCodecDocument {
 
     public static native int getMupdfVersion();
 
-    private static native long open(int storememory, int format, String fname, String pwd, String css, int useDocStyle, float scale);
+    private static native long open(int storememory, int format, String fname, String pwd,
+                                    String css, int useDocStyle, float scale);
 
     private static native void free(long handle);
 
@@ -238,7 +245,7 @@ public class MuPdfDocument extends AbstractCodecDocument {
         try {
             cacheHandle = -1;
             free(documentHandle);
-        }finally {
+        } finally {
             TempHolder.lock.unlock();
         }
 

@@ -36,8 +36,17 @@ public abstract class AbstractCodecContext implements CodecContext {
 
     public abstract CodecDocument openDocumentInner(String fileName, String password);
 
+    /**
+     * 通过 CodecDocument 的实现类去打开文档
+     * todo:打开文档关键方法
+     *
+     * @param fileName
+     * @param password
+     * @return
+     */
     public CodecDocument openDocumentInnerCanceled(String fileName, String password) {
         long t = System.currentTimeMillis();
+        //具体的实现类去实现文档的打开功能
         CodecDocument openDocument = openDocumentInner(fileName, password);
         LOG.d("openDocumentInner-time", (float) (System.currentTimeMillis() - t) / 1000, fileName);
         LOG.d("removeTempFiles1", TempHolder.get().loadingCancelled);
@@ -45,8 +54,6 @@ public abstract class AbstractCodecContext implements CodecContext {
             removeTempFiles();
             return null;
         }
-
-
 
 
         return openDocument;
@@ -72,6 +79,7 @@ public abstract class AbstractCodecContext implements CodecContext {
         return hashCode;
     }
 
+    //todo:文档打开关键方法
     @Override
     public CodecDocument openDocument(String fileNameOriginal, String password) {
         LOG.d("Open-Document", fileNameOriginal);
@@ -96,7 +104,8 @@ public abstract class AbstractCodecContext implements CodecContext {
         CacheZipUtils.cacheLock2.lock();
         CacheZipUtils.createAllCacheDirs();
         try {
-            String fileName = CacheZipUtils.extracIfNeed(fileNameOriginal, CacheDir.ZipApp).unZipPath;
+            String fileName =
+                    CacheZipUtils.extracIfNeed(fileNameOriginal, CacheDir.ZipApp).unZipPath;
             LOG.d("Open-Document extract", fileName);
             if (!ExtUtils.isValidFile(fileName)) {
                 return null;
