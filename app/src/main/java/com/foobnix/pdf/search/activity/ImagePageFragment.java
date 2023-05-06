@@ -188,6 +188,7 @@ public class ImagePageFragment extends Fragment {
 
         };
         LOG.d("Glide-load-into", getActivity());
+        LOG.d("Glide-load-into...getpath", getPath());
         IMG.with(getActivity())
                 .asBitmap()
                 .load(getPath())

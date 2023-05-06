@@ -48,6 +48,10 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * pdf分页图片进行渲染
+ * TODO：图片加载
+ */
 public class PageImaveView extends View {
 
     public static int MIN = Dips.dpToPx(15);
@@ -351,7 +355,8 @@ public class PageImaveView extends View {
     protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
         try {
-            if (AppState.get().isOLED && !AppState.get().isDayNotInvert /* && MagicHelper.getBgColor() == Color.BLACK */) {
+            if (AppState.get().isOLED && !AppState.get().isDayNotInvert /* && MagicHelper
+            .getBgColor() == Color.BLACK */) {
                 canvas.drawColor(Color.BLACK);
             } else {
                 canvas.drawColor(MagicHelper.ligtherColor(MagicHelper.getBgColor()));
@@ -363,6 +368,7 @@ public class PageImaveView extends View {
             canvas.concat(imageMatrix());
 
             if (imageDrawable != null) {
+                //todo:绘制图片
                 imageDrawable.draw(canvas);
             }
 
@@ -378,7 +384,8 @@ public class PageImaveView extends View {
                 }
             }
 
-            if (AppState.get().isOLED && !AppState.get().isDayNotInvert /* && !TempHolder.get().isTextFormat */) {
+            if (AppState.get().isOLED && !AppState.get().isDayNotInvert /* && !TempHolder.get()
+            .isTextFormat */) {
                 canvas.drawRect(-dp1, 0, drawableWidth + dp1, drawableHeight, rect);
             }
 
@@ -420,7 +427,8 @@ public class PageImaveView extends View {
         autoFit();
         invalidate();
 
-        LOG.d("addBitmap", bitmap.getWidth(), bitmap.getHeight(), "Real WH:", getWidth(), getHeight());
+        LOG.d("addBitmap", bitmap.getWidth(), bitmap.getHeight(), "Real WH:", getWidth(),
+                getHeight());
     }
 
     public void recycle() {
@@ -673,7 +681,8 @@ public class PageImaveView extends View {
 
             }
             String k;
-            if (AppState.get().selectingByLetters && current.length >= 2 && !(k = current[current.length - 1].getWord()).equals(" ") && !k.equals("-")) {
+            if (AppState.get().selectingByLetters && current.length >= 2 && !(k =
+                    current[current.length - 1].getWord()).equals(" ") && !k.equals("-")) {
                 build.append(" ");
             }
         }
@@ -719,7 +728,8 @@ public class PageImaveView extends View {
 
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_ZOOM_IN_OUT) {
                     if (isFirstZoomInOut) {
-                        imageMatrix().preTranslate(getWidth() / 2 - e.getX(), getHeight() / 2 - e.getY());
+                        imageMatrix().preTranslate(getWidth() / 2 - e.getX(),
+                                getHeight() / 2 - e.getY());
                         imageMatrix().postScale(2.5f, 2.5f, getWidth() / 2, getHeight() / 2);
                         isFirstZoomInOut = false;
                         prevLock = AppSP.get().isLocked;
@@ -740,7 +750,8 @@ public class PageImaveView extends View {
 
                     }
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_CLOSE_BOOK) {
-                    EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_CLOSE_BOOK, e.getX(), e.getY()));
+                    EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_CLOSE_BOOK,
+                            e.getX(), e.getY()));
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_AUTOSCROLL) {
                     EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_AUTO_SCROLL));
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_CLOSE_BOOK_AND_APP) {
@@ -748,7 +759,8 @@ public class PageImaveView extends View {
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_CLOSE_HIDE_APP) {
                     Apps.showDesctop(getContext());
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_START_STOP_TTS) {
-                    EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_PLAY_PAUSE, e.getX(), e.getY()));
+                    EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_PLAY_PAUSE,
+                            e.getX(), e.getY()));
                 } else if (AppState.get().doubleClickAction1 == AppState.DOUBLE_CLICK_CENTER_HORIZONTAL) {
                     PageImageState.get().isAutoFit = false;
                     onCenterHorizontally(new MessageCenterHorizontally(pageNumber));
@@ -758,7 +770,8 @@ public class PageImaveView extends View {
                     invalidateAndMsg();
                 }
 
-                EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_DOUBLE_TAP, e.getX(), e.getY()));
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_DOUBLE_TAP,
+                        e.getX(), e.getY()));
                 return true;
             }
 
@@ -768,7 +781,8 @@ public class PageImaveView extends View {
         ;
 
         @Override
-        public boolean onFling(final MotionEvent e1, final MotionEvent e2, final float velocityX, final float velocityY) {
+        public boolean onFling(final MotionEvent e1, final MotionEvent e2, final float velocityX,
+                               final float velocityY) {
 
             if (e1.getX() < BrightnessHelper.BRIGHTNESS_WIDTH) {
                 return false;
@@ -781,7 +795,9 @@ public class PageImaveView extends View {
             }
             if (isReadyForMove) {
                 isIgronerClick = true;
-                scroller.fling((int) e2.getX(), (int) e2.getY(), (int) velocityX / 3, (int) velocityY / 3, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
+                scroller.fling((int) e2.getX(), (int) e2.getY(), (int) velocityX / 3,
+                        (int) velocityY / 3, Integer.MIN_VALUE, Integer.MAX_VALUE,
+                        Integer.MIN_VALUE, Integer.MAX_VALUE);
                 handler.post(scrolling);
             }
             return true;
@@ -792,7 +808,8 @@ public class PageImaveView extends View {
             isIgronerClick = true;
 
             if (AppState.get().isSelectTexByTouch) {
-                //EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_PERFORM_CLICK, e.getX(), e.getY()));
+                //EventBus.getDefault().post(new MessageEvent(MessageEvent.MESSAGE_PERFORM_CLICK,
+                // e.getX(), e.getY()));
                 isLognPress = false;
                 isIgronerClick = true;
                 AppState.get().selectedText = null;
@@ -807,13 +824,16 @@ public class PageImaveView extends View {
             }
 
             if (!AppState.get().isAllowTextSelection) {
-                Toast.makeText(LibreraApp.context, R.string.text_highlight_mode_is_disable, Toast.LENGTH_LONG).show();
+                Toast.makeText(LibreraApp.context, R.string.text_highlight_mode_is_disable,
+                        Toast.LENGTH_LONG).show();
                 return;
             }
 
             Vibro.vibrate();
             if (AppSP.get().isCut || AppSP.get().isCrop) {
-                Toast.makeText(LibreraApp.context, R.string.the_page_is_clipped_the_text_selection_does_not_work, Toast.LENGTH_LONG).show();
+                Toast.makeText(LibreraApp.context,
+                        R.string.the_page_is_clipped_the_text_selection_does_not_work,
+                        Toast.LENGTH_LONG).show();
                 return;
             }
             isLognPress = true;
@@ -858,7 +878,8 @@ public class PageImaveView extends View {
                     if (isLognPress) {
                         String selectText = selectText(event.getX(), event.getY(), xInit, yInit);
                         if (selectText != null && selectText.contains(" ")) {
-                            EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_SHOW, -1, xInit, yInit, event.getX(), event.getY()));
+                            EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_SHOW,
+                                    -1, xInit, yInit, event.getX(), event.getY()));
                         }
                     } else {
 
@@ -981,7 +1002,8 @@ public class PageImaveView extends View {
                 if (isLognPress) {
                     String selectText = selectText(event.getX(), event.getY(), xInit, yInit);
                     if (selectText != null && selectText.contains(" ")) {
-                        EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_SHOW, -1, xInit, yInit, event.getX(), event.getY()));
+                        EventBus.getDefault().post(new MessagePageXY(MessagePageXY.TYPE_SHOW, -1,
+                                xInit, yInit, event.getX(), event.getY()));
                     }
 
                 } else if (BookCSS.get().isTextFormat()) {
