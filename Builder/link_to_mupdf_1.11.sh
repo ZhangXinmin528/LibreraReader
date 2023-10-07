@@ -72,11 +72,11 @@ echo "================== "
 
 if [ "$1" == "clean_ndk" ]; then
   #1.指定ndk路径
-/home/zxm/Android/Sdk/ndk/22.1.7171670/ndk-build clean
+ /home/zhangxinmin/Android/Sdk/ndk/22.1.7171670/ndk-build clean
 rm -rf $MUPDF_JAVA/obj
 fi
 
-/home/zxm/Android/Sdk/ndk/22.1.7171670/ndk-build NDK_APPLICATION_MK=jni/Application-16.mk
+/home/zhangxinmin/Android/Sdk/ndk/22.1.7171670/ndk-build NDK_APPLICATION_MK=jni/Application-16.mk
 echo "================== "
 echo "MUPDF:" $MUPDF_JAVA
 echo "LIBS:"  $LIBS
